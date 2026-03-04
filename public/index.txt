@@ -1,0 +1,940 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>DoodleAI — Turn words into art</title>
+<link href="https://fonts.googleapis.com/css2?family=Caveat:wght@400;600;700&family=Syne:wght@400;600;700;800&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+:root {
+  --ink: #0f0e17; --paper: #fffcf5; --paper2: #f5f0e8;
+  --line: rgba(0,0,0,0.055); --border: #e8e2d8; --tx2: #6b6560;
+  --orange: #e85d26; --blue: #3a7bd5; --gold: #f5a623;
+  --green: #27ae60; --pro: #7c3aed; --pro2: #a855f7;
+}
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+body { background: var(--paper); color: var(--ink); font-family: 'DM Sans', sans-serif; min-height: 100vh; overflow-x: hidden; }
+body::before { content:''; position:fixed; inset:0; background-image:repeating-linear-gradient(0deg,transparent,transparent 31px,var(--line) 32px); pointer-events:none; z-index:0; }
+body::after  { content:''; position:fixed; left:76px; top:0; bottom:0; width:1.5px; background:rgba(220,70,70,0.12); pointer-events:none; z-index:0; }
+.page { position:relative; z-index:1; max-width:980px; margin:0 auto; padding:0 20px 80px; }
+
+/* HEADER */
+.hdr { padding:40px 0 24px; text-align:center; }
+.logo { font-family:'Syne',sans-serif; font-size:clamp(2.4rem,6vw,3.8rem); font-weight:800; letter-spacing:-.03em; line-height:1; display:inline-block; }
+.logo .d:nth-child(1){color:#3a7bd5} .logo .d:nth-child(2){color:#e85d26}
+.logo .d:nth-child(3){color:#27ae60} .logo .d:nth-child(4){color:#e85d26}
+.logo .d:nth-child(5){color:#7c3aed} .logo .d:nth-child(6){color:#3a7bd5}
+.logo .ai { color:var(--ink); font-weight:400; font-size:.82em; }
+.tagline { font-size:.85rem; color:var(--tx2); letter-spacing:.1em; text-transform:uppercase; margin-top:.5rem; font-weight:300; }
+
+/* CREDIT BADGE */
+.credit-bar { display:flex; justify-content:center; align-items:center; gap:10px; margin:18px 0 22px; flex-wrap:wrap; }
+.credit-badge {
+  display:flex; align-items:center; gap:6px;
+  background:#fff; border:2px solid var(--border); border-radius:40px;
+  padding:6px 16px; font-family:'Syne',sans-serif; font-size:.84rem; font-weight:700;
+  color:var(--tx2); transition:all .2s;
+}
+.credit-badge.has-credits { border-color:var(--pro); color:var(--pro); background:var(--pro-light,#f5f3ff); }
+.credit-badge .count { font-size:1.1rem; color:var(--pro); }
+.buy-more-btn {
+  padding:6px 16px; background:var(--pro); color:#fff; border:none; border-radius:40px;
+  font-family:'Syne',sans-serif; font-size:.82rem; font-weight:700; cursor:pointer;
+  transition:all .2s; box-shadow:0 2px 10px rgba(124,58,237,.3);
+}
+.buy-more-btn:hover { background:#6d28d9; transform:scale(1.04); }
+
+/* SEARCH */
+.search-wrap { position:relative; max-width:780px; margin:0 auto 14px; }
+.search-input {
+  width:100%; padding:1.1rem 1.6rem; padding-right:165px;
+  font-family:'DM Sans',sans-serif; font-size:1.05rem;
+  background:#fff; border:2.5px solid var(--border); border-radius:60px;
+  outline:none; color:var(--ink); box-shadow:0 3px 18px rgba(0,0,0,.07);
+  transition:border-color .2s, box-shadow .2s;
+}
+.search-input::placeholder { color:#c0b8b0; }
+.search-input:focus { border-color:var(--blue); box-shadow:0 4px 28px rgba(58,123,213,.14); }
+.create-btn {
+  position:absolute; right:7px; top:50%; transform:translateY(-50%);
+  padding:.72rem 1.5rem; border:none; border-radius:50px;
+  font-family:'Syne',sans-serif; font-size:.93rem; font-weight:700;
+  cursor:pointer; transition:all .2s; letter-spacing:.01em;
+  background:var(--orange); color:#fff; box-shadow:0 2px 10px rgba(232,93,38,.35);
+}
+.create-btn.paid-mode { background:linear-gradient(135deg,var(--pro),var(--pro2)); box-shadow:0 2px 14px rgba(124,58,237,.4); }
+.create-btn:hover { transform:translateY(-50%) scale(1.04); filter:brightness(1.08); }
+.create-btn:disabled { background:#d0c8c0 !important; cursor:not-allowed; transform:translateY(-50%); box-shadow:none; filter:none; }
+
+/* STYLE CHIPS */
+.style-row { display:flex; flex-wrap:wrap; gap:7px; justify-content:center; margin-bottom:13px; }
+.sty { padding:.3rem .9rem; border:1.5px solid var(--border); border-radius:20px; font-size:.78rem; color:var(--tx2); cursor:pointer; transition:all .15s; background:#fff; font-family:'DM Sans',sans-serif; }
+.sty:hover,.sty.active { border-color:var(--blue); color:var(--blue); background:#eef4ff; }
+.sty.active { font-weight:600; }
+
+/* EXAMPLE CHIPS */
+.examples { display:flex; flex-wrap:wrap; gap:7px; justify-content:center; margin-bottom:26px; }
+.chip { padding:.28rem .85rem; border:1.5px solid var(--border); border-radius:20px; font-size:.79rem; color:var(--tx2); cursor:pointer; transition:all .15s; background:#fff; }
+.chip:hover { border-color:var(--orange); color:var(--orange); background:#fff8f5; }
+
+/* RESULT */
+#result-section { display:none; animation:fadeUp .4s ease forwards; }
+@keyframes fadeUp { from{opacity:0;transform:translateY(16px)} to{opacity:1;transform:translateY(0)} }
+
+.canvas-card { background:#fff; border:2.5px solid var(--border); border-radius:20px; overflow:hidden; box-shadow:0 10px 50px rgba(0,0,0,.1); margin-bottom:14px; }
+.card-bar { background:var(--paper2); border-bottom:1.5px solid var(--border); padding:.7rem 1.2rem; display:flex; align-items:center; gap:.5rem; flex-wrap:wrap; }
+.dot { width:12px; height:12px; border-radius:50%; }
+.dr{background:#ff5f57} .dy{background:#febc2e} .dg{background:#28c840}
+.bar-label { font-family:'Caveat',cursive; font-size:1.05rem; color:#999; margin-left:.3rem; }
+.bar-label strong { color:var(--ink); }
+.mode-badge { margin-left:auto; padding:.2rem .8rem; border-radius:20px; font-family:'Syne',sans-serif; font-size:.72rem; font-weight:700; }
+.free-badge { background:#e8f4fd; color:var(--blue); }
+.paid-badge { background:linear-gradient(135deg,var(--pro),var(--pro2)); color:#fff; }
+
+.prog-wrap { height:4px; background:var(--paper2); }
+.prog-fill { height:100%; width:0%; background:linear-gradient(90deg,var(--blue),var(--orange)); transition:width .5s ease; }
+.prog-fill.paid { background:linear-gradient(90deg,var(--pro),var(--pro2),var(--gold)); }
+
+/* CANVAS */
+#img-wrap { min-height:540px; position:relative; display:flex; align-items:center; justify-content:center; background:#faf9f7; }
+#reveal-canvas { display:none; width:100%; max-height:700px; }
+#result-img { display:none; position:absolute; opacity:0; }
+.wm { position:absolute; bottom:12px; right:16px; font-family:'DM Sans',sans-serif; font-size:12px; font-weight:600; color:rgba(255,255,255,.75); text-shadow:0 1px 4px rgba(0,0,0,.55); pointer-events:none; display:none; }
+
+/* LOADER */
+#sketch-loader { display:flex; flex-direction:column; align-items:center; gap:16px; padding:4rem 2rem; }
+.pencil-icon { animation:wobble 1.1s ease-in-out infinite alternate; }
+@keyframes wobble { from{transform:rotate(-12deg) scale(.9)} to{transform:rotate(12deg) scale(1.1)} }
+.ll-wrap { display:flex; flex-direction:column; gap:8px; width:200px; }
+.ll { height:3px; border-radius:3px; background:linear-gradient(90deg,var(--blue),var(--orange)); animation:dl 1.5s ease-in-out infinite; transform-origin:left; }
+.ll.paid-ll { background:linear-gradient(90deg,var(--pro),var(--pro2)); }
+.ll:nth-child(2){animation-delay:.2s;width:70%} .ll:nth-child(3){animation-delay:.4s;width:50%}
+@keyframes dl{0%{transform:scaleX(0);opacity:0}35%{opacity:1}70%{transform:scaleX(1);opacity:1}100%{transform:scaleX(1);opacity:.2}}
+#loading-msg { font-family:'Caveat',cursive; font-size:1.3rem; color:#999; animation:pulse 1.9s ease infinite; }
+@keyframes pulse{0%,100%{opacity:.5}50%{opacity:1}}
+.wait-note { background:var(--paper2); border:1.5px solid var(--border); border-radius:10px; padding:10px 18px; font-size:.82rem; color:var(--tx2); text-align:center; max-width:300px; line-height:1.6; }
+.wait-note.paid-note { background:#f5f3ff; border-color:#c4b5fd; color:#6d5fb0; }
+
+/* ERROR */
+#error-box { display:none; margin:1.5rem; padding:1.3rem 1.5rem; background:#fff5f5; border:1.5px solid #fcc; border-radius:14px; color:#c0392b; font-size:.9rem; line-height:1.8; text-align:center; }
+
+/* STORY */
+.story-box { background:#fff; border:2px solid var(--border); border-radius:16px; padding:1.2rem 1.5rem; margin-bottom:14px; box-shadow:0 3px 16px rgba(0,0,0,.05); }
+.story-lbl { font-family:'Caveat',cursive; font-size:.9rem; color:#bbb; text-transform:uppercase; letter-spacing:.08em; margin-bottom:.4rem; }
+#story-text { font-family:'Caveat',cursive; font-size:1.25rem; line-height:1.8; color:var(--ink); min-height:2rem; }
+.blink { display:inline-block; width:2px; height:1em; background:var(--orange); margin-left:2px; vertical-align:middle; animation:bl .8s step-end infinite; }
+@keyframes bl{50%{opacity:0}}
+
+/* ACTION ROW */
+.action-row { display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:10px; }
+#status { font-size:.82rem; color:#bbb; font-style:italic; }
+.btn-dl { display:inline-flex; align-items:center; gap:.45rem; padding:.72rem 1.5rem; background:var(--ink); color:#fff; border:none; border-radius:40px; font-family:'Syne',sans-serif; font-size:.88rem; font-weight:700; cursor:pointer; transition:all .2s; box-shadow:0 3px 14px rgba(0,0,0,.18); }
+.btn-dl:hover { background:#2a2935; transform:scale(1.03); }
+.btn-dl:disabled { background:#ccc; cursor:not-allowed; transform:none; opacity:.5; }
+.btn-new { display:inline-flex; align-items:center; gap:.45rem; padding:.72rem 1.5rem; background:transparent; color:var(--ink); border:2px solid var(--border); border-radius:40px; font-family:'Syne',sans-serif; font-size:.88rem; font-weight:600; cursor:pointer; transition:all .2s; }
+.btn-new:hover { border-color:var(--blue); background:#eef4ff; }
+
+/* PRICING MODAL */
+.mbg { display:none; position:fixed; inset:0; background:rgba(0,0,0,.5); backdrop-filter:blur(7px); z-index:100; align-items:flex-start; justify-content:center; padding:20px; overflow-y:auto; }
+.mbg.show { display:flex; }
+.modal { background:#fff; border-radius:24px; max-width:860px; width:100%; box-shadow:0 28px 80px rgba(0,0,0,.2); animation:mIn .3s ease; margin:auto; }
+@keyframes mIn { from{opacity:0;transform:scale(.94)} to{opacity:1;transform:scale(1)} }
+.modal-hdr { background:linear-gradient(135deg,#0f0e17,#1e1b4b); padding:30px 30px 26px; color:#fff; text-align:center; border-radius:24px 24px 0 0; position:relative; }
+.modal-hdr h2 { font-family:'Syne',sans-serif; font-size:1.8rem; font-weight:800; margin-bottom:.3rem; }
+.modal-hdr p { opacity:.7; font-size:.9rem; }
+.modal-close { position:absolute; top:14px; right:18px; background:rgba(255,255,255,.15); border:none; border-radius:50%; width:34px; height:34px; font-size:1.1rem; color:#fff; cursor:pointer; display:flex; align-items:center; justify-content:center; transition:background .2s; }
+.modal-close:hover { background:rgba(255,255,255,.3); }
+.modal-body { padding:28px; }
+
+/* PRICING GRID */
+.price-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(220px,1fr)); gap:14px; margin-bottom:20px; }
+.plan {
+  border:2px solid var(--border); border-radius:16px; padding:20px 18px;
+  cursor:pointer; transition:all .2s; position:relative; background:#fff;
+}
+.plan:hover { border-color:var(--pro); transform:translateY(-2px); box-shadow:0 8px 24px rgba(124,58,237,.12); }
+.plan.popular { border-color:var(--pro); background:#faf5ff; }
+.popular-tag { position:absolute; top:-12px; left:50%; transform:translateX(-50%); background:var(--pro); color:#fff; font-family:'Syne',sans-serif; font-size:.72rem; font-weight:700; padding:.2rem .9rem; border-radius:20px; white-space:nowrap; }
+.plan h3 { font-family:'Syne',sans-serif; font-size:.95rem; font-weight:700; margin-bottom:.4rem; color:var(--ink); }
+.plan .price { font-family:'Syne',sans-serif; font-size:1.9rem; font-weight:800; color:var(--pro); line-height:1; margin-bottom:.2rem; }
+.plan .price span { font-size:.85rem; font-weight:400; color:var(--tx2); }
+.plan .imgs { font-size:.82rem; color:var(--tx2); margin-bottom:.8rem; }
+.plan .imgs strong { color:var(--ink); }
+.plan .cpt { font-size:.75rem; color:#aaa; margin-bottom:1rem; }
+.plan-btn { width:100%; padding:.65rem; border:none; border-radius:10px; background:var(--pro); color:#fff; font-family:'Syne',sans-serif; font-size:.88rem; font-weight:700; cursor:pointer; transition:all .2s; }
+.plan-btn:hover { filter:brightness(1.1); transform:translateY(-1px); }
+
+.free-row { text-align:center; padding-top:8px; border-top:1px solid var(--border); font-size:.84rem; color:var(--tx2); }
+.free-row span { color:var(--pro); cursor:pointer; font-weight:600; }
+.free-row span:hover { text-decoration:underline; }
+
+/* STRIPE SETUP NOTE */
+.setup-note { background:#fffbe6; border:1.5px solid #f5d020; border-radius:12px; padding:14px 18px; margin-top:20px; font-size:.82rem; color:#7a6500; line-height:1.7; }
+.setup-note code { background:#fef3c7; padding:.1rem .4rem; border-radius:4px; font-size:.8rem; }
+
+/* FOOTER */
+.footer { text-align:center; margin-top:50px; font-size:.75rem; color:#ccc; letter-spacing:.05em; }
+</style>
+</head>
+<body>
+<div class="page">
+
+  <!-- HEADER -->
+  <div class="hdr">
+    <div class="logo">
+      <span class="d">D</span><span class="d">o</span><span class="d">o</span><span class="d">d</span><span class="d">l</span><span class="d">e</span><span class="ai">AI</span>
+    </div>
+    <div class="tagline">Turn any idea into art — instantly</div>
+  </div>
+
+  <!-- CREDIT BAR -->
+  <div class="credit-bar">
+    <div class="credit-badge" id="credit-badge">
+      🎨 Free tier — slow shared servers
+    </div>
+    <button class="buy-more-btn" onclick="showPricing()">⚡ Buy Credits</button>
+  </div>
+
+  <!-- SEARCH BAR -->
+  <div class="search-wrap">
+    <input type="text" id="prompt-input" class="search-input"
+      placeholder="Describe what to draw… e.g. a cat sleeping on the moon"
+      maxlength="200" autocomplete="off" />
+    <button class="create-btn" id="create-btn">✏️ Create</button>
+  </div>
+
+  <!-- STYLE CHIPS -->
+  <div class="style-row">
+    <button class="sty active" data-style="pencil sketch, hand drawn linework, detailed, black and white">✏️ Pencil</button>
+    <button class="sty" data-style="soft watercolor painting, pastel colors, loose artistic brush strokes">🎨 Watercolor</button>
+    <button class="sty" data-style="cartoon illustration, flat bold colors, cute clean lines, fun">🎭 Cartoon</button>
+    <button class="sty" data-style="oil painting, classical art style, rich textured brushwork, dramatic lighting">🖼️ Oil Paint</button>
+    <button class="sty" data-style="pixel art, 8-bit retro game style, crisp colorful pixels, nostalgic">👾 Pixel Art</button>
+    <button class="sty" data-style="chalk drawing on dark blackboard, white and colored chalk lines">🟫 Chalk</button>
+  </div>
+
+  <!-- EXAMPLE CHIPS -->
+  <div class="examples" id="examples">
+    <span class="chip">🌅 sunset over mountains</span>
+    <span class="chip">🐱 a cat sleeping on the moon</span>
+    <span class="chip">🏡 cozy cottage in autumn</span>
+    <span class="chip">🚀 rocket launching into space</span>
+    <span class="chip">🌊 giant waves on a beach</span>
+    <span class="chip">🌳 ancient oak tree at golden hour</span>
+    <span class="chip">🐉 friendly dragon reading a book</span>
+    <span class="chip">🦊 fox in a snowy forest at night</span>
+    <span class="chip">🌸 cherry blossoms over a river</span>
+    <span class="chip">🐋 whale swimming through clouds</span>
+  </div>
+
+  <!-- RESULT SECTION -->
+  <div id="result-section">
+    <div class="canvas-card">
+      <div class="card-bar">
+        <div class="dot dr"></div><div class="dot dy"></div><div class="dot dg"></div>
+        <span class="bar-label">drawing: <strong id="label-prompt"></strong></span>
+        <span class="mode-badge free-badge" id="mode-badge">Free</span>
+      </div>
+      <div class="prog-wrap"><div class="prog-fill" id="prog"></div></div>
+      <div id="img-wrap">
+        <div id="sketch-loader">
+          <svg class="pencil-icon" width="56" height="56" viewBox="0 0 56 56" fill="none">
+            <rect x="23" y="4" width="10" height="34" rx="3" fill="#e85d26"/>
+            <polygon points="23,38 33,38 28,50" fill="#f5a623"/>
+            <rect x="23" y="4" width="10" height="9" rx="3" fill="#d0c8c0"/>
+          </svg>
+          <div class="ll-wrap" id="ll-wrap">
+            <div class="ll"></div><div class="ll"></div><div class="ll"></div>
+          </div>
+          <div id="loading-msg">Sketching your idea…</div>
+          <div class="wait-note" id="wait-note">
+            Free tier uses shared servers.<br>
+            May take <strong>20–60 seconds</strong>.<br>
+            <span style="color:var(--pro);cursor:pointer;font-weight:600;" onclick="showPricing()">⚡ Buy credits for instant results</span>
+          </div>
+        </div>
+        <img id="result-img" crossorigin="anonymous" style="display:none;position:absolute;opacity:0;" />
+        <canvas id="reveal-canvas" style="display:none;width:100%;max-height:700px;"></canvas>
+        <div class="wm" id="wm">DoodleAI.com</div>
+        <div id="error-box"></div>
+      </div>
+    </div>
+
+    <div class="story-box">
+      <div class="story-lbl">✍️ The story</div>
+      <div id="story-text"><span class="blink"></span></div>
+    </div>
+
+    <div class="action-row">
+      <div id="status">Contacting AI drawing studio…</div>
+      <div style="display:flex;gap:10px;flex-wrap:wrap;">
+        <button class="btn-new" id="new-btn">↩ New doodle</button>
+        <button class="btn-dl" id="dl-btn" disabled>
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
+            <polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/>
+          </svg>
+          Download PNG
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <div class="footer">DoodleAI.com &nbsp;·&nbsp; AI-powered art from words</div>
+</div>
+
+<!-- PRICING MODAL -->
+<div class="mbg" id="pricing-modal">
+  <div class="modal">
+    <div class="modal-hdr">
+      <button class="modal-close" onclick="closePricing()">✕</button>
+      <h2>⚡ Buy Image Credits</h2>
+      <p>Instant AI art — dedicated servers, never busy, results in 5–10 seconds</p>
+    </div>
+    <div class="modal-body">
+
+      <div class="price-grid">
+
+        <div class="plan" onclick="selectPlan(this,'starter',1.99,10)">
+          <h3>🌱 Starter</h3>
+          <div class="price">$1.99 <span>one-time</span></div>
+          <div class="imgs"><strong>10 images</strong></div>
+          <div class="cpt">Try it out — no commitment</div>
+          <button class="plan-btn">Get 10 Credits →</button>
+        </div>
+
+        <div class="plan" onclick="selectPlan(this,'basic',4.99,25)">
+          <h3>🎨 Basic</h3>
+          <div class="price">$4.99 <span>one-time</span></div>
+          <div class="imgs"><strong>25 images</strong></div>
+          <div class="cpt">Great for casual creators</div>
+          <button class="plan-btn">Get 25 Credits →</button>
+        </div>
+
+        <div class="plan popular" onclick="selectPlan(this,'creator',9.99,50)">
+          <div class="popular-tag">⭐ Most Popular</div>
+          <h3>🚀 Creator</h3>
+          <div class="price">$9.99 <span>one-time</span></div>
+          <div class="imgs"><strong>50 images</strong></div>
+          <div class="cpt">Perfect for regular use</div>
+          <button class="plan-btn">Get 50 Credits →</button>
+        </div>
+
+        <div class="plan" onclick="selectPlan(this,'pro',17.99,100)">
+          <h3>💼 Pro</h3>
+          <div class="price">$17.99 <span>one-time</span></div>
+          <div class="imgs"><strong>100 images</strong></div>
+          <div class="cpt">Best value for creators</div>
+          <button class="plan-btn">Get 100 Credits →</button>
+        </div>
+
+        <div class="plan" onclick="selectPlan(this,'studio',29.99,200)">
+          <h3>🎬 Studio</h3>
+          <div class="price">$29.99 <span>one-time</span></div>
+          <div class="imgs"><strong>200 images</strong></div>
+          <div class="cpt">For power users & small teams</div>
+          <button class="plan-btn">Get 200 Credits →</button>
+        </div>
+
+        <div class="plan" onclick="selectPlan(this,'power',49.99,350)">
+          <h3>🏆 Power</h3>
+          <div class="price">$49.99 <span>one-time</span></div>
+          <div class="imgs"><strong>350 images</strong></div>
+          <div class="cpt">Maximum value — bulk savings</div>
+          <button class="plan-btn">Get 350 Credits →</button>
+        </div>
+
+      </div>
+
+      <div class="free-row">
+        No thanks — <span onclick="closePricing()">continue with free slow tier</span>
+      </div>
+
+      <!-- This note only shows in demo mode — remove once Stripe is connected -->
+      <div class="setup-note" id="setup-note">
+        <strong>🔧 Owner setup required:</strong> Replace <code>STRIPE_LINKS</code> and <code>BACKEND_URL</code>
+        in the script with your real values. See <code>DEPLOY_INSTRUCTIONS.txt</code>.
+        Until then, clicking any plan gives free demo credits so you can test the full flow.
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<script>
+// ════════════════════════════════════════════════════════════════
+//  ⚙️  CONFIGURATION — fill these in after deploying your backend
+// ════════════════════════════════════════════════════════════════
+
+// Your Vercel backend URL — replace after deploying
+// e.g. 'https://doodleai.vercel.app'
+const BACKEND_URL = '';
+
+// Stripe payment links — one per plan
+// Create these at dashboard.stripe.com → Payment Links
+// Each link should redirect back to your site with ?credits=N&session_id={CHECKOUT_SESSION_ID}
+const STRIPE_LINKS = {
+  starter: '',   // $1.99  → 10 credits   — redirect: ?credits=10
+  basic:   '',   // $4.99  → 25 credits   — redirect: ?credits=25
+  creator: '',   // $9.99  → 50 credits   — redirect: ?credits=50
+  pro:     '',   // $17.99 → 100 credits  — redirect: ?credits=100
+  studio:  '',   // $29.99 → 200 credits  — redirect: ?credits=200
+  power:   '',   // $49.99 → 350 credits  — redirect: ?credits=350
+};
+
+// ════════════════════════════════════════════════════════════════
+//  STATE
+// ════════════════════════════════════════════════════════════════
+let credits        = parseInt(localStorage.getItem('dai_credits') || '0');
+let selectedStyle  = 'pencil sketch, hand drawn linework, detailed, black and white';
+let currentPrompt  = '';
+let currentImgUrl  = null;
+let storyTimer     = null;
+let progTimer      = null;
+let revealRAF      = null;
+
+// ════════════════════════════════════════════════════════════════
+//  CREDITS
+// ════════════════════════════════════════════════════════════════
+function saveCredits() { localStorage.setItem('dai_credits', credits); }
+
+function updateCreditBadge() {
+  const badge = document.getElementById('credit-badge');
+  const btn   = document.getElementById('create-btn');
+  if (credits > 0) {
+    badge.className = 'credit-badge has-credits';
+    badge.innerHTML = `⚡ <span class="count">${credits}</span> credits remaining`;
+    btn.textContent = '⚡ Create (1 credit)';
+    btn.className = 'create-btn paid-mode';
+  } else {
+    badge.className = 'credit-badge';
+    badge.innerHTML = '🎨 Free tier — slow shared servers';
+    btn.textContent = '✏️ Create';
+    btn.className = 'create-btn';
+  }
+}
+
+// Check URL for Stripe redirect with credits
+function checkStripeReturn() {
+  const params = new URLSearchParams(window.location.search);
+  const c = parseInt(params.get('credits') || '0');
+  if (c > 0) {
+    credits += c;
+    saveCredits();
+    updateCreditBadge();
+    // Clean URL
+    window.history.replaceState({}, '', window.location.pathname);
+    setTimeout(() => {
+      alert(`✅ Payment successful! ${c} credits added to your account. They're saved in your browser.`);
+    }, 500);
+  }
+}
+
+// ════════════════════════════════════════════════════════════════
+//  PRICING MODAL
+// ════════════════════════════════════════════════════════════════
+function showPricing() { document.getElementById('pricing-modal').classList.add('show'); }
+function closePricing() { document.getElementById('pricing-modal').classList.remove('show'); }
+
+function selectPlan(el, planId, price, imgCount) {
+  const stripeLink = STRIPE_LINKS[planId];
+
+  if (stripeLink) {
+    // Real Stripe checkout — redirect to payment
+    window.location.href = stripeLink;
+  } else {
+    // Demo mode — give credits for free so you can test the full flow
+    credits += imgCount;
+    saveCredits();
+    updateCreditBadge();
+    closePricing();
+    alert(`✅ Demo mode: ${imgCount} credits added! (No real payment taken)\n\nOnce you add your Stripe links to the STRIPE_LINKS config, this will charge real money.`);
+  }
+}
+
+document.getElementById('pricing-modal').addEventListener('click', e => {
+  if (e.target === document.getElementById('pricing-modal')) closePricing();
+});
+
+// ════════════════════════════════════════════════════════════════
+//  STYLE CHIPS + EXAMPLES
+// ════════════════════════════════════════════════════════════════
+document.querySelectorAll('.sty').forEach(s => {
+  s.addEventListener('click', () => {
+    document.querySelectorAll('.sty').forEach(x => x.classList.remove('active'));
+    s.classList.add('active');
+    selectedStyle = s.dataset.style;
+  });
+});
+document.querySelectorAll('.chip').forEach(c => {
+  c.addEventListener('click', () => {
+    document.getElementById('prompt-input').value = c.textContent.replace(/^\S+\s/, '');
+    document.getElementById('prompt-input').focus();
+  });
+});
+
+// ════════════════════════════════════════════════════════════════
+//  EVENT LISTENERS
+// ════════════════════════════════════════════════════════════════
+document.getElementById('prompt-input').addEventListener('keydown', e => { if (e.key === 'Enter') createDoodle(); });
+document.getElementById('create-btn').addEventListener('click', createDoodle);
+document.getElementById('new-btn').addEventListener('click', resetAll);
+document.getElementById('dl-btn').addEventListener('click', downloadImage);
+
+// ════════════════════════════════════════════════════════════════
+//  STORIES
+// ════════════════════════════════════════════════════════════════
+const STORIES = {
+  default: ["Picking up the pencil…","Thinking about shapes and light…","Blocking in the main forms…","Adding texture and depth…","Finishing the final details…","Your art is ready! ✨"],
+  sunset:  ["A warm horizon appears…","Mountains rise in silhouette…","The sun dips low, painting everything gold…","Birds drift through the last light… 🌅"],
+  cat:     ["A moonlit windowsill takes shape…","Round head, pointy ears, sleepy eyes…","Long whiskers stretch across the page…","Tail curls lazily… purring softly 🐱"],
+  house:   ["Solid foundations, sturdy walls…","A steep roof, a cheerful chimney…","Warm light glows from the windows…","Home sweet home 🏡"],
+  rocket:  ["T-minus 10… the pad rumbles…","A sleek fuselage reaches skyward…","Fins flare, flames ignite…","We have liftoff — into the stars! 🚀"],
+  waves:   ["The ocean breathes in and out…","A towering wave builds at the crest…","Seafoam laces the shore…","Endless blue, salt and spray 🌊"],
+  tree:    ["Ancient roots grip the earth…","A gnarled trunk climbs toward the sky…","A thousand leaves catch the breeze…","Still standing after centuries 🌳"],
+  fox:     ["Snowflakes settle on dark branches…","A pair of amber eyes in the dark…","A russet tail curls around tiny paws…","The fox is perfectly still, watching… 🦊"],
+  whale:   ["The sky becomes an ocean…","Great flukes rise through the clouds…","Barnacles and starlight…","The whale sings to the stars 🐋"],
+};
+function getStory(p) {
+  p = p.toLowerCase();
+  if (p.includes('sunset')||p.includes('mountain')) return STORIES.sunset;
+  if (p.includes('cat')||p.includes('kitten'))      return STORIES.cat;
+  if (p.includes('house')||p.includes('cottage'))   return STORIES.house;
+  if (p.includes('rocket')||p.includes('space'))    return STORIES.rocket;
+  if (p.includes('wave')||p.includes('ocean'))      return STORIES.waves;
+  if (p.includes('tree')||p.includes('oak'))        return STORIES.tree;
+  if (p.includes('fox')||p.includes('snow'))        return STORIES.fox;
+  if (p.includes('whale')||p.includes('cloud'))     return STORIES.whale;
+  return STORIES.default;
+}
+
+// ════════════════════════════════════════════════════════════════
+//  FREE API URLS
+// ════════════════════════════════════════════════════════════════
+function buildFreeUrls(prompt) {
+  const enc = encodeURIComponent(prompt + ', ' + selectedStyle + ', no text, clean composition');
+  const s   = Math.floor(Math.random() * 999999);
+  return [
+    `https://image.pollinations.ai/prompt/${enc}?width=1024&height=768&seed=${s}&nologo=true&model=flux`,
+    `https://image.pollinations.ai/prompt/${enc}?width=800&height=600&seed=${s+1}&nologo=true&model=flux`,
+    `https://image.pollinations.ai/prompt/${enc}?width=800&height=600&seed=${s+2}&nologo=true`,
+    `https://image.pollinations.ai/prompt/${enc}?width=800&height=600&seed=${s+3}&nologo=true&model=turbo`,
+  ];
+}
+
+// ════════════════════════════════════════════════════════════════
+//  MAIN — CREATE DOODLE
+// ════════════════════════════════════════════════════════════════
+async function createDoodle() {
+  const input  = document.getElementById('prompt-input');
+  const prompt = input.value.trim();
+  if (!prompt) {
+    input.style.borderColor = '#e85d26';
+    input.focus();
+    setTimeout(() => input.style.borderColor = '', 1200);
+    return;
+  }
+
+  const isPaid = credits > 0;
+  currentPrompt = prompt;
+
+  // Show result area
+  document.getElementById('result-section').style.display = 'block';
+  document.getElementById('examples').style.display = 'none';
+  document.getElementById('label-prompt').textContent = '"' + prompt + '"';
+
+  // Mode badge
+  const badge = document.getElementById('mode-badge');
+  badge.className = 'mode-badge ' + (isPaid ? 'paid-badge' : 'free-badge');
+  badge.textContent = isPaid ? '⚡ Credits' : 'Free';
+
+  // Progress bar style
+  document.getElementById('prog').className = 'prog-fill' + (isPaid ? ' paid' : '');
+
+  // Loading lines style
+  document.querySelectorAll('.ll').forEach(l => {
+    l.className = 'll' + (isPaid ? ' paid-ll' : '');
+  });
+
+  // Wait note
+  const wn = document.getElementById('wait-note');
+  wn.className = 'wait-note' + (isPaid ? ' paid-note' : '');
+  wn.innerHTML = isPaid
+    ? '⚡ <strong>Credits mode:</strong> Your image will be ready in <strong>5–10 seconds</strong>.'
+    : 'Free tier uses shared servers.<br>May take <strong>20–60 seconds</strong>.<br><span style="color:var(--pro);cursor:pointer;font-weight:600;" onclick="showPricing()">⚡ Buy credits for instant results</span>';
+
+  // Reset canvas
+  document.getElementById('sketch-loader').style.display = 'flex';
+  document.getElementById('reveal-canvas').style.display = 'none';
+  document.getElementById('result-img').src = '';
+  document.getElementById('error-box').style.display = 'none';
+  document.getElementById('wm').style.display = 'none';
+  document.getElementById('dl-btn').disabled = true;
+  document.getElementById('dl-btn').style.opacity = '.4';
+  document.getElementById('create-btn').disabled = true;
+
+  startStory(prompt);
+  startFakeProgress(isPaid);
+
+  let success = false;
+  let lastErr = '';
+
+  if (isPaid && BACKEND_URL) {
+    // ── PAID: call our secure backend ──────────────────
+    document.getElementById('status').textContent = '⚡ Generating with dedicated AI…';
+    try {
+      const res = await fetch(BACKEND_URL + '/api/generate', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json', 'Authorization': 'Bearer paid' },
+        body: JSON.stringify({ prompt, style: selectedStyle, tier: 'paid' })
+      });
+      if (!res.ok) throw new Error('Server error ' + res.status);
+      const data = await res.json();
+      if (!data.image) throw new Error('No image in response');
+      // Convert base64 to blob URL
+      const bytes = Uint8Array.from(atob(data.image), c => c.charCodeAt(0));
+      const blob  = new Blob([bytes], { type: 'image/png' });
+      const url   = URL.createObjectURL(blob);
+      await loadAndReveal(url);
+      currentImgUrl = url;
+      // Deduct credit
+      credits--;
+      saveCredits();
+      updateCreditBadge();
+      success = true;
+    } catch(e) { lastErr = e.message; }
+
+  } else if (isPaid && !BACKEND_URL) {
+    // ── PAID but backend not set up yet — use free tier as demo ──
+    document.getElementById('status').textContent = '⚡ Demo: backend not configured, using free tier…';
+    const urls = buildFreeUrls(prompt);
+    for (let i = 0; i < urls.length; i++) {
+      try {
+        await loadAndReveal(urls[i]);
+        currentImgUrl = urls[i];
+        credits--; saveCredits(); updateCreditBadge();
+        success = true; break;
+      } catch(e) { lastErr = e.message; if (i < urls.length-1) await sleep(1800); }
+    }
+
+  } else {
+    // ── FREE: Pollinations multi-attempt ───────────────
+    const urls = buildFreeUrls(prompt);
+    for (let i = 0; i < urls.length; i++) {
+      document.getElementById('status').textContent =
+        i === 0 ? 'Contacting free AI server…' : `Trying backup ${i+1} of ${urls.length}…`;
+      document.getElementById('loading-msg').textContent =
+        i === 0 ? 'Sketching your idea…' : `Retrying… (${i+1}/${urls.length})`;
+      try {
+        await loadAndReveal(urls[i]);
+        currentImgUrl = urls[i];
+        success = true; break;
+      } catch(e) { lastErr = e.message; if (i < urls.length-1) await sleep(1800); }
+    }
+  }
+
+  if (success) {
+    stopFakeProgress(100);
+    stopStory('Your doodle is ready — download it or create another! ✨');
+    document.getElementById('status').textContent = isPaid
+      ? `⚡ Done! ${credits} credits remaining.`
+      : 'Done! Download or try a new prompt.';
+    document.getElementById('dl-btn').disabled = false;
+    document.getElementById('dl-btn').style.opacity = '1';
+  } else {
+    stopFakeProgress(0);
+    stopStory('');
+    document.getElementById('error-box').innerHTML =
+      '<strong>⚠️ All free AI servers are currently busy.</strong><br><br>' +
+      '• Wait 30 seconds and try again<br>' +
+      '• Try a shorter, simpler prompt<br>' +
+      '• <span style="color:var(--pro);cursor:pointer;font-weight:700;" onclick="showPricing()">⚡ Buy credits</span> — dedicated servers, instant results<br><br>' +
+      `<small style="color:#ccc">Error: ${lastErr}</small>`;
+    document.getElementById('error-box').style.display = 'block';
+    document.getElementById('sketch-loader').style.display = 'none';
+    document.getElementById('status').textContent = 'Failed — try again or buy credits.';
+  }
+  document.getElementById('create-btn').disabled = false;
+}
+
+// ════════════════════════════════════════════════════════════════
+//  LOAD + REVEAL
+// ════════════════════════════════════════════════════════════════
+function loadAndReveal(url) {
+  return new Promise((resolve, reject) => {
+    const img = document.getElementById('result-img');
+    const to  = setTimeout(() => reject(new Error('Timed out after 65s')), 65000);
+    img.onload = () => {
+      clearTimeout(to);
+      document.getElementById('sketch-loader').style.display = 'none';
+      startReveal(img, resolve);
+    };
+    img.onerror = () => { clearTimeout(to); reject(new Error('Image failed to load')); };
+    img.crossOrigin = 'anonymous';
+    img.src = url;
+  });
+}
+
+function startReveal(img, onDone) {
+  const cv  = document.getElementById('reveal-canvas');
+  const ctx = cv.getContext('2d');
+  cv.width  = img.naturalWidth  || 1024;
+  cv.height = img.naturalHeight || 768;
+  cv.style.display = 'block';
+  document.getElementById('wm').style.display = 'block';
+  const off = document.createElement('canvas');
+  off.width = cv.width; off.height = cv.height;
+  off.getContext('2d').drawImage(img, 0, 0, off.width, off.height);
+  const sty = selectedStyle.toLowerCase();
+  if      (sty.includes('watercolor')) revealWatercolor(cv, ctx, off, onDone);
+  else if (sty.includes('pixel'))      revealPixel(cv, ctx, off, onDone);
+  else if (sty.includes('chalk'))      revealChalk(cv, ctx, off, onDone);
+  else if (sty.includes('oil'))        revealBrush(cv, ctx, off, onDone);
+  else if (sty.includes('cartoon'))    revealSweep(cv, ctx, off, onDone);
+  else                                 revealPencil(cv, ctx, off, onDone);
+}
+
+function wm(ctx, W, H) {
+  ctx.save();
+  ctx.font = 'bold 13px DM Sans, Arial, sans-serif';
+  ctx.fillStyle = 'rgba(255,255,255,.72)';
+  ctx.shadowColor = 'rgba(0,0,0,.55)'; ctx.shadowBlur = 4;
+  ctx.textAlign = 'right';
+  ctx.fillText('DoodleAI.com', W - 14, H - 12);
+  ctx.restore();
+}
+
+function ease(p) { return p < .5 ? 2*p*p : 1-Math.pow(-2*p+2,2)/2; }
+function sleep(ms) { return new Promise(r => setTimeout(r, ms)); }
+
+function revealPencil(cv, ctx, src, done) {
+  const W=cv.width, H=cv.height, DUR=5000; let t0=null;
+  function frame(ts) {
+    if(!t0) t0=ts;
+    const p=Math.min((ts-t0)/DUR,1), ep=ease(p);
+    ctx.clearRect(0,0,W,H); ctx.fillStyle='#faf8f3'; ctx.fillRect(0,0,W,H);
+    const sx=ep*(W+H)-H;
+    ctx.save(); ctx.beginPath();
+    ctx.moveTo(0,0); ctx.lineTo(Math.min(sx,W),0);
+    if(sx>W) ctx.lineTo(W,sx-W);
+    ctx.lineTo(Math.max(0,sx-H),H); ctx.lineTo(0,H);
+    ctx.closePath(); ctx.clip(); ctx.drawImage(src,0,0,W,H); ctx.restore();
+    if(p<.98) {
+      ctx.save(); ctx.globalAlpha=.28;
+      for(let i=0;i<14;i++) {
+        const lx=sx-Math.random()*50, ly=Math.random()*H;
+        ctx.beginPath(); ctx.moveTo(lx+(Math.random()-.5)*3,ly);
+        ctx.lineTo(lx+10+Math.random()*18,ly+(Math.random()-.5)*5);
+        ctx.strokeStyle='#2d2d2d'; ctx.lineWidth=.5+Math.random(); ctx.lineCap='round'; ctx.stroke();
+      }
+      ctx.restore();
+      const cx=Math.min(sx-8,W-28), cy=H*ep;
+      ctx.save(); ctx.translate(cx,cy); ctx.rotate(Math.PI/4);
+      ctx.fillStyle='#e85d26'; ctx.fillRect(-4,-20,8,26);
+      ctx.fillStyle='#f5a623'; ctx.beginPath(); ctx.moveTo(-4,6); ctx.lineTo(4,6); ctx.lineTo(0,16); ctx.fill();
+      ctx.fillStyle='#d0c8c0'; ctx.fillRect(-4,-20,8,8); ctx.restore();
+    }
+    wm(ctx,W,H);
+    if(p<1) { revealRAF=requestAnimationFrame(frame); }
+    else { ctx.clearRect(0,0,W,H); ctx.drawImage(src,0,0,W,H); wm(ctx,W,H); done(); }
+  }
+  revealRAF=requestAnimationFrame(frame);
+}
+
+function revealWatercolor(cv, ctx, src, done) {
+  const W=cv.width, H=cv.height, DUR=6000; let t0=null;
+  const centers=[[.5,.5,1.2],[.25,.3,.9],[.75,.7,.85],[.2,.75,.8],[.8,.25,.75]];
+  function frame(ts) {
+    if(!t0) t0=ts;
+    const p=Math.min((ts-t0)/DUR,1), ep=1-Math.pow(1-p,3);
+    ctx.clearRect(0,0,W,H); ctx.fillStyle='#fff'; ctx.fillRect(0,0,W,H);
+    ctx.save(); ctx.beginPath();
+    centers.forEach(c=>ctx.ellipse(c[0]*W,c[1]*H,ep*c[2]*W*.78,ep*c[2]*H*.78,0,0,Math.PI*2));
+    ctx.clip(); ctx.drawImage(src,0,0,W,H); ctx.restore();
+    wm(ctx,W,H);
+    if(p<1) { revealRAF=requestAnimationFrame(frame); }
+    else { ctx.clearRect(0,0,W,H); ctx.drawImage(src,0,0,W,H); wm(ctx,W,H); done(); }
+  }
+  revealRAF=requestAnimationFrame(frame);
+}
+
+function revealPixel(cv, ctx, src, done) {
+  const W=cv.width, H=cv.height, B=22;
+  const cols=Math.ceil(W/B), rows=Math.ceil(H/B), total=cols*rows;
+  const order=Array.from({length:total},(_,i)=>i).sort(()=>Math.random()-.5);
+  let revealed=0; const BPF=Math.ceil(total/100);
+  ctx.fillStyle='#1a1a2e'; ctx.fillRect(0,0,W,H);
+  function frame() {
+    const n=Math.min(BPF,total-revealed);
+    for(let i=0;i<n;i++) {
+      const idx=order[revealed+i], col=idx%cols, row=Math.floor(idx/cols);
+      ctx.drawImage(src,col*B,row*B,B,B,col*B,row*B,B,B);
+    }
+    revealed+=n; wm(ctx,W,H);
+    if(revealed<total) { revealRAF=requestAnimationFrame(frame); }
+    else { ctx.drawImage(src,0,0,W,H); wm(ctx,W,H); done(); }
+  }
+  revealRAF=requestAnimationFrame(frame);
+}
+
+function revealChalk(cv, ctx, src, done) {
+  const W=cv.width, H=cv.height, DUR=4500; let t0=null;
+  ctx.fillStyle='#111'; ctx.fillRect(0,0,W,H);
+  function frame(ts) {
+    if(!t0) t0=ts;
+    const p=Math.min((ts-t0)/DUR,1), ep=ease(p);
+    ctx.clearRect(0,0,W,H); ctx.fillStyle='#111'; ctx.fillRect(0,0,W,H);
+    const ex=ep*W;
+    ctx.save(); ctx.beginPath(); ctx.rect(0,0,ex,H); ctx.clip(); ctx.drawImage(src,0,0,W,H); ctx.restore();
+    if(p<.97) {
+      ctx.save(); ctx.globalAlpha=.55;
+      for(let i=0;i<28;i++) {
+        const dx=ex+(Math.random()-.5)*28, dy=Math.random()*H;
+        ctx.beginPath(); ctx.arc(dx,dy,1+Math.random()*3,0,Math.PI*2);
+        ctx.fillStyle=`rgba(255,255,255,${.3+Math.random()*.5})`; ctx.fill();
+      }
+      ctx.restore();
+    }
+    wm(ctx,W,H);
+    if(p<1) { revealRAF=requestAnimationFrame(frame); }
+    else { ctx.drawImage(src,0,0,W,H); wm(ctx,W,H); done(); }
+  }
+  revealRAF=requestAnimationFrame(frame);
+}
+
+function revealBrush(cv, ctx, src, done) {
+  const W=cv.width, H=cv.height, DUR=5500, S=48; let t0=null;
+  function frame(ts) {
+    if(!t0) t0=ts;
+    const p=Math.min((ts-t0)/DUR,1), ep=ease(p);
+    ctx.clearRect(0,0,W,H); ctx.fillStyle='#fffdf7'; ctx.fillRect(0,0,W,H);
+    const ry=ep*H;
+    for(let y=0;y<ry;y+=S) {
+      const sh=Math.min(S,ry-y);
+      ctx.save(); ctx.beginPath(); ctx.moveTo(0,y);
+      for(let x=0;x<=W;x+=24) ctx.lineTo(x,y+Math.sin(x*.06+y*.04)*7);
+      for(let x=W;x>=0;x-=24) ctx.lineTo(x,y+sh+Math.sin(x*.06+(y+sh)*.04)*7);
+      ctx.closePath(); ctx.clip(); ctx.drawImage(src,0,0,W,H); ctx.restore();
+    }
+    wm(ctx,W,H);
+    if(p<1) { revealRAF=requestAnimationFrame(frame); }
+    else { ctx.drawImage(src,0,0,W,H); wm(ctx,W,H); done(); }
+  }
+  revealRAF=requestAnimationFrame(frame);
+}
+
+function revealSweep(cv, ctx, src, done) {
+  const W=cv.width, H=cv.height, DUR=3500; let t0=null;
+  function frame(ts) {
+    if(!t0) t0=ts;
+    const p=Math.min((ts-t0)/DUR,1), ep=1-Math.pow(1-p,4);
+    ctx.clearRect(0,0,W,H); ctx.fillStyle='#fff'; ctx.fillRect(0,0,W,H);
+    const rw=ep*W;
+    ctx.save(); ctx.beginPath(); ctx.rect(0,0,rw,H); ctx.clip(); ctx.drawImage(src,0,0,W,H); ctx.restore();
+    if(p<.97) {
+      const g=ctx.createLinearGradient(rw-24,0,rw+12,0);
+      g.addColorStop(0,'rgba(58,123,213,0)'); g.addColorStop(.6,'rgba(58,123,213,.3)'); g.addColorStop(1,'rgba(58,123,213,0)');
+      ctx.fillStyle=g; ctx.fillRect(rw-24,0,36,H);
+    }
+    wm(ctx,W,H);
+    if(p<1) { revealRAF=requestAnimationFrame(frame); }
+    else { ctx.drawImage(src,0,0,W,H); wm(ctx,W,H); done(); }
+  }
+  revealRAF=requestAnimationFrame(frame);
+}
+
+// ════════════════════════════════════════════════════════════════
+//  STORY TYPEWRITER
+// ════════════════════════════════════════════════════════════════
+function startStory(prompt) {
+  const lines=getStory(prompt), el=document.getElementById('story-text');
+  let li=0, ci=0;
+  el.innerHTML='<span class="blink"></span>';
+  if(storyTimer) clearInterval(storyTimer);
+  storyTimer=setInterval(()=>{
+    const t=lines.slice(0,li+1).join('  ');
+    if(ci<t.length) { ci++; el.innerHTML=t.slice(0,ci)+'<span class="blink"></span>'; }
+    else if(li<lines.length-1) li++;
+  }, 30);
+}
+function stopStory(txt) {
+  if(storyTimer){clearInterval(storyTimer);storyTimer=null;}
+  if(txt) document.getElementById('story-text').innerHTML=txt;
+}
+
+// ════════════════════════════════════════════════════════════════
+//  FAKE PROGRESS BAR
+// ════════════════════════════════════════════════════════════════
+function startFakeProgress(isPaid) {
+  let p=0; const el=document.getElementById('prog'); el.style.width='0%';
+  if(progTimer) clearInterval(progTimer);
+  const msgs = isPaid
+    ? [[5,'⚡ Contacting dedicated server…'],[25,'AI composing the scene…'],[55,'Rendering high-res details…'],[82,'Almost done…'],[93,'Final touches…']]
+    : [[5,'Contacting free AI server…'],[18,'AI imagining the scene…'],[38,'Sketching shapes…'],[58,'Adding colors…'],[78,'Refining…'],[92,'Nearly there…']];
+  progTimer=setInterval(()=>{
+    const inc=isPaid?(p<60?.9:p<85?.45:.1):(p<50?.6:p<80?.3:p<93?.1:.02);
+    p=Math.min(p+inc,95); el.style.width=p+'%';
+    msgs.forEach(m=>{ if(Math.abs(p-m[0])<.95) document.getElementById('status').textContent=m[1]; });
+  }, isPaid ? 60 : 90);
+}
+function stopFakeProgress(target) {
+  if(progTimer){clearInterval(progTimer);progTimer=null;}
+  document.getElementById('prog').style.width=target+'%';
+}
+
+// ════════════════════════════════════════════════════════════════
+//  DOWNLOAD
+// ════════════════════════════════════════════════════════════════
+async function downloadImage() {
+  const btn=document.getElementById('dl-btn');
+  btn.innerHTML='⏳ Preparing…'; btn.disabled=true;
+  try {
+    const cv=document.getElementById('reveal-canvas');
+    if(cv&&cv.width>0) {
+      const link=document.createElement('a');
+      const safe=currentPrompt.replace(/[^a-z0-9]/gi,'_').slice(0,30);
+      link.download='doodleai_'+(safe||'image')+'.png';
+      link.href=cv.toDataURL('image/png');
+      link.click();
+    } else if(currentImgUrl) { window.open(currentImgUrl,'_blank'); }
+  } catch(e) { if(currentImgUrl) window.open(currentImgUrl,'_blank'); }
+  setTimeout(()=>{
+    btn.innerHTML='<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg> Download PNG';
+    btn.disabled=false;
+  },2000);
+}
+
+// ════════════════════════════════════════════════════════════════
+//  RESET
+// ════════════════════════════════════════════════════════════════
+function resetAll() {
+  if(storyTimer) clearInterval(storyTimer);
+  if(progTimer)  clearInterval(progTimer);
+  if(revealRAF)  cancelAnimationFrame(revealRAF);
+  document.getElementById('result-section').style.display='none';
+  document.getElementById('examples').style.display='flex';
+  document.getElementById('prompt-input').value='';
+  document.getElementById('prompt-input').focus();
+  document.getElementById('create-btn').disabled=false;
+  document.getElementById('result-img').src='';
+  const cv=document.getElementById('reveal-canvas');
+  cv.style.display='none'; cv.getContext('2d').clearRect(0,0,cv.width,cv.height);
+  document.getElementById('wm').style.display='none';
+  document.getElementById('story-text').innerHTML='<span class="blink"></span>';
+  document.getElementById('status').textContent='Contacting AI drawing studio…';
+  document.getElementById('prog').style.width='0%';
+  document.getElementById('error-box').style.display='none';
+  document.getElementById('sketch-loader').style.display='flex';
+  document.getElementById('dl-btn').disabled=true;
+  document.getElementById('dl-btn').style.opacity='.4';
+  currentImgUrl=null; currentPrompt='';
+}
+
+// ════════════════════════════════════════════════════════════════
+//  INIT
+// ════════════════════════════════════════════════════════════════
+updateCreditBadge();
+checkStripeReturn();
+</script>
+</body>
+</html>
