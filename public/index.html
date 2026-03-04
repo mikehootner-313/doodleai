@@ -583,7 +583,7 @@ async function createDoodle() {
     // ── PAID: call our secure backend ──────────────────
     document.getElementById('status').textContent = '⚡ Generating with dedicated AI…';
     try {
-      const res = await fetch(BACKEND_URL + '/api/generate', {
+      const res = await fetch(BACKEND_URL + '/.netlify/functions/generate', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json', 'Authorization': 'Bearer paid' },
         body: JSON.stringify({ prompt, style: selectedStyle, tier: 'paid' })
