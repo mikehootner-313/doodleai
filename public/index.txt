@@ -368,7 +368,7 @@ body::after  { content:''; position:fixed; left:76px; top:0; bottom:0; width:1.5
 
 // Your Vercel backend URL — replace after deploying
 // e.g. 'https://doodleai.vercel.app'
-const BACKEND_URL = '';
+const BACKEND_URL = 'https://whimsical-fox-75a7d4.netlify.app';
 
 // Stripe payment links — one per plan
 // Create these at dashboard.stripe.com → Payment Links
