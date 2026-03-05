@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Accessibility — DoodleAI</title>
+<link href="https://fonts.googleapis.com/css2?family=Caveat:wght@400;600;700&family=Syne:wght@400;600;700;800&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{--ink:#0f0e17;--paper:#fffcf5;--paper2:#f5f0e8;--line:rgba(0,0,0,0.055);--border:#e8e2d8;--tx2:#6b6560;--orange:#e85d26;--blue:#3a7bd5;--pro:#7c3aed;}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+body{background:var(--paper);color:var(--ink);font-family:'DM Sans',sans-serif;min-height:100vh;}
+body::before{content:'';position:fixed;inset:0;background-image:repeating-linear-gradient(0deg,transparent,transparent 31px,var(--line) 32px);pointer-events:none;z-index:0;}
+body::after{content:'';position:fixed;left:76px;top:0;bottom:0;width:1.5px;background:rgba(220,70,70,0.12);pointer-events:none;z-index:0;}
+.page{position:relative;z-index:1;max-width:780px;margin:0 auto;padding:0 24px 80px;}
+nav{display:flex;align-items:center;justify-content:space-between;padding:24px 0 32px;flex-wrap:wrap;gap:12px;}
+.logo{font-family:'Syne',sans-serif;font-size:1.8rem;font-weight:800;letter-spacing:-.03em;text-decoration:none;color:var(--ink);}
+.logo .d1{color:#3a7bd5}.logo .d2{color:#e85d26}.logo .d3{color:#27ae60}.logo .d4{color:#e85d26}.logo .d5{color:#7c3aed}.logo .d6{color:#3a7bd5}
+.logo .ai{color:var(--ink);font-weight:400;font-size:.82em;}
+.nav-links{display:flex;gap:6px;flex-wrap:wrap;}
+.nav-link{padding:.4rem 1rem;border:1.5px solid var(--border);border-radius:20px;font-family:'Syne',sans-serif;font-size:.82rem;font-weight:600;color:var(--tx2);text-decoration:none;transition:all .2s;background:#fff;}
+.nav-link:hover{border-color:var(--blue);color:var(--blue);background:#eef4ff;}
+.nav-link.active{border-color:var(--blue);color:var(--blue);background:#eef4ff;}
+.hero{text-align:center;padding:40px 0 50px;}
+.hero-icon{font-size:4rem;margin-bottom:16px;display:block;}
+.hero h1{font-family:'Syne',sans-serif;font-size:clamp(1.8rem,5vw,2.8rem);font-weight:800;margin-bottom:12px;line-height:1.1;}
+.hero p{font-size:1.05rem;color:var(--tx2);max-width:540px;margin:0 auto;line-height:1.7;}
+.section{background:#fff;border:2px solid var(--border);border-radius:20px;padding:28px 32px;margin-bottom:18px;}
+.section h2{font-family:'Syne',sans-serif;font-size:1.2rem;font-weight:800;margin-bottom:14px;display:flex;align-items:center;gap:10px;}
+.section p{font-size:.93rem;color:var(--tx2);line-height:1.8;margin-bottom:10px;}
+.section p:last-child{margin-bottom:0;}
+.section ul{list-style:none;padding:0;}
+.section ul li{font-size:.93rem;color:var(--tx2);line-height:1.8;padding:.3rem 0 .3rem 1.4rem;position:relative;}
+.section ul li::before{content:'→';position:absolute;left:0;color:var(--blue);}
+.tip-box{background:#eef4ff;border:1.5px solid #bfdbfe;border-radius:12px;padding:14px 18px;margin-top:12px;font-size:.87rem;color:#1e40af;line-height:1.7;}
+.tip-box strong{display:block;margin-bottom:4px;}
+.contact-note{background:#f5f3ff;border:1.5px solid #c4b5fd;border-radius:12px;padding:16px 20px;text-align:center;margin-top:24px;}
+.contact-note p{font-size:.9rem;color:#6d28d9;line-height:1.7;margin:0;}
+.contact-note a{color:var(--pro);font-weight:700;text-decoration:none;}
+.contact-note a:hover{text-decoration:underline;}
+.footer{text-align:center;margin-top:50px;font-size:.75rem;color:#ccc;letter-spacing:.05em;}
+</style>
+</head>
+<body>
+<div class="page">
+  <nav>
+    <a href="/" class="logo"><span class="d1">D</span><span class="d2">o</span><span class="d3">o</span><span class="d4">d</span><span class="d5">l</span><span class="d6">e</span><span class="ai">AI</span></a>
+    <div class="nav-links">
+      <a href="/" class="nav-link">🎨 Create</a>
+      <a href="/about.html" class="nav-link">About</a>
+      <a href="/accessibility.html" class="nav-link active">Accessibility</a>
+      <a href="/contact.html" class="nav-link">Contact</a>
+    </div>
+  </nav>
+
+  <div class="hero">
+    <span class="hero-icon">♿</span>
+    <h1>Accessibility at DoodleAI</h1>
+    <p>DoodleAI is designed to be usable and enjoyable by everyone — regardless of ability, age, or the tools they use to browse the web.</p>
+  </div>
+
+  <div class="section">
+    <h2>🔊 Screen Reader Users</h2>
+    <p>DoodleAI works with all major screen readers including NVDA, JAWS, VoiceOver (Apple), and TalkBack (Android).</p>
+    <ul>
+      <li>All buttons, inputs, and controls are properly labeled for screen reader announcement</li>
+      <li>The prompt input field is clearly labeled — type your description and press Enter or the Create button</li>
+      <li>Status messages are announced as the drawing progresses so you know what's happening</li>
+      <li>The "story" text below each drawing is fully readable text that describes what's being drawn</li>
+      <li>When a drawing is complete, a message announces it is ready to download</li>
+      <li>The pricing modal is fully navigable by keyboard and announced by screen readers</li>
+    </ul>
+    <div class="tip-box">
+      <strong>VoiceOver tip (Mac/iPhone):</strong> Use Cmd+F5 on Mac or triple-click the home button on iPhone to activate VoiceOver. Navigate using Tab to move between controls and Space/Enter to activate buttons.
+    </div>
+    <div class="tip-box">
+      <strong>NVDA/JAWS tip (Windows):</strong> Use Tab to navigate between controls. The drawing status area is a live region and will be automatically announced as it updates.
+    </div>
+  </div>
+
+  <div class="section">
+    <h2>🦻 Deaf &amp; Hard of Hearing Users</h2>
+    <p>DoodleAI is a fully visual and text-based experience — there is no audio content on the site, so you will not miss any information by having sound off or by using the site without hearing.</p>
+    <ul>
+      <li>All instructions, prompts, and feedback are displayed as visible text on screen</li>
+      <li>The drawing status messages (e.g. "Sketching outlines…", "Adding shading…") appear visually on the canvas</li>
+      <li>Error messages and success notifications are shown as on-screen text</li>
+      <li>No sound effects or audio cues are required to use any feature</li>
+    </ul>
+  </div>
+
+  <div class="section">
+    <h2>👁️ Low Vision &amp; Blind Users</h2>
+    <p>We have designed the interface to be as usable as possible for people with low or no vision.</p>
+    <ul>
+      <li>All text meets WCAG AA contrast ratio standards for readability</li>
+      <li>Font sizes are relative (rem-based) and respect your browser or OS font size preferences</li>
+      <li>You can zoom the page up to 200% without losing functionality</li>
+      <li>The "story" text that appears below each drawing describes what the AI is creating — useful when the visual canvas is not accessible</li>
+      <li>All interactive elements are focusable and have visible focus indicators</li>
+      <li>The site works fully with keyboard-only navigation (Tab, Enter, Space, Escape)</li>
+    </ul>
+    <div class="tip-box">
+      <strong>Browser zoom tip:</strong> Press Cmd + (Mac) or Ctrl + (Windows) to zoom in. The layout will reflow to stay readable at larger sizes.
+    </div>
+  </div>
+
+  <div class="section">
+    <h2>⌨️ Keyboard Navigation</h2>
+    <p>Every feature on DoodleAI can be accessed using only a keyboard — no mouse required.</p>
+    <ul>
+      <li><strong>Tab</strong> — move between buttons, inputs, and links</li>
+      <li><strong>Enter</strong> — activate buttons or submit the prompt</li>
+      <li><strong>Space</strong> — toggle checkboxes and activate buttons</li>
+      <li><strong>Escape</strong> — close the pricing modal</li>
+      <li><strong>Arrow keys</strong> — adjust the speed slider</li>
+      <li><strong>Shift+Tab</strong> — move backwards through controls</li>
+    </ul>
+  </div>
+
+  <div class="section">
+    <h2>📱 Mobile &amp; Touch Accessibility</h2>
+    <p>DoodleAI works on phones and tablets and supports standard touch accessibility features.</p>
+    <ul>
+      <li>Compatible with iOS VoiceOver and Android TalkBack swipe navigation</li>
+      <li>All tap targets are large enough to meet minimum touch target size guidelines</li>
+      <li>The site is fully responsive and works at any screen size from small phones to large monitors</li>
+      <li>Pinch-to-zoom is supported — the site does not block browser zoom</li>
+    </ul>
+  </div>
+
+  <div class="section">
+    <h2>🎨 Reduced Motion</h2>
+    <p>DoodleAI features drawing animations by design — watching the art come to life stroke by stroke is the core experience. However, if you prefer reduced motion:</p>
+    <ul>
+      <li>Set the speed slider to <strong>Fast</strong> or <strong>Turbo</strong> to minimize animation time</li>
+      <li>If your OS has "Reduce Motion" enabled, we respect that preference where possible</li>
+      <li>The final completed image is always available to download regardless of animation settings</li>
+    </ul>
+  </div>
+
+  <div class="contact-note">
+    <p>Found an accessibility issue or need help using DoodleAI with your assistive technology?<br>
+    We want to hear from you. <a href="/contact.html">Contact us</a> and we'll do our best to help.</p>
+  </div>
+
+  <div class="footer">DoodleAI.com &nbsp;·&nbsp; AI-powered art from words</div>
+</div>
+</body>
+</html>

@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Contact — DoodleAI</title>
+<link href="https://fonts.googleapis.com/css2?family=Caveat:wght@400;600;700&family=Syne:wght@400;600;700;800&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{--ink:#0f0e17;--paper:#fffcf5;--paper2:#f5f0e8;--line:rgba(0,0,0,0.055);--border:#e8e2d8;--tx2:#6b6560;--orange:#e85d26;--blue:#3a7bd5;--pro:#7c3aed;}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+body{background:var(--paper);color:var(--ink);font-family:'DM Sans',sans-serif;min-height:100vh;}
+body::before{content:'';position:fixed;inset:0;background-image:repeating-linear-gradient(0deg,transparent,transparent 31px,var(--line) 32px);pointer-events:none;z-index:0;}
+body::after{content:'';position:fixed;left:76px;top:0;bottom:0;width:1.5px;background:rgba(220,70,70,0.12);pointer-events:none;z-index:0;}
+.page{position:relative;z-index:1;max-width:780px;margin:0 auto;padding:0 24px 80px;}
+nav{display:flex;align-items:center;justify-content:space-between;padding:24px 0 32px;flex-wrap:wrap;gap:12px;}
+.logo{font-family:'Syne',sans-serif;font-size:1.8rem;font-weight:800;letter-spacing:-.03em;text-decoration:none;color:var(--ink);}
+.logo .d1{color:#3a7bd5}.logo .d2{color:#e85d26}.logo .d3{color:#27ae60}.logo .d4{color:#e85d26}.logo .d5{color:#7c3aed}.logo .d6{color:#3a7bd5}
+.logo .ai{color:var(--ink);font-weight:400;font-size:.82em;}
+.nav-links{display:flex;gap:6px;flex-wrap:wrap;}
+.nav-link{padding:.4rem 1rem;border:1.5px solid var(--border);border-radius:20px;font-family:'Syne',sans-serif;font-size:.82rem;font-weight:600;color:var(--tx2);text-decoration:none;transition:all .2s;background:#fff;}
+.nav-link:hover{border-color:var(--blue);color:var(--blue);background:#eef4ff;}
+.nav-link.active{border-color:var(--orange);color:var(--orange);background:#fff8f5;}
+.hero{text-align:center;padding:40px 0 50px;}
+.hero-icon{font-size:4rem;margin-bottom:16px;display:block;animation:float 3s ease-in-out infinite;}
+@keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-8px)}}
+.hero h1{font-family:'Syne',sans-serif;font-size:clamp(1.8rem,5vw,2.8rem);font-weight:800;margin-bottom:12px;}
+.hero p{font-size:1.05rem;color:var(--tx2);max-width:500px;margin:0 auto;line-height:1.7;}
+.contact-card{background:#fff;border:2.5px solid var(--border);border-radius:24px;padding:40px;text-align:center;box-shadow:0 10px 40px rgba(0,0,0,.07);margin-bottom:20px;}
+.contact-card h2{font-family:'Syne',sans-serif;font-size:1.3rem;font-weight:800;margin-bottom:10px;}
+.contact-card p{font-size:.93rem;color:var(--tx2);line-height:1.7;margin-bottom:24px;}
+.email-btn{display:inline-flex;align-items:center;gap:.6rem;padding:1rem 2.2rem;background:var(--orange);color:#fff;border-radius:50px;font-family:'Syne',sans-serif;font-size:1.05rem;font-weight:700;text-decoration:none;transition:all .2s;box-shadow:0 4px 18px rgba(232,93,38,.35);}
+.email-btn:hover{filter:brightness(1.08);transform:scale(1.04);}
+.email-hint{margin-top:14px;font-size:.8rem;color:#ccc;}
+.topics{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:12px;margin-bottom:20px;}
+.topic{background:#fff;border:1.5px solid var(--border);border-radius:14px;padding:18px 16px;text-align:center;}
+.topic-icon{font-size:1.6rem;margin-bottom:8px;display:block;}
+.topic h3{font-family:'Syne',sans-serif;font-size:.88rem;font-weight:700;margin-bottom:6px;}
+.topic p{font-size:.8rem;color:var(--tx2);line-height:1.5;}
+.footer{text-align:center;margin-top:50px;font-size:.75rem;color:#ccc;letter-spacing:.05em;}
+</style>
+</head>
+<body>
+<div class="page">
+  <nav>
+    <a href="/" class="logo"><span class="d1">D</span><span class="d2">o</span><span class="d3">o</span><span class="d4">d</span><span class="d5">l</span><span class="d6">e</span><span class="ai">AI</span></a>
+    <div class="nav-links">
+      <a href="/" class="nav-link">🎨 Create</a>
+      <a href="/about.html" class="nav-link">About</a>
+      <a href="/accessibility.html" class="nav-link">Accessibility</a>
+      <a href="/contact.html" class="nav-link active">Contact</a>
+    </div>
+  </nav>
+
+  <div class="hero">
+    <span class="hero-icon">✉️</span>
+    <h1>Get in Touch</h1>
+    <p>Have a question, a suggestion, or just want to say hello? We'd love to hear from you.</p>
+  </div>
+
+  <div class="topics">
+    <div class="topic">
+      <span class="topic-icon">🐛</span>
+      <h3>Bug Report</h3>
+      <p>Something not working right? Let us know and we'll fix it.</p>
+    </div>
+    <div class="topic">
+      <span class="topic-icon">💡</span>
+      <h3>Feature Idea</h3>
+      <p>Have an idea for a new feature or art style? We want to hear it.</p>
+    </div>
+    <div class="topic">
+      <span class="topic-icon">♿</span>
+      <h3>Accessibility</h3>
+      <p>Need help using DoodleAI with assistive technology? Reach out.</p>
+    </div>
+    <div class="topic">
+      <span class="topic-icon">💳</span>
+      <h3>Billing</h3>
+      <p>Question about a payment or credits? We'll sort it out quickly.</p>
+    </div>
+  </div>
+
+  <div class="contact-card">
+    <h2>Contact Us</h2>
+    <p>Click the button below to open your email app and send us a message. We read every email and aim to respond within 1–2 business days.</p>
+    <a href="mailto:mikehootner@gmail.com?subject=DoodleAI%20Inquiry" class="email-btn">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+      Send us an Email
+    </a>
+    <div class="email-hint">Opens your default email app &nbsp;·&nbsp; mikehootner@gmail.com</div>
+  </div>
+
+  <div class="footer">DoodleAI.com &nbsp;·&nbsp; AI-powered art from words</div>
+</div>
+</body>
+</html>
