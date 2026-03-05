@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>About — DoodleAI</title>
+<link href="https://fonts.googleapis.com/css2?family=Caveat:wght@400;600;700&family=Syne:wght@400;600;700;800&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{--ink:#0f0e17;--paper:#fffcf5;--paper2:#f5f0e8;--line:rgba(0,0,0,0.055);--border:#e8e2d8;--tx2:#6b6560;--orange:#e85d26;--blue:#3a7bd5;--pro:#7c3aed;--pro2:#a855f7;}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+body{background:var(--paper);color:var(--ink);font-family:'DM Sans',sans-serif;min-height:100vh;}
+body::before{content:'';position:fixed;inset:0;background-image:repeating-linear-gradient(0deg,transparent,transparent 31px,var(--line) 32px);pointer-events:none;z-index:0;}
+body::after{content:'';position:fixed;left:76px;top:0;bottom:0;width:1.5px;background:rgba(220,70,70,0.12);pointer-events:none;z-index:0;}
+.page{position:relative;z-index:1;max-width:780px;margin:0 auto;padding:0 24px 80px;}
+/* NAV */
+nav{display:flex;align-items:center;justify-content:space-between;padding:24px 0 32px;flex-wrap:wrap;gap:12px;}
+.logo{font-family:'Syne',sans-serif;font-size:1.8rem;font-weight:800;letter-spacing:-.03em;text-decoration:none;color:var(--ink);}
+.logo .d1{color:#3a7bd5}.logo .d2{color:#e85d26}.logo .d3{color:#27ae60}.logo .d4{color:#e85d26}.logo .d5{color:#7c3aed}.logo .d6{color:#3a7bd5}
+.logo .ai{color:var(--ink);font-weight:400;font-size:.82em;}
+.nav-links{display:flex;gap:6px;flex-wrap:wrap;}
+.nav-link{padding:.4rem 1rem;border:1.5px solid var(--border);border-radius:20px;font-family:'Syne',sans-serif;font-size:.82rem;font-weight:600;color:var(--tx2);text-decoration:none;transition:all .2s;background:#fff;}
+.nav-link:hover{border-color:var(--blue);color:var(--blue);background:#eef4ff;}
+.nav-link.active{border-color:var(--orange);color:var(--orange);background:#fff8f5;}
+/* HERO */
+.hero{text-align:center;padding:40px 0 50px;}
+.hero-icon{font-size:4rem;margin-bottom:16px;display:block;animation:float 3s ease-in-out infinite;}
+@keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-10px)}}
+.hero h1{font-family:'Syne',sans-serif;font-size:clamp(2rem,5vw,3rem);font-weight:800;margin-bottom:12px;line-height:1.1;}
+.hero h1 span{color:var(--orange);}
+.hero p{font-size:1.1rem;color:var(--tx2);max-width:540px;margin:0 auto;line-height:1.7;}
+/* CARDS */
+.cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:16px;margin:40px 0;}
+.card{background:#fff;border:2px solid var(--border);border-radius:20px;padding:24px 20px;text-align:center;transition:all .2s;}
+.card:hover{transform:translateY(-3px);box-shadow:0 10px 30px rgba(0,0,0,.08);border-color:var(--blue);}
+.card-icon{font-size:2.2rem;margin-bottom:12px;display:block;}
+.card h3{font-family:'Syne',sans-serif;font-size:1rem;font-weight:700;margin-bottom:8px;}
+.card p{font-size:.85rem;color:var(--tx2);line-height:1.6;}
+/* SECTION */
+.section{background:#fff;border:2px solid var(--border);border-radius:20px;padding:32px;margin-bottom:20px;}
+.section h2{font-family:'Syne',sans-serif;font-size:1.4rem;font-weight:800;margin-bottom:16px;display:flex;align-items:center;gap:10px;}
+.section p{font-size:.95rem;color:var(--tx2);line-height:1.8;margin-bottom:12px;}
+.section p:last-child{margin-bottom:0;}
+/* CTA */
+.cta{text-align:center;padding:40px 0 0;}
+.cta-btn{display:inline-flex;align-items:center;gap:.5rem;padding:.9rem 2rem;background:var(--orange);color:#fff;border:none;border-radius:40px;font-family:'Syne',sans-serif;font-size:1rem;font-weight:700;text-decoration:none;transition:all .2s;box-shadow:0 4px 16px rgba(232,93,38,.35);}
+.cta-btn:hover{filter:brightness(1.08);transform:scale(1.04);}
+.footer{text-align:center;margin-top:50px;font-size:.75rem;color:#ccc;letter-spacing:.05em;}
+</style>
+</head>
+<body>
+<div class="page">
+  <nav>
+    <a href="/" class="logo"><span class="d1">D</span><span class="d2">o</span><span class="d3">o</span><span class="d4">d</span><span class="d5">l</span><span class="d6">e</span><span class="ai">AI</span></a>
+    <div class="nav-links">
+      <a href="/" class="nav-link">🎨 Create</a>
+      <a href="/about.html" class="nav-link active">About</a>
+      <a href="/accessibility.html" class="nav-link">Accessibility</a>
+      <a href="/contact.html" class="nav-link">Contact</a>
+    </div>
+  </nav>
+
+  <div class="hero">
+    <span class="hero-icon">✏️</span>
+    <h1>Art for <span>everyone.</span><br>Ideas brought to life.</h1>
+    <p>DoodleAI was built with one simple belief — creativity shouldn't have any barriers. Whether you're 8 or 80, a student or a CEO, everyone deserves to see their ideas drawn to life.</p>
+  </div>
+
+  <div class="cards">
+    <div class="card">
+      <span class="card-icon">🧒</span>
+      <h3>Kids &amp; Teens</h3>
+      <p>Turn homework into art. Bring stories to life. Make learning fun with illustrations that appear stroke by stroke.</p>
+    </div>
+    <div class="card">
+      <span class="card-icon">🎓</span>
+      <h3>Students</h3>
+      <p>Visualize essays, science concepts, history events, and more. Perfect for school projects and presentations.</p>
+    </div>
+    <div class="card">
+      <span class="card-icon">💼</span>
+      <h3>Professionals</h3>
+      <p>Create stunning visual presentations, marketing materials, charts, and diagrams that draw themselves live in front of your audience.</p>
+    </div>
+  </div>
+
+  <div class="section">
+    <h2>🎨 Why we built DoodleAI</h2>
+    <p>DoodleAI started with a simple question: what if you could describe anything in words and watch it draw itself in front of your eyes — stroke by stroke, just like a real artist?</p>
+    <p>We wanted something magical. Not just a static image that appears — but an experience. Like watching a street artist sketch a portrait, or a teacher draw on a whiteboard, or Bob Ross painting a happy little tree. That moment of watching something come to life from nothing is something special.</p>
+    <p>So we built it. For kids who want to see their imagination on screen. For students who need visuals that stick. For professionals who want presentations that captivate. For anyone who has ever had an idea and wanted to see it drawn.</p>
+  </div>
+
+  <div class="section">
+    <h2>✨ What makes it different</h2>
+    <p>Most AI art tools show you a finished image. DoodleAI shows you the journey. Every stroke. Every correction. Even the happy little mistakes and the eraser that fixes them — just like a real artist working in front of you.</p>
+    <p>You choose the style — pencil sketch, watercolor, oil paint, chalk, cartoon, or pixel art. You set the speed. You watch it unfold. Then you download it, share it, or build it into a full presentation with multiple slides that each draw themselves live.</p>
+    <p>It's not just a tool. It's a show.</p>
+  </div>
+
+  <div class="cta">
+    <a href="/" class="cta-btn">✏️ Start Creating →</a>
+  </div>
+
+  <div class="footer">DoodleAI.com &nbsp;·&nbsp; AI-powered art from words</div>
+</div>
+</body>
+</html>
