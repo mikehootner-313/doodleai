@@ -12,171 +12,170 @@ body{background:var(--paper);color:var(--ink);font-family:'DM Sans',sans-serif;m
 body::before{content:'';position:fixed;inset:0;background-image:repeating-linear-gradient(0deg,transparent,transparent 31px,var(--line) 32px);pointer-events:none;z-index:0;}
 body::after{content:'';position:fixed;left:76px;top:0;bottom:0;width:1.5px;background:rgba(220,70,70,.12);pointer-events:none;z-index:0;}
 .page{position:relative;z-index:1;max-width:980px;margin:0 auto;padding:0 20px 80px;}
-/* NAV */
-nav{display:flex;align-items:center;justify-content:space-between;padding:18px 0 0;flex-wrap:wrap;gap:10px;margin-bottom:20px;}
-.logo{font-family:'Syne',sans-serif;font-size:1.6rem;font-weight:800;letter-spacing:-.03em;text-decoration:none;color:var(--ink);}
-.logo .d1{color:#3a7bd5}.logo .d2{color:#e85d26}.logo .d3{color:#27ae60}.logo .d4{color:#e85d26}.logo .d5{color:#7c3aed}.logo .d6{color:#3a7bd5}
-.logo .ai{color:var(--ink);font-weight:400;font-size:.82em;}
+nav{display:flex;align-items:center;justify-content:space-between;padding:18px 0 0;flex-wrap:wrap;gap:10px;margin-bottom:16px;}
+.logo-sm{font-family:'Syne',sans-serif;font-size:1.6rem;font-weight:800;letter-spacing:-.03em;text-decoration:none;color:var(--ink);}
+.logo-sm .a{color:#3a7bd5}.logo-sm .b{color:#e85d26}.logo-sm .c{color:#27ae60}.logo-sm .d{color:#e85d26}.logo-sm .e{color:#7c3aed}.logo-sm .f{color:#3a7bd5}.logo-sm .g{color:var(--ink);font-weight:400;font-size:.82em;}
 .nav-links{display:flex;gap:6px;flex-wrap:wrap;}
 .nav-link{padding:.35rem .9rem;border:1.5px solid var(--border);border-radius:20px;font-family:'Syne',sans-serif;font-size:.78rem;font-weight:600;color:var(--tx2);text-decoration:none;transition:all .2s;background:#fff;}
 .nav-link:hover{border-color:var(--blue);color:var(--blue);background:#eef4ff;}
-/* HEADER */
-.hdr{padding:16px 0 20px;text-align:center;}
-.logo-big{font-family:'Syne',sans-serif;font-size:clamp(2.2rem,6vw,3.6rem);font-weight:800;letter-spacing:-.03em;line-height:1;display:inline-block;}
-.logo-big .d1{color:#3a7bd5}.logo-big .d2{color:#e85d26}.logo-big .d3{color:#27ae60}.logo-big .d4{color:#e85d26}.logo-big .d5{color:#7c3aed}.logo-big .d6{color:#3a7bd5}
-.logo-big .ai{color:var(--ink);font-weight:400;font-size:.82em;}
-.tagline{font-size:.82rem;color:var(--tx2);letter-spacing:.1em;text-transform:uppercase;margin-top:.5rem;font-weight:300;}
-/* CREDIT BAR */
-.credit-bar{display:flex;justify-content:center;align-items:center;gap:10px;margin:14px 0 18px;flex-wrap:wrap;}
-.credit-badge{display:flex;align-items:center;gap:6px;background:#fff;border:2px solid var(--border);border-radius:40px;padding:6px 16px;font-family:'Syne',sans-serif;font-size:.84rem;font-weight:700;color:var(--tx2);}
+.hdr{padding:10px 0 16px;text-align:center;}
+.logo-big{font-family:'Syne',sans-serif;font-size:clamp(2rem,6vw,3.4rem);font-weight:800;letter-spacing:-.03em;line-height:1;display:inline-block;}
+.logo-big .a{color:#3a7bd5}.logo-big .b{color:#e85d26}.logo-big .c{color:#27ae60}.logo-big .d{color:#e85d26}.logo-big .e{color:#7c3aed}.logo-big .f{color:#3a7bd5}.logo-big .g{color:var(--ink);font-weight:400;font-size:.82em;}
+.tagline{font-size:.8rem;color:var(--tx2);letter-spacing:.1em;text-transform:uppercase;margin-top:.4rem;font-weight:300;}
+.credit-bar{display:flex;justify-content:center;align-items:center;gap:10px;margin:12px 0 16px;flex-wrap:wrap;}
+.credit-badge{display:flex;align-items:center;gap:6px;background:#fff;border:2px solid var(--border);border-radius:40px;padding:5px 14px;font-family:'Syne',sans-serif;font-size:.82rem;font-weight:700;color:var(--tx2);}
 .credit-badge.has-credits{border-color:var(--pro);color:var(--pro);background:#f5f3ff;}
-.buy-more-btn{padding:6px 16px;background:var(--pro);color:#fff;border:none;border-radius:40px;font-family:'Syne',sans-serif;font-size:.82rem;font-weight:700;cursor:pointer;box-shadow:0 2px 10px rgba(124,58,237,.3);}
-.buy-more-btn:hover{background:#6d28d9;transform:scale(1.04);}
-/* TABS */
-.mode-tabs{display:flex;justify-content:center;gap:8px;margin-bottom:18px;}
-.mode-tab{padding:.5rem 1.4rem;border:2px solid var(--border);border-radius:30px;font-family:'Syne',sans-serif;font-size:.85rem;font-weight:700;cursor:pointer;background:#fff;color:var(--tx2);transition:all .2s;}
+.buy-btn{padding:5px 14px;background:var(--pro);color:#fff;border:none;border-radius:40px;font-family:'Syne',sans-serif;font-size:.8rem;font-weight:700;cursor:pointer;box-shadow:0 2px 10px rgba(124,58,237,.3);}
+.buy-btn:hover{background:#6d28d9;}
+.mode-tabs{display:flex;justify-content:center;gap:8px;margin-bottom:16px;}
+.mode-tab{padding:.45rem 1.3rem;border:2px solid var(--border);border-radius:30px;font-family:'Syne',sans-serif;font-size:.83rem;font-weight:700;cursor:pointer;background:#fff;color:var(--tx2);transition:all .2s;}
 .mode-tab.active{border-color:var(--blue);color:var(--blue);background:#eef4ff;}
-.mode-tab.pres-tab.active{border-color:var(--pro);color:var(--pro);background:#f5f3ff;}
+.mode-tab.pt.active{border-color:var(--pro);color:var(--pro);background:#f5f3ff;}
 /* SEARCH */
-.search-wrap{position:relative;max-width:780px;margin:0 auto 12px;}
-.search-input{width:100%;padding:1.05rem 1.5rem;padding-right:160px;font-family:'DM Sans',sans-serif;font-size:1rem;background:#fff;border:2.5px solid var(--border);border-radius:60px;outline:none;color:var(--ink);box-shadow:0 3px 18px rgba(0,0,0,.07);transition:border-color .2s;}
+.search-wrap{position:relative;max-width:780px;margin:0 auto 14px;}
+.search-input{width:100%;padding:1rem 1.4rem;padding-right:155px;font-family:'DM Sans',sans-serif;font-size:1rem;background:#fff;border:2.5px solid var(--border);border-radius:60px;outline:none;color:var(--ink);box-shadow:0 3px 18px rgba(0,0,0,.07);transition:border-color .2s;}
 .search-input::placeholder{color:#c0b8b0;}
 .search-input:focus{border-color:var(--blue);}
-.create-btn{position:absolute;right:7px;top:50%;transform:translateY(-50%);padding:.68rem 1.4rem;border:none;border-radius:50px;font-family:'Syne',sans-serif;font-size:.9rem;font-weight:700;cursor:pointer;transition:all .2s;background:var(--orange);color:#fff;box-shadow:0 2px 10px rgba(232,93,38,.35);}
-.create-btn.paid-mode{background:linear-gradient(135deg,var(--pro),var(--pro2));}
+.create-btn{position:absolute;right:7px;top:50%;transform:translateY(-50%);padding:.65rem 1.3rem;border:none;border-radius:50px;font-family:'Syne',sans-serif;font-size:.88rem;font-weight:700;cursor:pointer;transition:all .2s;background:var(--orange);color:#fff;box-shadow:0 2px 10px rgba(232,93,38,.35);}
+.create-btn.pm{background:linear-gradient(135deg,var(--pro),var(--pro2));}
 .create-btn:hover{transform:translateY(-50%) scale(1.04);filter:brightness(1.08);}
 .create-btn:disabled{background:#d0c8c0!important;cursor:not-allowed;transform:translateY(-50%);box-shadow:none;filter:none;}
-/* SPEED */
-.speed-wrap{display:flex;align-items:center;justify-content:center;gap:12px;margin-bottom:12px;font-size:.82rem;color:var(--tx2);}
-.speed-wrap input[type=range]{width:150px;accent-color:var(--blue);}
-.speed-label{font-family:'Caveat',cursive;font-size:1rem;color:var(--blue);min-width:70px;}
-/* STYLES */
-.style-row{display:flex;flex-wrap:wrap;gap:7px;justify-content:center;margin-bottom:12px;}
-.sty{padding:.3rem .9rem;border:1.5px solid var(--border);border-radius:20px;font-size:.78rem;color:var(--tx2);cursor:pointer;transition:all .15s;background:#fff;font-family:'DM Sans',sans-serif;}
+/* SPEED + STYLE */
+.controls-row{display:flex;align-items:center;justify-content:center;gap:16px;margin-bottom:12px;flex-wrap:wrap;}
+.speed-wrap{display:flex;align-items:center;gap:8px;font-size:.8rem;color:var(--tx2);}
+.speed-wrap input[type=range]{width:130px;accent-color:var(--blue);}
+.speed-label{font-family:'Caveat',cursive;font-size:.95rem;color:var(--blue);min-width:65px;}
+.style-row{display:flex;flex-wrap:wrap;gap:6px;justify-content:center;margin-bottom:14px;}
+.sty{padding:.28rem .85rem;border:1.5px solid var(--border);border-radius:20px;font-size:.76rem;color:var(--tx2);cursor:pointer;transition:all .15s;background:#fff;}
 .sty:hover,.sty.active{border-color:var(--blue);color:var(--blue);background:#eef4ff;}
 .sty.active{font-weight:600;}
-/* EXAMPLES */
-.examples{display:flex;flex-wrap:wrap;gap:7px;justify-content:center;margin-bottom:24px;}
-.chip{padding:.28rem .85rem;border:1.5px solid var(--border);border-radius:20px;font-size:.79rem;color:var(--tx2);cursor:pointer;transition:all .15s;background:#fff;}
-.chip:hover{border-color:var(--orange);color:var(--orange);}
-/* PRESENTATION BUILDER */
-#pres-builder{display:none;max-width:780px;margin:0 auto 18px;}
-.pres-info{background:#f5f3ff;border:2px solid #c4b5fd;border-radius:14px;padding:13px 18px;margin-bottom:13px;font-size:.84rem;color:#6d28d9;line-height:1.6;}
-.pres-settings{display:flex;gap:12px;margin-bottom:13px;flex-wrap:wrap;}
-.pres-setting{flex:1;min-width:170px;background:#fff;border:1.5px solid var(--border);border-radius:12px;padding:11px 15px;}
-.pres-setting label{display:block;font-size:.76rem;color:var(--tx2);margin-bottom:5px;font-weight:600;text-transform:uppercase;letter-spacing:.05em;}
-.pres-setting select,.pres-setting input[type=number]{width:100%;padding:.45rem .8rem;border:1.5px solid var(--border);border-radius:8px;font-family:'DM Sans',sans-serif;font-size:.88rem;outline:none;background:#fff;}
-.pres-setting select:focus,.pres-setting input[type=number]:focus{border-color:var(--pro);}
-.slides-list{display:flex;flex-direction:column;gap:9px;margin-bottom:11px;max-height:380px;overflow-y:auto;padding-right:4px;}
-.slide-row{display:flex;gap:8px;align-items:flex-start;background:#fff;border:1.5px solid var(--border);border-radius:12px;padding:10px 12px;}
-.slide-num{font-family:'Syne',sans-serif;font-weight:700;font-size:.82rem;color:var(--pro);min-width:22px;padding-top:6px;}
+/* CATEGORY BROWSER */
+.cat-section{margin-bottom:18px;}
+.age-tabs{display:flex;gap:6px;margin-bottom:10px;flex-wrap:wrap;}
+.age-tab{padding:.32rem .95rem;border:1.5px solid var(--border);border-radius:20px;font-family:'Syne',sans-serif;font-size:.78rem;font-weight:700;cursor:pointer;background:#fff;color:var(--tx2);transition:all .2s;}
+.age-tab.active{color:#fff;border-color:transparent;}
+.age-tab.kids.active{background:#27ae60;}
+.age-tab.teens.active{background:#e85d26;}
+.age-tab.adults.active{background:#3a7bd5;}
+.age-tab.all.active{background:#7c3aed;}
+.cat-grid{display:flex;flex-wrap:wrap;gap:6px;}
+.cat-chip{padding:.28rem .85rem;border:1.5px solid var(--border);border-radius:20px;font-size:.78rem;color:var(--tx2);cursor:pointer;transition:all .15s;background:#fff;white-space:nowrap;}
+.cat-chip:hover{transform:scale(1.04);}
+.cat-chip.kids-chip:hover{border-color:#27ae60;color:#27ae60;}
+.cat-chip.teens-chip:hover{border-color:#e85d26;color:#e85d26;}
+.cat-chip.adults-chip:hover{border-color:#3a7bd5;color:#3a7bd5;}
+.cat-chip.all-chip:hover{border-color:#7c3aed;color:#7c3aed;}
+/* PRESENTATION */
+#pres-builder{display:none;max-width:780px;margin:0 auto 16px;}
+.pres-info{background:#f5f3ff;border:2px solid #c4b5fd;border-radius:14px;padding:12px 16px;margin-bottom:12px;font-size:.82rem;color:#6d28d9;line-height:1.6;}
+.pres-settings{display:flex;gap:10px;margin-bottom:12px;flex-wrap:wrap;}
+.pres-setting{flex:1;min-width:160px;background:#fff;border:1.5px solid var(--border);border-radius:12px;padding:10px 14px;}
+.pres-setting label{display:block;font-size:.74rem;color:var(--tx2);margin-bottom:4px;font-weight:600;text-transform:uppercase;letter-spacing:.05em;}
+.pres-setting select,.pres-setting input[type=number]{width:100%;padding:.42rem .7rem;border:1.5px solid var(--border);border-radius:8px;font-family:'DM Sans',sans-serif;font-size:.86rem;outline:none;background:#fff;}
+.slides-list{display:flex;flex-direction:column;gap:8px;margin-bottom:10px;max-height:360px;overflow-y:auto;}
+.slide-row{display:flex;gap:7px;align-items:flex-start;background:#fff;border:1.5px solid var(--border);border-radius:12px;padding:9px 11px;}
+.slide-num{font-family:'Syne',sans-serif;font-weight:700;font-size:.8rem;color:var(--pro);min-width:20px;padding-top:5px;}
 .slide-inputs{flex:1;display:flex;flex-direction:column;gap:5px;}
-.slide-input{width:100%;padding:.52rem .9rem;border:1.5px solid var(--border);border-radius:8px;font-family:'DM Sans',sans-serif;font-size:.86rem;outline:none;background:#fff;}
-.slide-input:focus{border-color:var(--pro);}
-.slide-caption{width:100%;padding:.48rem .9rem;border:1.5px solid var(--border);border-radius:8px;font-family:'DM Sans',sans-serif;font-size:.8rem;outline:none;background:#fff;color:var(--tx2);}
-.slide-caption:focus{border-color:var(--pro);}
-.slide-del{background:none;border:none;color:#ccc;font-size:1rem;cursor:pointer;padding:6px;flex-shrink:0;}
+.slide-input,.slide-caption{width:100%;padding:.48rem .85rem;border:1.5px solid var(--border);border-radius:8px;font-family:'DM Sans',sans-serif;font-size:.84rem;outline:none;background:#fff;}
+.slide-input:focus,.slide-caption:focus{border-color:var(--pro);}
+.slide-caption{font-size:.78rem;color:var(--tx2);}
+.slide-del{background:none;border:none;color:#ccc;font-size:1rem;cursor:pointer;padding:5px;flex-shrink:0;}
 .slide-del:hover{color:#e74c3c;}
-.pres-add-btn{padding:.48rem 1.1rem;background:#fff;border:2px dashed var(--border);border-radius:10px;font-family:'Syne',sans-serif;font-size:.8rem;color:var(--tx2);cursor:pointer;width:100%;margin-bottom:8px;}
+.pres-add-btn{padding:.45rem 1rem;background:#fff;border:2px dashed var(--border);border-radius:10px;font-family:'Syne',sans-serif;font-size:.78rem;color:var(--tx2);cursor:pointer;width:100%;margin-bottom:7px;}
 .pres-add-btn:hover{border-color:var(--pro);color:var(--pro);}
-.pres-go-btn{width:100%;padding:.82rem;background:linear-gradient(135deg,var(--pro),var(--pro2));color:#fff;border:none;border-radius:14px;font-family:'Syne',sans-serif;font-size:.98rem;font-weight:700;cursor:pointer;box-shadow:0 4px 16px rgba(124,58,237,.35);}
-.pres-go-btn:hover{filter:brightness(1.08);transform:translateY(-1px);}
+.pres-go-btn{width:100%;padding:.78rem;background:linear-gradient(135deg,var(--pro),var(--pro2));color:#fff;border:none;border-radius:14px;font-family:'Syne',sans-serif;font-size:.95rem;font-weight:700;cursor:pointer;box-shadow:0 4px 16px rgba(124,58,237,.35);}
+.pres-go-btn:hover{filter:brightness(1.08);}
 /* RESULT */
 #result-section{display:none;animation:fadeUp .4s ease forwards;}
-@keyframes fadeUp{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:translateY(0)}}
-.canvas-card{background:#fff;border:2.5px solid var(--border);border-radius:20px;overflow:hidden;box-shadow:0 10px 50px rgba(0,0,0,.1);margin-bottom:14px;}
-.card-bar{background:var(--paper2);border-bottom:1.5px solid var(--border);padding:.65rem 1.1rem;display:flex;align-items:center;gap:.5rem;flex-wrap:wrap;}
-.dot{width:12px;height:12px;border-radius:50%;}
+@keyframes fadeUp{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:translateY(0)}}
+.canvas-card{background:#fff;border:2.5px solid var(--border);border-radius:20px;overflow:hidden;box-shadow:0 10px 50px rgba(0,0,0,.1);margin-bottom:12px;}
+.card-bar{background:var(--paper2);border-bottom:1.5px solid var(--border);padding:.6rem 1rem;display:flex;align-items:center;gap:.5rem;flex-wrap:wrap;}
+.dot{width:11px;height:11px;border-radius:50%;}
 .dr{background:#ff5f57}.dy{background:#febc2e}.dg{background:#28c840}
-.bar-label{font-family:'Caveat',cursive;font-size:1rem;color:#999;margin-left:.3rem;}
+.bar-label{font-family:'Caveat',cursive;font-size:.95rem;color:#999;margin-left:.2rem;}
 .bar-label strong{color:var(--ink);}
-.mode-badge{margin-left:auto;padding:.2rem .8rem;border-radius:20px;font-family:'Syne',sans-serif;font-size:.72rem;font-weight:700;}
+.mode-badge{margin-left:auto;padding:.18rem .75rem;border-radius:20px;font-family:'Syne',sans-serif;font-size:.7rem;font-weight:700;}
 .free-badge{background:#e8f4fd;color:var(--blue);}
 .paid-badge{background:linear-gradient(135deg,var(--pro),var(--pro2));color:#fff;}
 .prog-wrap{height:4px;background:var(--paper2);}
 .prog-fill{height:100%;width:0%;background:linear-gradient(90deg,var(--blue),var(--orange));transition:width .3s ease;}
 .prog-fill.paid{background:linear-gradient(90deg,var(--pro),var(--pro2),var(--gold));}
-.slide-counter{display:none;padding:.38rem 1.1rem;background:var(--paper2);border-bottom:1.5px solid var(--border);font-family:'Caveat',cursive;font-size:.95rem;color:var(--tx2);text-align:center;}
-#img-wrap{min-height:520px;position:relative;display:flex;align-items:center;justify-content:center;background:#faf9f7;}
-#reveal-canvas{display:none;width:100%;max-height:700px;}
+.slide-counter{display:none;padding:.35rem 1rem;background:var(--paper2);border-bottom:1.5px solid var(--border);font-family:'Caveat',cursive;font-size:.92rem;color:var(--tx2);text-align:center;}
+#img-wrap{min-height:480px;position:relative;display:flex;align-items:center;justify-content:center;background:#faf9f7;}
+#draw-canvas{display:none;width:100%;max-height:680px;}
 #result-img{display:none;position:absolute;opacity:0;}
-.wm{position:absolute;bottom:12px;right:16px;font-family:'DM Sans',sans-serif;font-size:12px;font-weight:600;color:rgba(255,255,255,.75);text-shadow:0 1px 4px rgba(0,0,0,.55);pointer-events:none;display:none;}
-.caption-overlay{position:absolute;bottom:0;left:0;right:0;padding:14px 18px;background:linear-gradient(0deg,rgba(0,0,0,.65),transparent);font-family:'Caveat',cursive;font-size:1.35rem;color:#fff;text-shadow:0 1px 4px rgba(0,0,0,.8);display:none;pointer-events:none;}
-.draw-status{position:absolute;top:12px;left:14px;font-family:'Caveat',cursive;font-size:.95rem;color:rgba(255,255,255,.95);text-shadow:0 1px 4px rgba(0,0,0,.8);background:rgba(0,0,0,.38);padding:3px 12px;border-radius:20px;display:none;pointer-events:none;max-width:70%;}
-/* LOADER */
-#sketch-loader{display:flex;flex-direction:column;align-items:center;gap:16px;padding:4rem 2rem;}
-.pencil-anim{animation:wobble 1.1s ease-in-out infinite alternate;}
-@keyframes wobble{from{transform:rotate(-12deg) scale(.9)}to{transform:rotate(12deg) scale(1.1)}}
-.ll-wrap{display:flex;flex-direction:column;gap:8px;width:200px;}
+.wm{position:absolute;bottom:10px;right:14px;font-family:'DM Sans',sans-serif;font-size:11px;font-weight:600;color:rgba(255,255,255,.75);text-shadow:0 1px 4px rgba(0,0,0,.55);pointer-events:none;display:none;}
+.caption-ov{position:absolute;bottom:0;left:0;right:0;padding:12px 16px;background:linear-gradient(0deg,rgba(0,0,0,.65),transparent);font-family:'Caveat',cursive;font-size:1.3rem;color:#fff;text-shadow:0 1px 4px rgba(0,0,0,.8);display:none;pointer-events:none;}
+.draw-status{position:absolute;top:10px;left:12px;font-family:'Caveat',cursive;font-size:.9rem;color:rgba(255,255,255,.95);text-shadow:0 1px 4px rgba(0,0,0,.8);background:rgba(0,0,0,.38);padding:3px 11px;border-radius:20px;display:none;pointer-events:none;max-width:68%;}
+#sketch-loader{display:flex;flex-direction:column;align-items:center;gap:14px;padding:3.5rem 2rem;}
+.pencil-anim{animation:wob 1.1s ease-in-out infinite alternate;}
+@keyframes wob{from{transform:rotate(-12deg) scale(.9)}to{transform:rotate(12deg) scale(1.1)}}
+.ll-wrap{display:flex;flex-direction:column;gap:7px;width:190px;}
 .ll{height:3px;border-radius:3px;background:linear-gradient(90deg,var(--blue),var(--orange));animation:dl 1.5s ease-in-out infinite;transform-origin:left;}
-.ll.paid-ll{background:linear-gradient(90deg,var(--pro),var(--pro2));}
+.ll.pl{background:linear-gradient(90deg,var(--pro),var(--pro2));}
 .ll:nth-child(2){animation-delay:.2s;width:70%}.ll:nth-child(3){animation-delay:.4s;width:50%}
 @keyframes dl{0%{transform:scaleX(0);opacity:0}40%{opacity:1}70%{transform:scaleX(1)}100%{transform:scaleX(1);opacity:.2}}
-#loading-msg{font-family:'Caveat',cursive;font-size:1.3rem;color:#999;animation:pulse 1.9s ease infinite;}
+#loading-msg{font-family:'Caveat',cursive;font-size:1.25rem;color:#999;animation:pulse 1.9s ease infinite;}
 @keyframes pulse{0%,100%{opacity:.5}50%{opacity:1}}
-.wait-note{background:var(--paper2);border:1.5px solid var(--border);border-radius:10px;padding:10px 18px;font-size:.82rem;color:var(--tx2);text-align:center;max-width:300px;line-height:1.6;}
-.wait-note.paid-note{background:#f5f3ff;border-color:#c4b5fd;color:#6d5fb0;}
-#error-box{display:none;margin:1.5rem;padding:1.3rem 1.5rem;background:#fff5f5;border:1.5px solid #fcc;border-radius:14px;color:#c0392b;font-size:.9rem;line-height:1.8;text-align:center;}
-/* STORY */
-.story-box{background:#fff;border:2px solid var(--border);border-radius:16px;padding:1.1rem 1.4rem;margin-bottom:14px;box-shadow:0 3px 16px rgba(0,0,0,.05);}
-.story-lbl{font-family:'Caveat',cursive;font-size:.9rem;color:#bbb;text-transform:uppercase;letter-spacing:.08em;margin-bottom:.4rem;}
-#story-text{font-family:'Caveat',cursive;font-size:1.2rem;line-height:1.8;color:var(--ink);min-height:2rem;}
+.wait-note{background:var(--paper2);border:1.5px solid var(--border);border-radius:10px;padding:9px 16px;font-size:.8rem;color:var(--tx2);text-align:center;max-width:290px;line-height:1.6;}
+.wait-note.pn{background:#f5f3ff;border-color:#c4b5fd;color:#6d5fb0;}
+#error-box{display:none;margin:1.4rem;padding:1.2rem 1.4rem;background:#fff5f5;border:1.5px solid #fcc;border-radius:14px;color:#c0392b;font-size:.88rem;line-height:1.8;text-align:center;}
+.story-box{background:#fff;border:2px solid var(--border);border-radius:16px;padding:1rem 1.3rem;margin-bottom:12px;box-shadow:0 3px 16px rgba(0,0,0,.05);}
+.story-lbl{font-family:'Caveat',cursive;font-size:.88rem;color:#bbb;text-transform:uppercase;letter-spacing:.08em;margin-bottom:.3rem;}
+#story-text{font-family:'Caveat',cursive;font-size:1.15rem;line-height:1.8;color:var(--ink);min-height:1.8rem;}
 .blink{display:inline-block;width:2px;height:1em;background:var(--orange);margin-left:2px;vertical-align:middle;animation:bl .8s step-end infinite;}
 @keyframes bl{50%{opacity:0}}
-/* ACTIONS */
 .action-row{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:10px;}
-#status{font-size:.82rem;color:#bbb;font-style:italic;}
-.btn-dl{display:inline-flex;align-items:center;gap:.45rem;padding:.7rem 1.4rem;background:var(--ink);color:#fff;border:none;border-radius:40px;font-family:'Syne',sans-serif;font-size:.86rem;font-weight:700;cursor:pointer;transition:all .2s;box-shadow:0 3px 14px rgba(0,0,0,.18);}
+#status{font-size:.8rem;color:#bbb;font-style:italic;}
+.btn-dl{display:inline-flex;align-items:center;gap:.4rem;padding:.65rem 1.3rem;background:var(--ink);color:#fff;border:none;border-radius:40px;font-family:'Syne',sans-serif;font-size:.84rem;font-weight:700;cursor:pointer;transition:all .2s;box-shadow:0 3px 14px rgba(0,0,0,.18);}
 .btn-dl:hover{background:#2a2935;transform:scale(1.03);}
 .btn-dl:disabled{background:#ccc;cursor:not-allowed;transform:none;opacity:.5;}
-.btn-new{display:inline-flex;align-items:center;gap:.45rem;padding:.7rem 1.4rem;background:transparent;color:var(--ink);border:2px solid var(--border);border-radius:40px;font-family:'Syne',sans-serif;font-size:.86rem;font-weight:600;cursor:pointer;transition:all .2s;}
+.btn-new{display:inline-flex;align-items:center;gap:.4rem;padding:.65rem 1.3rem;background:transparent;color:var(--ink);border:2px solid var(--border);border-radius:40px;font-family:'Syne',sans-serif;font-size:.84rem;font-weight:600;cursor:pointer;transition:all .2s;}
 .btn-new:hover{border-color:var(--blue);background:#eef4ff;}
-.btn-zip{display:none;align-items:center;gap:.45rem;padding:.7rem 1.4rem;background:var(--pro);color:#fff;border:none;border-radius:40px;font-family:'Syne',sans-serif;font-size:.86rem;font-weight:700;cursor:pointer;box-shadow:0 3px 14px rgba(124,58,237,.3);}
-.btn-zip:hover{background:#6d28d9;transform:scale(1.03);}
-/* THUMBS */
-#pres-thumbs{display:none;gap:10px;flex-wrap:wrap;justify-content:center;margin-bottom:14px;}
-.thumb{width:110px;height:74px;border-radius:8px;border:2px solid var(--border);overflow:hidden;cursor:pointer;transition:all .2s;position:relative;background:#f0ede8;}
-.thumb:hover,.thumb.active-thumb{border-color:var(--pro);transform:scale(1.05);}
+.btn-zip{display:none;align-items:center;gap:.4rem;padding:.65rem 1.3rem;background:var(--pro);color:#fff;border:none;border-radius:40px;font-family:'Syne',sans-serif;font-size:.84rem;font-weight:700;cursor:pointer;box-shadow:0 3px 14px rgba(124,58,237,.3);}
+.btn-zip:hover{background:#6d28d9;}
+#pres-thumbs{display:none;gap:9px;flex-wrap:wrap;justify-content:center;margin-bottom:12px;}
+.thumb{width:108px;height:72px;border-radius:8px;border:2px solid var(--border);overflow:hidden;cursor:pointer;transition:all .2s;position:relative;background:#f0ede8;}
+.thumb:hover,.thumb.at{border-color:var(--pro);transform:scale(1.05);}
 .thumb canvas{width:100%;height:100%;display:block;}
-.thumb-num{position:absolute;top:3px;left:5px;font-family:'Syne',sans-serif;font-size:.62rem;font-weight:700;color:#fff;text-shadow:0 1px 3px rgba(0,0,0,.8);}
-.thumb-placeholder{width:100%;height:100%;display:flex;align-items:center;justify-content:center;font-size:.68rem;color:#ccc;}
+.thumb-num{position:absolute;top:3px;left:4px;font-family:'Syne',sans-serif;font-size:.6rem;font-weight:700;color:#fff;text-shadow:0 1px 3px rgba(0,0,0,.8);}
+.thumb-ph{width:100%;height:100%;display:flex;align-items:center;justify-content:center;font-size:.66rem;color:#ccc;}
 /* PRICING MODAL */
 .mbg{display:none;position:fixed;inset:0;background:rgba(0,0,0,.5);backdrop-filter:blur(7px);z-index:100;align-items:flex-start;justify-content:center;padding:20px;overflow-y:auto;}
 .mbg.show{display:flex;}
 .modal{background:#fff;border-radius:24px;max-width:860px;width:100%;box-shadow:0 28px 80px rgba(0,0,0,.2);animation:mIn .3s ease;margin:auto;}
 @keyframes mIn{from{opacity:0;transform:scale(.94)}to{opacity:1;transform:scale(1)}}
-.modal-hdr{background:linear-gradient(135deg,#0f0e17,#1e1b4b);padding:28px 28px 24px;color:#fff;text-align:center;border-radius:24px 24px 0 0;position:relative;}
-.modal-hdr h2{font-family:'Syne',sans-serif;font-size:1.7rem;font-weight:800;margin-bottom:.3rem;}
-.modal-hdr p{opacity:.7;font-size:.88rem;}
-.modal-close{position:absolute;top:14px;right:18px;background:rgba(255,255,255,.15);border:none;border-radius:50%;width:32px;height:32px;font-size:1rem;color:#fff;cursor:pointer;display:flex;align-items:center;justify-content:center;}
+.modal-hdr{background:linear-gradient(135deg,#0f0e17,#1e1b4b);padding:26px 26px 22px;color:#fff;text-align:center;border-radius:24px 24px 0 0;position:relative;}
+.modal-hdr h2{font-family:'Syne',sans-serif;font-size:1.6rem;font-weight:800;margin-bottom:.25rem;}
+.modal-hdr p{opacity:.7;font-size:.86rem;}
+.modal-close{position:absolute;top:13px;right:16px;background:rgba(255,255,255,.15);border:none;border-radius:50%;width:30px;height:30px;font-size:.95rem;color:#fff;cursor:pointer;display:flex;align-items:center;justify-content:center;}
 .modal-close:hover{background:rgba(255,255,255,.3);}
-.modal-body{padding:26px;}
-.price-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:12px;margin-bottom:18px;}
-.plan{border:2px solid var(--border);border-radius:16px;padding:18px 16px;cursor:pointer;transition:all .2s;position:relative;background:#fff;}
+.modal-body{padding:24px;}
+.price-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:11px;margin-bottom:16px;}
+.plan{border:2px solid var(--border);border-radius:16px;padding:16px 15px;cursor:pointer;transition:all .2s;position:relative;background:#fff;}
 .plan:hover{border-color:var(--pro);transform:translateY(-2px);box-shadow:0 8px 24px rgba(124,58,237,.12);}
 .plan.popular{border-color:var(--pro);background:#faf5ff;}
-.popular-tag{position:absolute;top:-11px;left:50%;transform:translateX(-50%);background:var(--pro);color:#fff;font-family:'Syne',sans-serif;font-size:.7rem;font-weight:700;padding:.2rem .9rem;border-radius:20px;white-space:nowrap;}
-.plan h3{font-family:'Syne',sans-serif;font-size:.92rem;font-weight:700;margin-bottom:.4rem;}
-.plan .price{font-family:'Syne',sans-serif;font-size:1.8rem;font-weight:800;color:var(--pro);line-height:1;margin-bottom:.2rem;}
-.plan .price span{font-size:.82rem;font-weight:400;color:var(--tx2);}
-.plan .imgs{font-size:.8rem;color:var(--tx2);margin-bottom:.7rem;}
+.pop-tag{position:absolute;top:-10px;left:50%;transform:translateX(-50%);background:var(--pro);color:#fff;font-family:'Syne',sans-serif;font-size:.68rem;font-weight:700;padding:.18rem .85rem;border-radius:20px;white-space:nowrap;}
+.plan h3{font-family:'Syne',sans-serif;font-size:.9rem;font-weight:700;margin-bottom:.35rem;}
+.plan .price{font-family:'Syne',sans-serif;font-size:1.75rem;font-weight:800;color:var(--pro);line-height:1;margin-bottom:.18rem;}
+.plan .price span{font-size:.8rem;font-weight:400;color:var(--tx2);}
+.plan .imgs{font-size:.78rem;color:var(--tx2);margin-bottom:.65rem;}
 .plan .imgs strong{color:var(--ink);}
-.plan .cpt{font-size:.73rem;color:#aaa;margin-bottom:.9rem;}
-.plan-btn{width:100%;padding:.6rem;border:none;border-radius:10px;background:var(--pro);color:#fff;font-family:'Syne',sans-serif;font-size:.86rem;font-weight:700;cursor:pointer;}
+.plan-btn{width:100%;padding:.58rem;border:none;border-radius:10px;background:var(--pro);color:#fff;font-family:'Syne',sans-serif;font-size:.84rem;font-weight:700;cursor:pointer;}
 .plan-btn:hover{filter:brightness(1.1);}
-.free-row{text-align:center;padding-top:8px;border-top:1px solid var(--border);font-size:.83rem;color:var(--tx2);}
+.free-row{text-align:center;padding-top:7px;border-top:1px solid var(--border);font-size:.82rem;color:var(--tx2);}
 .free-row span{color:var(--pro);cursor:pointer;font-weight:600;}
-.setup-note{background:#fffbe6;border:1.5px solid #f5d020;border-radius:12px;padding:12px 16px;margin-top:18px;font-size:.8rem;color:#7a6500;line-height:1.7;}
+.setup-note{background:#fffbe6;border:1.5px solid #f5d020;border-radius:12px;padding:11px 15px;margin-top:16px;font-size:.78rem;color:#7a6500;line-height:1.7;}
 .setup-note code{background:#fef3c7;padding:.1rem .3rem;border-radius:4px;}
-.footer{text-align:center;margin-top:50px;font-size:.75rem;color:#ccc;letter-spacing:.05em;}
-.footer a{color:#ccc;text-decoration:none;margin:0 6px;}
+.footer{text-align:center;margin-top:46px;font-size:.73rem;color:#ccc;letter-spacing:.05em;}
+.footer a{color:#ccc;text-decoration:none;margin:0 5px;}
 .footer a:hover{color:var(--blue);}
 </style>
 </head>
 <body>
 <div class="page">
   <nav>
-    <a href="/" class="logo"><span class="d1">D</span><span class="d2">o</span><span class="d3">o</span><span class="d4">d</span><span class="d5">l</span><span class="d6">e</span><span class="ai">AI</span></a>
+    <a href="/" class="logo-sm"><span class="a">D</span><span class="b">o</span><span class="c">o</span><span class="d">d</span><span class="e">l</span><span class="f">e</span><span class="g">AI</span></a>
     <div class="nav-links">
       <a href="/about.html" class="nav-link">About</a>
       <a href="/accessibility.html" class="nav-link">Accessibility</a>
@@ -185,84 +184,78 @@ nav{display:flex;align-items:center;justify-content:space-between;padding:18px 0
   </nav>
 
   <div class="hdr">
-    <div class="logo-big"><span class="d1">D</span><span class="d2">o</span><span class="d3">o</span><span class="d4">d</span><span class="d5">l</span><span class="d6">e</span><span class="ai">AI</span></div>
+    <div class="logo-big"><span class="a">D</span><span class="b">o</span><span class="c">o</span><span class="d">d</span><span class="e">l</span><span class="f">e</span><span class="g">AI</span></div>
     <div class="tagline">Watch your idea draw itself — one stroke at a time</div>
   </div>
 
   <div class="credit-bar">
     <div class="credit-badge" id="credit-badge">🎨 Free tier — slow shared servers</div>
-    <button class="buy-more-btn" onclick="showPricing()">⚡ Buy Credits</button>
+    <button class="buy-btn" onclick="showPricing()">⚡ Buy Credits</button>
   </div>
 
   <div class="mode-tabs">
     <div class="mode-tab active" id="tab-single" onclick="setMode('single')">🎨 Single Doodle</div>
-    <div class="mode-tab pres-tab" id="tab-pres" onclick="setMode('presentation')">📊 Presentation Mode</div>
+    <div class="mode-tab pt" id="tab-pres" onclick="setMode('presentation')">📊 Presentation Mode</div>
   </div>
 
+  <!-- SINGLE MODE -->
   <div id="single-mode">
     <div class="search-wrap">
-      <input type="text" id="prompt-input" class="search-input" placeholder="Describe what to draw… e.g. a treehouse with a rope swing" maxlength="200" autocomplete="off"/>
+      <input type="text" id="prompt-input" class="search-input" placeholder="Describe what to draw… or pick a category below ↓" maxlength="200" autocomplete="off"/>
       <button class="create-btn" id="create-btn">✏️ Create</button>
+    </div>
+
+    <!-- CATEGORY BROWSER -->
+    <div class="cat-section">
+      <div class="age-tabs">
+        <div class="age-tab kids active" id="at-kids" onclick="setAgeTab('kids')">🧒 Kids</div>
+        <div class="age-tab teens" id="at-teens" onclick="setAgeTab('teens')">🎓 Teens</div>
+        <div class="age-tab adults" id="at-adults" onclick="setAgeTab('adults')">💼 Adults & Pro</div>
+        <div class="age-tab all" id="at-all" onclick="setAgeTab('all')">🎨 All Ages</div>
+      </div>
+      <div class="cat-grid" id="cat-grid"></div>
     </div>
   </div>
 
+  <!-- PRESENTATION MODE -->
   <div id="pres-builder">
-    <div class="pres-info">📊 <strong>Presentation Mode:</strong> Each slide is drawn live stroke by stroke. Choose how many slides and how long the total presentation runs — time is divided automatically.</div>
+    <div class="pres-info">📊 <strong>Presentation Mode:</strong> Each slide is drawn live stroke by stroke. Set how many slides and how long the full presentation runs.</div>
     <div class="pres-settings">
-      <div class="pres-setting">
-        <label>Number of Slides</label>
-        <input type="number" id="pres-slide-count" min="1" max="50" value="4" placeholder="1–50"/>
-      </div>
-      <div class="pres-setting">
-        <label>Total Length</label>
+      <div class="pres-setting"><label>Number of Slides</label><input type="number" id="pres-slide-count" min="1" max="50" value="4"/></div>
+      <div class="pres-setting"><label>Total Length</label>
         <select id="pres-duration">
-          <option value="1">1 minute</option>
-          <option value="2">2 minutes</option>
-          <option value="5" selected>5 minutes</option>
-          <option value="10">10 minutes</option>
-          <option value="15">15 minutes</option>
-          <option value="20">20 minutes</option>
-          <option value="30">30 minutes</option>
+          <option value="1">1 minute</option><option value="2">2 minutes</option><option value="5" selected>5 minutes</option>
+          <option value="10">10 minutes</option><option value="15">15 minutes</option><option value="20">20 minutes</option><option value="30">30 minutes</option>
         </select>
       </div>
     </div>
     <div class="slides-list" id="slides-list">
-      <div class="slide-row"><span class="slide-num">1</span><div class="slide-inputs"><input class="slide-input" placeholder="Slide 1: What to draw? e.g. bar chart showing quarterly revenue" maxlength="200"/><input class="slide-caption" placeholder="Caption shown on screen (optional)"/></div><button class="slide-del" onclick="removeSlide(this)">✕</button></div>
+      <div class="slide-row"><span class="slide-num">1</span><div class="slide-inputs"><input class="slide-input" placeholder="Slide 1: What to draw?" maxlength="200"/><input class="slide-caption" placeholder="Caption (optional)"/></div><button class="slide-del" onclick="removeSlide(this)">✕</button></div>
       <div class="slide-row"><span class="slide-num">2</span><div class="slide-inputs"><input class="slide-input" placeholder="Slide 2: What to draw?" maxlength="200"/><input class="slide-caption" placeholder="Caption (optional)"/></div><button class="slide-del" onclick="removeSlide(this)">✕</button></div>
     </div>
     <button class="pres-add-btn" onclick="addSlide()">+ Add another slide</button>
     <button class="pres-go-btn" onclick="startPresentation()">🎬 Generate &amp; Play Presentation →</button>
   </div>
 
-  <div class="speed-wrap">
-    <span>⚡ Fast</span>
-    <input type="range" id="speed-slider" min="1" max="5" value="3" oninput="updateSpeed(this.value)"/>
-    <span>🐢 Slow</span>
-    <span class="speed-label" id="speed-label">Medium</span>
+  <!-- SPEED + STYLE -->
+  <div class="controls-row">
+    <div class="speed-wrap">
+      <span>⚡</span>
+      <input type="range" id="speed-slider" min="1" max="5" value="3" oninput="updateSpeed(this.value)"/>
+      <span>🐢</span>
+      <span class="speed-label" id="speed-label">Medium</span>
+    </div>
   </div>
-
   <div class="style-row">
     <button class="sty active" data-style="pencil sketch, detailed hand drawn linework, black and white">✏️ Pencil</button>
-    <button class="sty" data-style="soft watercolor painting, pastel colors, loose artistic brush strokes">🎨 Watercolor</button>
-    <button class="sty" data-style="cartoon illustration, flat bold colors, cute clean lines">🎭 Cartoon</button>
-    <button class="sty" data-style="oil painting, rich textured brushwork, dramatic lighting, classical">🖼️ Oil Paint</button>
+    <button class="sty" data-style="soft watercolor painting, pastel colors, loose brush strokes">🎨 Watercolor</button>
+    <button class="sty" data-style="cartoon illustration, flat bold colors, clean lines">🎭 Cartoon</button>
+    <button class="sty" data-style="oil painting, rich textured brushwork, dramatic lighting">🖼️ Oil Paint</button>
     <button class="sty" data-style="pixel art, 8-bit retro style, crisp colorful pixels">👾 Pixel Art</button>
     <button class="sty" data-style="chalk drawing on dark blackboard, white and colored chalk">🟫 Chalk</button>
   </div>
 
-  <div class="examples" id="examples">
-    <span class="chip">📊 bar chart showing monthly revenue growth</span>
-    <span class="chip">🗺️ marketing funnel diagram</span>
-    <span class="chip">🏗️ architectural blueprint of a house</span>
-    <span class="chip">🐱 a cat sleeping on the moon</span>
-    <span class="chip">🌳 treehouse with rope swing in summer</span>
-    <span class="chip">🚀 rocket launching into space</span>
-    <span class="chip">🌊 giant waves crashing on a beach</span>
-    <span class="chip">💡 mind map of creative business ideas</span>
-    <span class="chip">🐋 whale swimming through the clouds</span>
-    <span class="chip">🦊 fox in a snowy forest at night</span>
-  </div>
-
+  <!-- RESULT -->
   <div id="result-section">
     <div class="canvas-card">
       <div class="card-bar">
@@ -274,50 +267,42 @@ nav{display:flex;align-items:center;justify-content:space-between;padding:18px 0
       <div class="slide-counter" id="slide-counter"></div>
       <div id="img-wrap">
         <div id="sketch-loader">
-          <svg class="pencil-anim" width="54" height="54" viewBox="0 0 56 56" fill="none">
+          <svg class="pencil-anim" width="52" height="52" viewBox="0 0 56 56" fill="none">
             <rect x="23" y="4" width="10" height="34" rx="3" fill="#e85d26"/>
             <polygon points="23,38 33,38 28,50" fill="#f5a623"/>
             <rect x="23" y="4" width="10" height="9" rx="3" fill="#d0c8c0"/>
           </svg>
           <div class="ll-wrap"><div class="ll"></div><div class="ll"></div><div class="ll"></div></div>
           <div id="loading-msg">Sketching your idea…</div>
-          <div class="wait-note" id="wait-note">Free tier uses shared servers.<br>May take <strong>20–60 seconds</strong>.<br><span style="color:var(--pro);cursor:pointer;font-weight:600;" onclick="showPricing()">⚡ Buy credits for instant results</span></div>
+          <div class="wait-note" id="wait-note">Free tier — may take <strong>20–60 seconds</strong>.<br><span style="color:var(--pro);cursor:pointer;font-weight:600;" onclick="showPricing()">⚡ Buy credits for instant results</span></div>
         </div>
         <img id="result-img" crossorigin="anonymous" style="display:none;position:absolute;opacity:0;"/>
-        <canvas id="reveal-canvas" style="display:none;width:100%;max-height:700px;"></canvas>
+        <canvas id="draw-canvas" style="display:none;width:100%;max-height:680px;"></canvas>
         <div class="wm" id="wm">DoodleAI.com</div>
-        <div class="caption-overlay" id="caption-overlay"></div>
+        <div class="caption-ov" id="caption-ov"></div>
         <div class="draw-status" id="draw-status" aria-live="polite"></div>
         <div id="error-box"></div>
       </div>
     </div>
-
     <div id="pres-thumbs"></div>
-
     <div class="story-box">
       <div class="story-lbl">✍️ The story</div>
       <div id="story-text"><span class="blink"></span></div>
     </div>
-
     <div class="action-row">
       <div id="status">Contacting AI drawing studio…</div>
-      <div style="display:flex;gap:10px;flex-wrap:wrap;">
+      <div style="display:flex;gap:9px;flex-wrap:wrap;">
         <button class="btn-new" id="new-btn">↩ New doodle</button>
-        <button class="btn-zip" id="zip-btn">📦 Download All Slides</button>
+        <button class="btn-zip" id="zip-btn">📦 Download All</button>
         <button class="btn-dl" id="dl-btn" disabled>
-          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
           Download PNG
         </button>
       </div>
     </div>
   </div>
 
-  <div class="footer">
-    DoodleAI.com &nbsp;·&nbsp;
-    <a href="/about.html">About</a>
-    <a href="/accessibility.html">Accessibility</a>
-    <a href="/contact.html">Contact</a>
-  </div>
+  <div class="footer">DoodleAI.com &nbsp;·&nbsp;<a href="/about.html">About</a><a href="/accessibility.html">Accessibility</a><a href="/contact.html">Contact</a></div>
 </div>
 
 <!-- PRICING MODAL -->
@@ -330,23 +315,23 @@ nav{display:flex;align-items:center;justify-content:space-between;padding:18px 0
     </div>
     <div class="modal-body">
       <div class="price-grid">
-        <div class="plan" onclick="selectPlan(this,'starter',1.99,10)"><h3>🌱 Starter</h3><div class="price">$1.99 <span>one-time</span></div><div class="imgs"><strong>10 images</strong></div><div class="cpt">Try it out</div><button class="plan-btn">Get 10 Credits →</button></div>
-        <div class="plan" onclick="selectPlan(this,'basic',4.99,25)"><h3>🎨 Basic</h3><div class="price">$4.99 <span>one-time</span></div><div class="imgs"><strong>25 images</strong></div><div class="cpt">Casual creators</div><button class="plan-btn">Get 25 Credits →</button></div>
-        <div class="plan popular" onclick="selectPlan(this,'creator',9.99,50)"><div class="popular-tag">⭐ Most Popular</div><h3>🚀 Creator</h3><div class="price">$9.99 <span>one-time</span></div><div class="imgs"><strong>50 images</strong></div><div class="cpt">Regular use</div><button class="plan-btn">Get 50 Credits →</button></div>
-        <div class="plan" onclick="selectPlan(this,'pro',17.99,100)"><h3>💼 Pro</h3><div class="price">$17.99 <span>one-time</span></div><div class="imgs"><strong>100 images</strong></div><div class="cpt">Best value</div><button class="plan-btn">Get 100 Credits →</button></div>
-        <div class="plan" onclick="selectPlan(this,'studio',29.99,200)"><h3>🎬 Studio</h3><div class="price">$29.99 <span>one-time</span></div><div class="imgs"><strong>200 images</strong></div><div class="cpt">Teams &amp; power users</div><button class="plan-btn">Get 200 Credits →</button></div>
-        <div class="plan" onclick="selectPlan(this,'power',49.99,350)"><h3>🏆 Power</h3><div class="price">$49.99 <span>one-time</span></div><div class="imgs"><strong>350 images</strong></div><div class="cpt">Maximum value</div><button class="plan-btn">Get 350 Credits →</button></div>
+        <div class="plan" onclick="selectPlan('starter',1.99,10)"><h3>🌱 Starter</h3><div class="price">$1.99 <span>one-time</span></div><div class="imgs"><strong>10 images</strong></div><button class="plan-btn">Get 10 Credits →</button></div>
+        <div class="plan" onclick="selectPlan('basic',4.99,25)"><h3>🎨 Basic</h3><div class="price">$4.99 <span>one-time</span></div><div class="imgs"><strong>25 images</strong></div><button class="plan-btn">Get 25 Credits →</button></div>
+        <div class="plan popular" onclick="selectPlan('creator',9.99,50)"><div class="pop-tag">⭐ Most Popular</div><h3>🚀 Creator</h3><div class="price">$9.99 <span>one-time</span></div><div class="imgs"><strong>50 images</strong></div><button class="plan-btn">Get 50 Credits →</button></div>
+        <div class="plan" onclick="selectPlan('pro',17.99,100)"><h3>💼 Pro</h3><div class="price">$17.99 <span>one-time</span></div><div class="imgs"><strong>100 images</strong></div><button class="plan-btn">Get 100 Credits →</button></div>
+        <div class="plan" onclick="selectPlan('studio',29.99,200)"><h3>🎬 Studio</h3><div class="price">$29.99 <span>one-time</span></div><div class="imgs"><strong>200 images</strong></div><button class="plan-btn">Get 200 Credits →</button></div>
+        <div class="plan" onclick="selectPlan('power',49.99,350)"><h3>🏆 Power</h3><div class="price">$49.99 <span>one-time</span></div><div class="imgs"><strong>350 images</strong></div><button class="plan-btn">Get 350 Credits →</button></div>
       </div>
       <div class="free-row">No thanks — <span onclick="closePricing()">continue with free slow tier</span></div>
-      <div class="setup-note"><strong>🔧 Owner setup:</strong> Replace the <code>STRIPE_LINKS</code> values below with your real Stripe payment links.</div>
+      <div class="setup-note"><strong>🔧 Owner setup:</strong> Replace <code>STRIPE_LINKS</code> values in the script with your real Stripe payment links.</div>
     </div>
   </div>
 </div>
 
 <script>
-// ══════════════════════════════════════
-//  CONFIG — paste your Stripe links here
-// ══════════════════════════════════════
+// ═══════════════════════════════════
+//  CONFIG
+// ═══════════════════════════════════
 const BACKEND_URL = 'https://whimsical-fox-75a7d4.netlify.app';
 const STRIPE_LINKS = {
   starter: 'https://buy.stripe.com/test_4gMcN5aRkaTb5Wa4VW2VG00',
@@ -357,21 +342,91 @@ const STRIPE_LINKS = {
   power:   'https://buy.stripe.com/test_14A8wPf7A6CV4S69cc2VG05',
 };
 
-// ══════════════════════════════════════
+// ═══════════════════════════════════
+//  CATEGORIES
+// ═══════════════════════════════════
+const CATEGORIES = {
+  kids: [
+    '🐶 Cute puppy','🐱 Playful kitten','🐘 Baby elephant','🦁 Lion cub','🐼 Panda bear',
+    '🦋 Butterfly garden','🌈 Rainbow unicorn','🧚 Tiny fairy','🐉 Friendly dragon','🚀 Space adventure',
+    '🏰 Fairy tale castle','🧜 Mermaid underwater','🦄 Unicorn prancing','🌟 Shooting star',
+    '🍄 Mushroom village','🌊 Ocean creatures','🦖 Friendly dinosaur','🎠 Carousel horse',
+    '🧸 Teddy bear picnic','🌸 Cherry blossom tree','🐠 Colorful fish tank','🦊 Fox in a forest',
+    '🐸 Frog on a lily pad','🌻 Sunflower field','🐝 Busy bumblebee'
+  ],
+  teens: [
+    '⚔️ Anime warrior','🗡️ Fantasy battle scene','🎮 Retro gaming controller','🎸 Electric guitar',
+    '🏀 Basketball slam dunk','⚽ Soccer player in action','🛹 Skateboarder trick',
+    '🎧 DJ with headphones','🌌 Galaxy and nebula','🤖 Futuristic robot',
+    '🐲 Dragon breathing fire','🧙 Wizard casting spell','🏍️ Motorcycle racer',
+    '🎭 Manga character','🦸 Superhero flying','👾 8-bit game character','🎪 Street art graffiti style',
+    '🌃 Cyberpunk city at night','🎵 Music festival crowd','🏄 Surfer on big wave',
+    '🥊 Boxing match','🎯 Archery target','🧗 Rock climber','🚗 Custom sports car'
+  ],
+  adults: [
+    '📊 Bar chart showing revenue growth','📈 Line graph of stock performance',
+    '🥧 Pie chart of market share','🗺️ Marketing funnel diagram','💡 Mind map of business ideas',
+    '🏗️ Architectural blueprint','🏠 Modern house floor plan','🌿 Botanical illustration',
+    '☕ Coffee shop interior','🏔️ Mountain landscape at dawn','🌅 Sunset over the ocean',
+    '🌳 Ancient oak tree','🦅 Eagle in flight','🍷 Wine and cheese still life',
+    '🌺 Tropical flower arrangement','📐 Engineering diagram','🧭 Vintage map',
+    '🏛️ Classical architecture','🌾 Farmhouse in wheat fields','🎻 Violin and music sheet',
+    '🔬 Scientific diagram','🧬 DNA double helix','🌍 World map infographic',
+    '📱 App UI wireframe','🖥️ Website layout mockup'
+  ],
+  all: [
+    '🎃 Halloween pumpkin patch','🎄 Christmas tree with ornaments','🎆 Fourth of July fireworks',
+    '🌸 Spring cherry blossoms','🍂 Autumn leaf pile','❄️ Winter snowscape',
+    '🍕 Pizza slice dripping cheese','🍔 Giant stacked burger','🍣 Sushi platter',
+    '🍰 Birthday cake with candles','🍦 Ice cream sundae','🥗 Colorful salad bowl',
+    '🗼 Eiffel Tower Paris','🏝️ Tropical island paradise','🗽 Statue of Liberty',
+    '🚂 Steam train on mountain track','⛵ Sailboat at sunset','🚁 Helicopter over city',
+    '😂 Funny cartoon face','🐶 Dog wearing sunglasses','🐱 Cat knocking things off table',
+    '🎪 Circus tent and performers','🎡 County fair Ferris wheel','🏖️ Beach scene with umbrellas'
+  ]
+};
+
+let currentAge = 'kids';
+function setAgeTab(age) {
+  currentAge = age;
+  ['kids','teens','adults','all'].forEach(a => {
+    document.getElementById('at-'+a).classList.toggle('active', a === age);
+  });
+  renderCats();
+}
+function renderCats() {
+  const grid = document.getElementById('cat-grid');
+  grid.innerHTML = '';
+  CATEGORIES[currentAge].forEach(item => {
+    const chip = document.createElement('div');
+    chip.className = 'cat-chip ' + currentAge + '-chip';
+    chip.textContent = item;
+    chip.onclick = () => {
+      // Strip emoji prefix
+      const txt = item.replace(/^\S+\s/, '');
+      document.getElementById('prompt-input').value = txt;
+      document.getElementById('prompt-input').focus();
+    };
+    grid.appendChild(chip);
+  });
+}
+renderCats();
+
+// ═══════════════════════════════════
 //  STATE
-// ══════════════════════════════════════
-let credits       = parseInt(localStorage.getItem('dai_credits')||'0');
+// ═══════════════════════════════════
+let credits = parseInt(localStorage.getItem('dai_credits')||'0');
 let selectedStyle = 'pencil sketch, detailed hand drawn linework, black and white';
 let currentPrompt = '', currentImgUrl = null;
-let storyTimer=null, progTimer=null, revealRAF=null;
+let storyTimer=null, progTimer=null, rafId=null;
 let appMode='single', drawSpeed=3;
 let presSlides=[], presIndex=0, isPresPlaying=false;
 
-function speedFactor(){ return {1:.18,2:.45,3:1,4:2,5:3.5}[drawSpeed]||1; }
+function speedF(){ return {1:.15,2:.4,3:1,4:2.2,5:4}[drawSpeed]||1; }
 
-// ══════════════════════════════════════
+// ═══════════════════════════════════
 //  MODE / SPEED
-// ══════════════════════════════════════
+// ═══════════════════════════════════
 function setMode(m){
   appMode=m;
   document.getElementById('tab-single').classList.toggle('active',m==='single');
@@ -379,139 +434,107 @@ function setMode(m){
   document.getElementById('single-mode').style.display=m==='single'?'block':'none';
   document.getElementById('pres-builder').style.display=m==='presentation'?'block':'none';
 }
-function updateSpeed(v){
-  drawSpeed=parseInt(v);
-  document.getElementById('speed-label').textContent={1:'Turbo ⚡',2:'Fast',3:'Medium',4:'Slow',5:'Very Slow'}[v];
-}
+function updateSpeed(v){ drawSpeed=parseInt(v); document.getElementById('speed-label').textContent={1:'Turbo ⚡',2:'Fast',3:'Medium',4:'Slow',5:'Very Slow'}[v]; }
 
-// ══════════════════════════════════════
+// ═══════════════════════════════════
 //  CREDITS
-// ══════════════════════════════════════
+// ═══════════════════════════════════
 function saveCredits(){ localStorage.setItem('dai_credits',credits); }
 function updateCreditBadge(){
   const b=document.getElementById('credit-badge'),btn=document.getElementById('create-btn');
-  if(credits>0){ b.className='credit-badge has-credits'; b.innerHTML=`⚡ <span style="font-size:1.1rem;color:var(--pro)">${credits}</span> credits remaining`; btn.textContent='⚡ Create (1 credit)'; btn.className='create-btn paid-mode'; }
+  if(credits>0){ b.className='credit-badge has-credits'; b.innerHTML=`⚡ <span style="font-size:1.05rem;color:var(--pro)">${credits}</span> credits`; btn.textContent='⚡ Create (1 credit)'; btn.className='create-btn pm'; }
   else { b.className='credit-badge'; b.innerHTML='🎨 Free tier — slow shared servers'; btn.textContent='✏️ Create'; btn.className='create-btn'; }
 }
 function checkStripeReturn(){
   const p=new URLSearchParams(window.location.search),c=parseInt(p.get('credits')||'0');
-  if(c>0){ credits+=c; saveCredits(); updateCreditBadge(); window.history.replaceState({},'',window.location.pathname); setTimeout(()=>alert(`✅ Payment successful! ${c} credits added.`),500); }
+  if(c>0){ credits+=c; saveCredits(); updateCreditBadge(); window.history.replaceState({},'',window.location.pathname); setTimeout(()=>alert(`✅ ${c} credits added!`),500); }
 }
 
-// ══════════════════════════════════════
+// ═══════════════════════════════════
 //  PRICING
-// ══════════════════════════════════════
+// ═══════════════════════════════════
 function showPricing(){ document.getElementById('pricing-modal').classList.add('show'); }
 function closePricing(){ document.getElementById('pricing-modal').classList.remove('show'); }
-function selectPlan(el,planId,price,n){
+function selectPlan(planId,price,n){
   const link=STRIPE_LINKS[planId];
   if(link) window.location.href=link;
   else { credits+=n; saveCredits(); updateCreditBadge(); closePricing(); alert(`✅ Demo: ${n} credits added!`); }
 }
 document.getElementById('pricing-modal').addEventListener('click',e=>{ if(e.target===document.getElementById('pricing-modal')) closePricing(); });
 
-// ══════════════════════════════════════
-//  PRESENTATION BUILDER
-// ══════════════════════════════════════
-function addSlide(){
-  const list=document.getElementById('slides-list');
-  const max=parseInt(document.getElementById('pres-slide-count').value)||50;
-  if(list.children.length>=max){ alert(`Max ${max} slides. Increase the slide count above to add more.`); return; }
-  const n=list.children.length+1;
-  const row=document.createElement('div'); row.className='slide-row';
-  row.innerHTML=`<span class="slide-num">${n}</span><div class="slide-inputs"><input class="slide-input" placeholder="Slide ${n}: What to draw?" maxlength="200"/><input class="slide-caption" placeholder="Caption (optional)"/></div><button class="slide-del" onclick="removeSlide(this)">✕</button>`;
-  list.appendChild(row);
-}
-function removeSlide(btn){
-  const list=document.getElementById('slides-list');
-  if(list.children.length<=1) return;
-  btn.closest('.slide-row').remove();
-  [...list.children].forEach((r,i)=>{ r.querySelector('.slide-num').textContent=i+1; });
-}
-function getSlideData(){
-  return [...document.querySelectorAll('.slide-row')].map(r=>({ prompt:r.querySelector('.slide-input').value.trim(), caption:r.querySelector('.slide-caption').value.trim() })).filter(s=>s.prompt);
-}
-async function startPresentation(){
-  const slides=getSlideData();
-  if(!slides.length){ alert('Please add at least one slide prompt!'); return; }
-  presSlides=slides.map(s=>({...s,canvas:null})); presIndex=0; isPresPlaying=true;
-  document.getElementById('result-section').style.display='block';
-  document.getElementById('examples').style.display='none';
-  document.getElementById('slide-counter').style.display='block';
-  document.getElementById('pres-thumbs').style.display='flex';
-  document.getElementById('pres-thumbs').innerHTML='';
-  document.getElementById('zip-btn').style.display='none';
-  presSlides.forEach((s,i)=>{
-    const t=document.createElement('div'); t.className='thumb'+(i===0?' active-thumb':''); t.id=`thumb-${i}`;
-    t.innerHTML=`<div class="thumb-placeholder">Slide ${i+1}</div><span class="thumb-num">${i+1}</span>`;
-    t.onclick=()=>jumpToSlide(i);
-    document.getElementById('pres-thumbs').appendChild(t);
-  });
-  await runNextPresSlide();
-}
-async function runNextPresSlide(){
-  if(presIndex>=presSlides.length){
-    document.getElementById('status').textContent='🎬 Presentation complete! Download slides below.';
-    document.getElementById('zip-btn').style.display='inline-flex';
-    document.getElementById('dl-btn').disabled=false; document.getElementById('dl-btn').style.opacity='1';
-    isPresPlaying=false; return;
-  }
-  const slide=presSlides[presIndex];
-  document.getElementById('slide-counter').textContent=`Slide ${presIndex+1} of ${presSlides.length}`;
-  currentPrompt=slide.prompt;
-  document.getElementById('label-prompt').textContent=`"${slide.prompt}"`;
-  const co=document.getElementById('caption-overlay');
-  if(slide.caption){ co.textContent=slide.caption; co.style.display='block'; } else co.style.display='none';
-  document.querySelectorAll('.thumb').forEach((t,i)=>t.classList.toggle('active-thumb',i===presIndex));
-  await generateAndDraw(slide.prompt,credits>0,true);
-}
-function jumpToSlide(i){
-  if(!presSlides[i]||!presSlides[i].canvas) return;
-  const cv=document.getElementById('reveal-canvas'),ctx=cv.getContext('2d');
-  cv.width=presSlides[i].canvas.width; cv.height=presSlides[i].canvas.height;
-  ctx.drawImage(presSlides[i].canvas,0,0); addWatermark(ctx,cv.width,cv.height); cv.style.display='block';
-  document.querySelectorAll('.thumb').forEach((t,j)=>t.classList.toggle('active-thumb',j===i));
-  const co=document.getElementById('caption-overlay');
-  if(presSlides[i].caption){ co.textContent=presSlides[i].caption; co.style.display='block'; } else co.style.display='none';
-}
-
-// ══════════════════════════════════════
-//  STYLES + EXAMPLES
-// ══════════════════════════════════════
+// ═══════════════════════════════════
+//  STYLES
+// ═══════════════════════════════════
 document.querySelectorAll('.sty').forEach(s=>{ s.addEventListener('click',()=>{ document.querySelectorAll('.sty').forEach(x=>x.classList.remove('active')); s.classList.add('active'); selectedStyle=s.dataset.style; }); });
-document.querySelectorAll('.chip').forEach(c=>{ c.addEventListener('click',()=>{ document.getElementById('prompt-input').value=c.textContent.replace(/^\S+\s/,''); document.getElementById('prompt-input').focus(); }); });
 document.getElementById('prompt-input').addEventListener('keydown',e=>{ if(e.key==='Enter') createDoodle(); });
 document.getElementById('create-btn').addEventListener('click',createDoodle);
 document.getElementById('new-btn').addEventListener('click',resetAll);
 document.getElementById('dl-btn').addEventListener('click',downloadCurrent);
 document.getElementById('zip-btn').addEventListener('click',downloadAllSlides);
 
-// ══════════════════════════════════════
-//  STORIES
-// ══════════════════════════════════════
-const STORIES={
-  default:["Picking up the pencil…","Sketching the main outlines…","Oops — that's wrong, erasing…","Adding shading and depth…","Filling in the details…","Almost there…","Your art is ready! ✨"],
-  chart:["Drawing the axes first…","Plotting data point by data point…","Hmm, that bar is wrong height — erasing…","Labeling each value…","Chart complete! 📊"],
-  tree:["Planting the roots…","The trunk grows upward…","Branches reach outward one by one…","Leaves fill in the canopy…","The swing hangs from the strongest branch 🌳"],
-  cat:["A moonlit windowsill takes shape…","Round head, pointy ears… too big — erasing…","Long whiskers, sleepy eyes…","Tail curls lazily… 🐱"],
-  rocket:["T-minus 10…","Fuselage forming — realigning — erasing…","Fins flare, flames ignite…","We have liftoff! 🚀"],
-  whale:["The sky becomes an ocean…","Great flukes rise — adjusting — erasing…","Barnacles catch the starlight…","The whale sings to the stars 🐋"],
-};
-function getStory(p){
-  p=p.toLowerCase();
-  if(p.includes('chart')||p.includes('graph')||p.includes('bar')) return STORIES.chart;
-  if(p.includes('tree')||p.includes('treehouse')||p.includes('swing')) return STORIES.tree;
-  if(p.includes('cat')||p.includes('kitten')) return STORIES.cat;
-  if(p.includes('rocket')||p.includes('space')) return STORIES.rocket;
-  if(p.includes('whale')||p.includes('cloud')) return STORIES.whale;
-  return STORIES.default;
+// ═══════════════════════════════════
+//  PRESENTATION
+// ═══════════════════════════════════
+function addSlide(){
+  const list=document.getElementById('slides-list');
+  const max=parseInt(document.getElementById('pres-slide-count').value)||50;
+  if(list.children.length>=max){ alert(`Max ${max} slides.`); return; }
+  const n=list.children.length+1;
+  const row=document.createElement('div'); row.className='slide-row';
+  row.innerHTML=`<span class="slide-num">${n}</span><div class="slide-inputs"><input class="slide-input" placeholder="Slide ${n}: What to draw?" maxlength="200"/><input class="slide-caption" placeholder="Caption (optional)"/></div><button class="slide-del" onclick="removeSlide(this)">✕</button>`;
+  list.appendChild(row);
+}
+function removeSlide(btn){ const list=document.getElementById('slides-list'); if(list.children.length<=1) return; btn.closest('.slide-row').remove(); [...list.children].forEach((r,i)=>r.querySelector('.slide-num').textContent=i+1); }
+function getSlideData(){ return [...document.querySelectorAll('.slide-row')].map(r=>({prompt:r.querySelector('.slide-input').value.trim(),caption:r.querySelector('.slide-caption').value.trim()})).filter(s=>s.prompt); }
+async function startPresentation(){
+  const slides=getSlideData(); if(!slides.length){ alert('Add at least one slide prompt!'); return; }
+  presSlides=slides.map(s=>({...s,canvas:null})); presIndex=0; isPresPlaying=true;
+  document.getElementById('result-section').style.display='block';
+  document.getElementById('slide-counter').style.display='block';
+  document.getElementById('pres-thumbs').style.display='flex';
+  document.getElementById('pres-thumbs').innerHTML='';
+  document.getElementById('zip-btn').style.display='none';
+  presSlides.forEach((s,i)=>{ const t=document.createElement('div'); t.className='thumb'+(i===0?' at':''); t.id=`thumb-${i}`; t.innerHTML=`<div class="thumb-ph">Slide ${i+1}</div><span class="thumb-num">${i+1}</span>`; t.onclick=()=>jumpToSlide(i); document.getElementById('pres-thumbs').appendChild(t); });
+  await runNextPresSlide();
+}
+async function runNextPresSlide(){
+  if(presIndex>=presSlides.length){ document.getElementById('status').textContent='🎬 Presentation complete!'; document.getElementById('zip-btn').style.display='inline-flex'; document.getElementById('dl-btn').disabled=false; document.getElementById('dl-btn').style.opacity='1'; isPresPlaying=false; return; }
+  const slide=presSlides[presIndex];
+  document.getElementById('slide-counter').textContent=`Slide ${presIndex+1} of ${presSlides.length}`;
+  currentPrompt=slide.prompt; document.getElementById('label-prompt').textContent=`"${slide.prompt}"`;
+  const co=document.getElementById('caption-ov'); if(slide.caption){co.textContent=slide.caption;co.style.display='block';}else co.style.display='none';
+  document.querySelectorAll('.thumb').forEach((t,i)=>t.classList.toggle('at',i===presIndex));
+  await generateAndDraw(slide.prompt,credits>0,true);
+}
+function jumpToSlide(i){
+  if(!presSlides[i]||!presSlides[i].canvas) return;
+  const cv=document.getElementById('draw-canvas'),ctx=cv.getContext('2d');
+  cv.width=presSlides[i].canvas.width; cv.height=presSlides[i].canvas.height;
+  ctx.drawImage(presSlides[i].canvas,0,0); addWM(ctx,cv.width,cv.height); cv.style.display='block';
+  document.querySelectorAll('.thumb').forEach((t,j)=>t.classList.toggle('at',j===i));
+  const co=document.getElementById('caption-ov'); if(presSlides[i].caption){co.textContent=presSlides[i].caption;co.style.display='block';}else co.style.display='none';
 }
 
-// ══════════════════════════════════════
-//  FREE API URLs
-// ══════════════════════════════════════
+// ═══════════════════════════════════
+//  STORIES
+// ═══════════════════════════════════
+const STORIES={
+  default:["Picking up the pencil…","Rough outline taking shape…","Oops — erasing that line…","Building up the details…","Adding shading and depth…","Almost finished…","Done! ✨"],
+  animal:["Sketching the basic body shape…","The head takes form…","Oops — ear was wrong, fixing…","Eyes and expression…","Fur texture and detail…","Your creature is alive! 🐾"],
+  chart:["Drawing the axes…","First data bars appear…","Hmm that bar's too tall — fixing…","Labels and values…","Chart complete! 📊"],
+  fantasy:["A magical world emerges…","Mystical shapes take form…","Oops — a wrong line, erasing…","Details of the enchanted scene…","The magic is complete! ✨"],
+  landscape:["The horizon line first…","Background elements take shape…","Oops — redrawing that mountain…","Middle ground details…","Foreground and final touches…","The scene is complete! 🌄"],
+  food:["The outline of the dish…","Main ingredients sketched in…","Oops — that shape was off, fixing…","Details and texture…","Looks delicious! 🍴"],
+};
+function getStory(p){ p=p.toLowerCase(); if(p.includes('chart')||p.includes('graph')||p.includes('bar')||p.includes('diagram')) return STORIES.chart; if(p.includes('dog')||p.includes('cat')||p.includes('animal')||p.includes('elephant')||p.includes('lion')||p.includes('panda')||p.includes('bunny')||p.includes('bear')) return STORIES.animal; if(p.includes('dragon')||p.includes('fairy')||p.includes('unicorn')||p.includes('wizard')||p.includes('castle')||p.includes('mermaid')) return STORIES.fantasy; if(p.includes('mountain')||p.includes('landscape')||p.includes('forest')||p.includes('ocean')||p.includes('sunset')||p.includes('tree')) return STORIES.landscape; if(p.includes('pizza')||p.includes('burger')||p.includes('cake')||p.includes('food')||p.includes('sushi')) return STORIES.food; return STORIES.default; }
+function startStory(prompt){ const lines=getStory(prompt),el=document.getElementById('story-text'); let li=0,ci=0; el.innerHTML='<span class="blink"></span>'; if(storyTimer) clearInterval(storyTimer); storyTimer=setInterval(()=>{ const t=lines.slice(0,li+1).join('  '); if(ci<t.length){ci++;el.innerHTML=t.slice(0,ci)+'<span class="blink"></span>';}else if(li<lines.length-1)li++; },28); }
+function stopStory(txt){ if(storyTimer){clearInterval(storyTimer);storyTimer=null;} if(txt) document.getElementById('story-text').innerHTML=txt; }
+
+// ═══════════════════════════════════
+//  FREE API
+// ═══════════════════════════════════
 function buildFreeUrls(prompt){
-  const enc=encodeURIComponent(prompt+', '+selectedStyle+', illustration, no text overlays, clean composition');
+  const enc=encodeURIComponent(prompt+', '+selectedStyle+', illustration, no watermarks, clean composition');
   const s=Math.floor(Math.random()*999999);
   return [
     `https://image.pollinations.ai/prompt/${enc}?width=1024&height=768&seed=${s}&nologo=true&model=flux`,
@@ -521,9 +544,9 @@ function buildFreeUrls(prompt){
   ];
 }
 
-// ══════════════════════════════════════
-//  CREATE SINGLE
-// ══════════════════════════════════════
+// ═══════════════════════════════════
+//  CREATE + GENERATE
+// ═══════════════════════════════════
 async function createDoodle(){
   const input=document.getElementById('prompt-input'),prompt=input.value.trim();
   if(!prompt){ input.style.borderColor='#e85d26'; input.focus(); setTimeout(()=>input.style.borderColor='',1200); return; }
@@ -532,682 +555,571 @@ async function createDoodle(){
   document.getElementById('pres-thumbs').style.display='none';
   document.getElementById('pres-thumbs').innerHTML='';
   document.getElementById('zip-btn').style.display='none';
-  document.getElementById('caption-overlay').style.display='none';
+  document.getElementById('caption-ov').style.display='none';
   currentPrompt=prompt;
   document.getElementById('result-section').style.display='block';
-  document.getElementById('examples').style.display='none';
   document.getElementById('label-prompt').textContent=`"${prompt}"`;
   await generateAndDraw(prompt,credits>0,false);
 }
 
-// ══════════════════════════════════════
-//  GENERATE + DRAW
-// ══════════════════════════════════════
 async function generateAndDraw(prompt,isPaid,isPresMode){
   document.getElementById('sketch-loader').style.display='flex';
-  document.getElementById('reveal-canvas').style.display='none';
+  document.getElementById('draw-canvas').style.display='none';
   document.getElementById('result-img').src='';
   document.getElementById('error-box').style.display='none';
   document.getElementById('wm').style.display='none';
   document.getElementById('draw-status').style.display='none';
   document.getElementById('dl-btn').disabled=true; document.getElementById('dl-btn').style.opacity='.4';
   document.getElementById('create-btn').disabled=true;
-  const badge=document.getElementById('mode-badge');
-  badge.className='mode-badge '+(isPaid?'paid-badge':'free-badge');
-  badge.textContent=isPaid?'⚡ Credits':'Free';
+  const badge=document.getElementById('mode-badge'); badge.className='mode-badge '+(isPaid?'paid-badge':'free-badge'); badge.textContent=isPaid?'⚡ Credits':'Free';
   document.getElementById('prog').className='prog-fill'+(isPaid?' paid':'');
-  document.querySelectorAll('.ll').forEach(l=>l.className='ll'+(isPaid?' paid-ll':''));
-  const wn=document.getElementById('wait-note');
-  wn.className='wait-note'+(isPaid?' paid-note':'');
-  wn.innerHTML=isPaid?'⚡ <strong>Credits mode:</strong> Ready in <strong>5–10 seconds</strong>.':'Free tier — may take <strong>20–60 seconds</strong>.<br><span style="color:var(--pro);cursor:pointer;font-weight:600;" onclick="showPricing()">⚡ Buy credits for instant results</span>';
+  document.querySelectorAll('.ll').forEach(l=>l.className='ll'+(isPaid?' pl':''));
+  const wn=document.getElementById('wait-note'); wn.className='wait-note'+(isPaid?' pn':'');
+  wn.innerHTML=isPaid?'⚡ Ready in <strong>5–10 seconds</strong>.':'Free tier — may take <strong>20–60 seconds</strong>.<br><span style="color:var(--pro);cursor:pointer;font-weight:600;" onclick="showPricing()">⚡ Buy credits for instant results</span>';
   if(!isPresMode) startStory(prompt);
   startFakeProgress(isPaid);
-  let success=false, lastErr='';
+  let success=false,lastErr='';
 
   if(isPaid&&BACKEND_URL){
     document.getElementById('status').textContent='⚡ Generating with dedicated AI…';
     try{
       const res=await fetch(BACKEND_URL+'/.netlify/functions/generate',{method:'POST',headers:{'Content-Type':'application/json','Authorization':'Bearer paid'},body:JSON.stringify({prompt,style:selectedStyle,tier:'paid'})});
       if(!res.ok) throw new Error('Server error '+res.status);
-      const data=await res.json();
-      if(!data.image) throw new Error('No image in response');
+      const data=await res.json(); if(!data.image) throw new Error('No image');
       const bytes=Uint8Array.from(atob(data.image),c=>c.charCodeAt(0));
-      const blob=new Blob([bytes],{type:'image/png'});
-      const url=URL.createObjectURL(blob);
-      await loadAndAnimate(url); currentImgUrl=url;
-      credits--; saveCredits(); updateCreditBadge(); success=true;
+      const blob=new Blob([bytes],{type:'image/png'}); const url=URL.createObjectURL(blob);
+      await loadAndAnimate(url); currentImgUrl=url; credits--; saveCredits(); updateCreditBadge(); success=true;
     }catch(e){ lastErr=e.message; }
   } else {
     const urls=buildFreeUrls(prompt);
     for(let i=0;i<urls.length;i++){
       document.getElementById('status').textContent=i===0?'Contacting free AI server…':`Trying backup ${i+1}…`;
       document.getElementById('loading-msg').textContent=i===0?'Sketching your idea…':`Retrying… (${i+1}/${urls.length})`;
-      try{
-        await loadAndAnimate(urls[i]); currentImgUrl=urls[i];
-        if(isPaid){ credits--; saveCredits(); updateCreditBadge(); }
-        success=true; break;
-      }catch(e){ lastErr=e.message; if(i<urls.length-1) await sleep(1800); }
+      try{ await loadAndAnimate(urls[i]); currentImgUrl=urls[i]; if(isPaid){credits--;saveCredits();updateCreditBadge();} success=true; break; }
+      catch(e){ lastErr=e.message; if(i<urls.length-1) await sleep(1800); }
     }
   }
 
   if(success){
     stopFakeProgress(100);
-    if(!isPresMode){
-      stopStory('Your doodle is ready! ✨');
-      document.getElementById('status').textContent=isPaid?`⚡ Done! ${credits} credits remaining.`:'Done! Download or try a new prompt.';
-      document.getElementById('dl-btn').disabled=false; document.getElementById('dl-btn').style.opacity='1';
-    } else {
-      const cv=document.getElementById('reveal-canvas');
-      const off=document.createElement('canvas'); off.width=cv.width; off.height=cv.height;
-      off.getContext('2d').drawImage(cv,0,0);
-      presSlides[presIndex].canvas=off;
-      const thumbEl=document.getElementById(`thumb-${presIndex}`);
-      if(thumbEl){ const tc=document.createElement('canvas'); tc.width=110; tc.height=74; tc.getContext('2d').drawImage(off,0,0,110,74); thumbEl.innerHTML=`<span class="thumb-num">${presIndex+1}</span>`; thumbEl.prepend(tc); }
-      presIndex++;
-      if(presIndex<presSlides.length){ document.getElementById('status').textContent=`Slide ${presIndex} done — drawing next…`; await sleep(1200); }
+    if(!isPresMode){ stopStory('Your doodle is ready! ✨'); document.getElementById('status').textContent=isPaid?`⚡ Done! ${credits} credits left.`:'Done! Download or create another.'; document.getElementById('dl-btn').disabled=false; document.getElementById('dl-btn').style.opacity='1'; }
+    else {
+      const cv=document.getElementById('draw-canvas'); const off=document.createElement('canvas'); off.width=cv.width; off.height=cv.height; off.getContext('2d').drawImage(cv,0,0); presSlides[presIndex].canvas=off;
+      const th=document.getElementById(`thumb-${presIndex}`); if(th){ const tc=document.createElement('canvas'); tc.width=108; tc.height=72; tc.getContext('2d').drawImage(off,0,0,108,72); th.innerHTML=`<span class="thumb-num">${presIndex+1}</span>`; th.prepend(tc); }
+      presIndex++; if(presIndex<presSlides.length){ document.getElementById('status').textContent=`Slide ${presIndex} done — drawing next…`; await sleep(1200); }
       await runNextPresSlide();
     }
   } else {
-    stopFakeProgress(0);
-    if(!isPresMode) stopStory('');
-    document.getElementById('error-box').innerHTML='<strong>⚠️ All AI servers are currently busy.</strong><br><br>• Wait 30 seconds and try again<br>• Try a shorter prompt<br>• <span style="color:var(--pro);cursor:pointer;font-weight:700;" onclick="showPricing()">⚡ Buy credits</span> — dedicated servers<br><br><small style="color:#ccc">Error: '+lastErr+'</small>';
-    document.getElementById('error-box').style.display='block';
-    document.getElementById('sketch-loader').style.display='none';
-    document.getElementById('status').textContent='Failed — try again or buy credits.';
+    stopFakeProgress(0); if(!isPresMode) stopStory('');
+    document.getElementById('error-box').innerHTML='<strong>⚠️ All AI servers busy.</strong><br><br>• Wait 30 sec and try again<br>• Try a shorter prompt<br>• <span style="color:var(--pro);cursor:pointer;font-weight:700;" onclick="showPricing()">⚡ Buy credits</span> for dedicated servers<br><br><small style="color:#ccc">'+lastErr+'</small>';
+    document.getElementById('error-box').style.display='block'; document.getElementById('sketch-loader').style.display='none'; document.getElementById('status').textContent='Failed — try again.';
   }
   document.getElementById('create-btn').disabled=false;
 }
 
-// ══════════════════════════════════════
-//  LOAD IMAGE THEN START DRAWING
-// ══════════════════════════════════════
+// ═══════════════════════════════════
+//  LOAD IMAGE
+// ═══════════════════════════════════
 function loadAndAnimate(url){
   return new Promise((resolve,reject)=>{
     const img=document.getElementById('result-img');
-    const to=setTimeout(()=>reject(new Error('Timed out after 65s')),65000);
-    img.onload=()=>{ clearTimeout(to); document.getElementById('sketch-loader').style.display='none'; startDrawing(img,resolve); };
-    img.onerror=()=>{ clearTimeout(to); reject(new Error('Image failed to load')); };
+    const to=setTimeout(()=>reject(new Error('Timeout')),65000);
+    img.onload=()=>{ clearTimeout(to); document.getElementById('sketch-loader').style.display='none'; startStrokeDrawing(img,resolve); };
+    img.onerror=()=>{ clearTimeout(to); reject(new Error('Image failed')); };
     img.crossOrigin='anonymous'; img.src=url;
   });
 }
 
-// ══════════════════════════════════════
-//  STROKE-BY-STROKE DRAWING ENGINE
-//  Decomposes image into edge strokes
-//  and redraws them one at a time
-// ══════════════════════════════════════
-function startDrawing(img, onDone){
-  const cv=document.getElementById('reveal-canvas'), ctx=cv.getContext('2d');
+// ═══════════════════════════════════
+//  STROKE-BY-STROKE ENGINE
+//  Uses ImageData to extract contour
+//  paths and redraws them one at a time
+//  with a live tool cursor
+// ═══════════════════════════════════
+function startStrokeDrawing(img, onDone){
+  const cv=document.getElementById('draw-canvas'),ctx=cv.getContext('2d');
   cv.width=img.naturalWidth||1024; cv.height=img.naturalHeight||768;
   cv.style.display='block';
   document.getElementById('wm').style.display='block';
   document.getElementById('draw-status').style.display='block';
 
-  // Build source canvas
+  // Offscreen source
   const src=document.createElement('canvas'); src.width=cv.width; src.height=cv.height;
   const sctx=src.getContext('2d'); sctx.drawImage(img,0,0,src.width,src.height);
-  const srcData=sctx.getImageData(0,0,src.width,src.height);
+  const sd=sctx.getImageData(0,0,src.width,src.height);
 
   const sty=selectedStyle.toLowerCase();
-  if(sty.includes('pixel'))        drawPixelStyle(cv,ctx,src,srcData,onDone);
-  else if(sty.includes('chalk'))   drawChalkStyle(cv,ctx,src,srcData,onDone);
-  else if(sty.includes('water'))   drawWatercolorStyle(cv,ctx,src,srcData,onDone);
-  else if(sty.includes('oil'))     drawOilStyle(cv,ctx,src,srcData,onDone);
-  else if(sty.includes('cartoon')) drawCartoonStyle(cv,ctx,src,srcData,onDone);
-  else                             drawPencilStyle(cv,ctx,src,srcData,onDone);
+  if(sty.includes('pixel'))        strokePixel(cv,ctx,src,sd,onDone);
+  else if(sty.includes('chalk'))   strokeChalk(cv,ctx,src,sd,onDone);
+  else if(sty.includes('water'))   strokeWatercolor(cv,ctx,src,sd,onDone);
+  else if(sty.includes('oil'))     strokeOil(cv,ctx,src,sd,onDone);
+  else if(sty.includes('cartoon')) strokeCartoon(cv,ctx,src,sd,onDone);
+  else                             strokePencil(cv,ctx,src,sd,onDone);
 }
 
-// ══════════════════════════════════════
-//  UTILITIES
-// ══════════════════════════════════════
-function addWatermark(ctx,W,H){ ctx.save(); ctx.font='bold 13px DM Sans,Arial,sans-serif'; ctx.fillStyle='rgba(255,255,255,.72)'; ctx.shadowColor='rgba(0,0,0,.55)'; ctx.shadowBlur=4; ctx.textAlign='right'; ctx.fillText('DoodleAI.com',W-14,H-12); ctx.restore(); }
-function setStatus(msg){ document.getElementById('draw-status').textContent=msg; }
-function sleep(ms){ return new Promise(r=>setTimeout(r,ms)); }
-function rand(a,b){ return a+Math.random()*(b-a); }
-function randInt(a,b){ return Math.floor(rand(a,b+1)); }
-function ease(p){ return p<.5?2*p*p:1-Math.pow(-2*p+2,2)/2; }
-function getPixel(d,x,y,W){ x=Math.max(0,Math.min(W-1,x|0)); y=Math.max(0,Math.min((d.length/4/W)-1,y|0)); const i=(y*W+x)*4; return [d[i],d[i+1],d[i+2],d[i+3]]; }
+// ═══════════════════════════════════
+//  SHARED UTILS
+// ═══════════════════════════════════
+const sleep=ms=>new Promise(r=>setTimeout(r,ms));
+const rand=(a,b)=>a+Math.random()*(b-a);
+const randInt=(a,b)=>Math.floor(rand(a,b+1));
+function addWM(ctx,W,H){ ctx.save(); ctx.font='bold 12px DM Sans,Arial,sans-serif'; ctx.fillStyle='rgba(255,255,255,.72)'; ctx.shadowColor='rgba(0,0,0,.55)'; ctx.shadowBlur=4; ctx.textAlign='right'; ctx.fillText('DoodleAI.com',W-12,H-10); ctx.restore(); }
+function setDS(msg){ document.getElementById('draw-status').textContent=msg; }
+function getpx(d,x,y,W){ x=Math.max(0,Math.min(W-1,x|0)); y=Math.max(0,Math.min((d.length/4/W|0)-1,y|0)); const i=(y*W+x)*4; return [d[i],d[i+1],d[i+2],d[i+3]]; }
 
-// Sobel edge detection — returns edge strength map
-function detectEdges(srcData,W,H){
-  const gray=new Float32Array(W*H);
-  for(let i=0;i<W*H;i++){ const o=i*4; gray[i]=(srcData.data[o]*.299+srcData.data[o+1]*.587+srcData.data[o+2]*.114)/255; }
-  const edges=new Float32Array(W*H);
+// Sobel edge detection
+function sobelEdges(sd,W,H){
+  const g=new Float32Array(W*H);
+  for(let i=0;i<W*H;i++){ const o=i*4; g[i]=(sd.data[o]*.299+sd.data[o+1]*.587+sd.data[o+2]*.114)/255; }
+  const e=new Float32Array(W*H);
   for(let y=1;y<H-1;y++) for(let x=1;x<W-1;x++){
-    const gx=(-gray[(y-1)*W+(x-1)]+gray[(y-1)*W+(x+1)]-2*gray[y*W+(x-1)]+2*gray[y*W+(x+1)]-gray[(y+1)*W+(x-1)]+gray[(y+1)*W+(x+1)]);
-    const gy=(-gray[(y-1)*W+(x-1)]-2*gray[(y-1)*W+x]-gray[(y-1)*W+(x+1)]+gray[(y+1)*W+(x-1)]+2*gray[(y+1)*W+x]+gray[(y+1)*W+(x+1)]);
-    edges[y*W+x]=Math.min(1,Math.sqrt(gx*gx+gy*gy)*3);
+    const gx=(-g[(y-1)*W+(x-1)]+g[(y-1)*W+(x+1)]-2*g[y*W+(x-1)]+2*g[y*W+(x+1)]-g[(y+1)*W+(x-1)]+g[(y+1)*W+(x+1)]);
+    const gy=(-g[(y-1)*W+(x-1)]-2*g[(y-1)*W+x]-g[(y-1)*W+(x+1)]+g[(y+1)*W+(x-1)]+2*g[(y+1)*W+x]+g[(y+1)*W+(x+1)]);
+    e[y*W+x]=Math.min(1,Math.sqrt(gx*gx+gy*gy)*2.8);
   }
-  return edges;
+  return e;
 }
 
-// Extract strokes from edges — returns array of {x,y,len,angle,strength}
-function extractStrokes(edges,W,H,count){
-  const strokes=[];
-  const threshold=0.15;
-  // Sample strong edge points
-  const pts=[];
-  for(let y=2;y<H-2;y+=3) for(let x=2;x<W-2;x+=3){
-    if(edges[y*W+x]>threshold) pts.push({x,y,s:edges[y*W+x]});
+// Build connected stroke paths by following edge chains
+function buildPaths(edges,W,H,threshold){
+  const visited=new Uint8Array(W*H);
+  const paths=[];
+  const dirs=[[-1,-1],[-1,0],[-1,1],[0,-1],[0,1],[1,-1],[1,0],[1,1]];
+
+  for(let sy=2;sy<H-2;sy+=2) for(let sx=2;sx<W-2;sx+=2){
+    const idx=sy*W+sx;
+    if(visited[idx]||edges[idx]<threshold) continue;
+    // Walk connected edge chain
+    const path=[[sx,sy]]; visited[idx]=1;
+    let cx=sx,cy=sy;
+    for(let step=0;step<180;step++){
+      let best=-1,bx=cx,by=cy,bs=0;
+      for(const [dy,dx] of dirs){
+        const nx=cx+dx,ny=cy+dy;
+        if(nx<1||nx>=W-1||ny<1||ny>=H-1) continue;
+        const ni=ny*W+nx;
+        if(!visited[ni]&&edges[ni]>bs){ bs=edges[ni]; bx=nx; by=ny; best=ni; }
+      }
+      if(best<0||bs<threshold) break;
+      path.push([bx,by]); visited[best]=1; cx=bx; cy=by;
+    }
+    if(path.length>=3) paths.push(path);
   }
-  // Sort by strength descending, take top N
-  pts.sort((a,b)=>b.s-a.s);
-  const top=pts.slice(0,count*2);
-  // Build strokes following edge direction
-  top.forEach(p=>{
-    // Estimate angle from nearby edge strengths
-    const ex1=edges[p.y*W+Math.min(W-1,p.x+2)]||0;
-    const ex2=edges[p.y*W+Math.max(0,p.x-2)]||0;
-    const ey1=edges[Math.min(H-1,p.y+2)*W+p.x]||0;
-    const ey2=edges[Math.max(0,p.y-2)*W+p.x]||0;
-    const angle=Math.atan2(ey1-ey2,ex1-ex2)+Math.PI/2;
-    strokes.push({x:p.x,y:p.y,angle,strength:p.s,len:4+p.s*18});
-  });
-  strokes.sort((a,b)=>b.strength-a.strength);
-  return strokes.slice(0,count);
+  // Sort longest paths first (main outlines)
+  paths.sort((a,b)=>b.length-a.length);
+  return paths;
 }
 
-// ══════════════════════════════════════
-//  MISTAKE / CORRECTION SYSTEM
-//  Fires every ~30 seconds of drawing
-// ══════════════════════════════════════
-let mistakeTimes=[], mistakeDone=[];
-function scheduleMistakes(totalMs){
-  mistakeTimes=[]; mistakeDone=[];
-  for(let t=30000;t<totalMs-8000;t+=30000){ mistakeTimes.push(t); mistakeDone.push(false); }
-}
-function checkAndTriggerMistake(elapsedMs,ctx,W,H,src,style){
-  for(let i=0;i<mistakeTimes.length;i++){
-    if(!mistakeDone[i]&&elapsedMs>=mistakeTimes[i]){ mistakeDone[i]=true; return true; }
-  }
-  return false;
+// ═══════════════════════════════════
+//  MISTAKE SYSTEM — every 30s
+// ═══════════════════════════════════
+let mTimes=[],mDone=[];
+function scheduleMistakes(totalMs){ mTimes=[]; mDone=[]; for(let t=30000;t<totalMs-6000;t+=30000){ mTimes.push(t); mDone.push(false); } }
+function checkMistake(elapsed){ for(let i=0;i<mTimes.length;i++) if(!mDone[i]&&elapsed>=mTimes[i]){ mDone[i]=true; return true; } return false; }
+
+async function doMistake(ctx,W,H,src,style){
+  if(style==='chalk') await mistakeChalk(ctx,W,H,src);
+  else if(style==='oil') await mistakeOil(ctx,W,H,src);
+  else await mistakePencil(ctx,W,H,src);
 }
 
-// PENCIL MISTAKE — wrong scribble + pink eraser
-async function doPencilMistake(ctx,W,H,src){
-  const mx=rand(W*.15,W*.8),my=rand(H*.15,H*.8),mw=rand(50,110),mh=rand(30,65);
-  setStatus('✏️ Oops — wrong stroke!');
+async function mistakePencil(ctx,W,H,src){
+  const mx=rand(W*.2,W*.75),my=rand(H*.2,H*.75),mw=rand(40,90),mh=rand(25,55);
+  setDS('✏️ Oops — wrong stroke!');
   ctx.save();
-  for(let i=0;i<10;i++){
-    ctx.beginPath();
-    ctx.moveTo(mx-mw/2+Math.random()*mw,my-mh/2+Math.random()*mh);
-    ctx.bezierCurveTo(mx+(Math.random()-.5)*mw*1.4,my+(Math.random()-.5)*mh*1.4,mx+(Math.random()-.5)*mw*1.4,my+(Math.random()-.5)*mh*1.4,mx-mw/2+Math.random()*mw,my-mh/2+Math.random()*mh);
-    ctx.strokeStyle='rgba(30,30,30,.65)'; ctx.lineWidth=1.5+Math.random()*2; ctx.lineCap='round'; ctx.stroke();
+  for(let i=0;i<8;i++){
+    ctx.beginPath(); ctx.moveTo(mx-mw/2+Math.random()*mw,my-mh/2+Math.random()*mh);
+    ctx.bezierCurveTo(mx+(Math.random()-.5)*mw*1.3,my+(Math.random()-.5)*mh*1.3,mx+(Math.random()-.5)*mw*1.3,my+(Math.random()-.5)*mh*1.3,mx-mw/2+Math.random()*mw,my-mh/2+Math.random()*mh);
+    ctx.strokeStyle='rgba(20,20,20,.6)'; ctx.lineWidth=1.2+Math.random()*1.5; ctx.lineCap='round'; ctx.stroke();
   }
-  ctx.restore();
-  await sleep(Math.round(350*speedFactor()));
-  setStatus('🩹 Erasing mistake…');
-  // Pink eraser sweep
-  for(let f=0;f<10;f++){
-    ctx.save(); ctx.beginPath(); ctx.rect(mx-mw/2-12,my-mh/2-12,mw+24,mh+24); ctx.clip();
-    ctx.drawImage(src,0,0,src.width,src.height);
-    const ex=mx-mw/2+(Math.sin(f/10*Math.PI*4)*.5+.5)*mw;
-    ctx.fillStyle='rgba(255,182,193,.9)'; ctx.fillRect(ex-22,my-13,44,26);
-    ctx.strokeStyle='#d4a0a8'; ctx.lineWidth=1; ctx.strokeRect(ex-22,my-13,44,26);
-    ctx.globalAlpha=.4; for(let d=0;d<7;d++){ ctx.beginPath(); ctx.arc(ex+rand(-35,35),my+rand(-18,18),rand(1,3),0,Math.PI*2); ctx.fillStyle='#e8e0d8'; ctx.fill(); }
-    ctx.restore(); addWatermark(ctx,W,H);
-    await sleep(40);
+  ctx.restore(); await sleep(Math.round(280*speedF()));
+  setDS('🩹 Erasing…');
+  for(let f=0;f<8;f++){
+    ctx.save(); ctx.beginPath(); ctx.rect(mx-mw/2-10,my-mh/2-10,mw+20,mh+20); ctx.clip(); ctx.drawImage(src,0,0,src.width,src.height);
+    const ex=mx-mw/2+(Math.sin(f/8*Math.PI*3.5)*.5+.5)*mw;
+    ctx.fillStyle='rgba(255,182,193,.88)'; ctx.fillRect(ex-18,my-11,36,22);
+    ctx.globalAlpha=.35; for(let d=0;d<6;d++){ ctx.beginPath(); ctx.arc(ex+rand(-30,30),my+rand(-14,14),rand(1,3),0,Math.PI*2); ctx.fillStyle='#e8e0d8'; ctx.fill(); }
+    ctx.restore(); addWM(ctx,W,H); await sleep(35);
   }
-  // Clean restore
-  ctx.save(); ctx.beginPath(); ctx.rect(mx-mw/2-12,my-mh/2-12,mw+24,mh+24); ctx.clip(); ctx.drawImage(src,0,0,src.width,src.height); ctx.restore();
-  addWatermark(ctx,W,H);
+  ctx.save(); ctx.beginPath(); ctx.rect(mx-mw/2-10,my-mh/2-10,mw+20,mh+20); ctx.clip(); ctx.drawImage(src,0,0,src.width,src.height); ctx.restore(); addWM(ctx,W,H);
 }
 
-// WATERCOLOR MISTAKE — wrong blob + wet rag
-async function doWatercolorMistake(ctx,W,H,src){
-  const mx=rand(W*.2,W*.75),my=rand(H*.2,H*.75),r=rand(40,85);
-  setStatus('🎨 Oops — wrong color splash!');
-  ctx.save(); ctx.beginPath(); ctx.arc(mx,my,r,0,Math.PI*2);
-  ctx.fillStyle=`hsla(${Math.random()*360},80%,60%,.7)`; ctx.fill(); ctx.restore();
-  await sleep(Math.round(300*speedFactor()));
-  setStatus('🧻 Blotting with wet rag…');
-  for(let f=0;f<10;f++){
-    ctx.save(); ctx.beginPath(); ctx.arc(mx,my,r+10,0,Math.PI*2); ctx.clip();
-    ctx.drawImage(src,0,0,src.width,src.height);
-    ctx.fillStyle=`rgba(200,220,255,${.25+Math.random()*.25})`; ctx.beginPath(); ctx.ellipse(mx+rand(-18,18),my+rand(-15,15),r*.55,r*.38,Math.random()*Math.PI,0,Math.PI*2); ctx.fill();
-    ctx.restore(); await sleep(45);
-  }
-  ctx.save(); ctx.beginPath(); ctx.arc(mx,my,r+10,0,Math.PI*2); ctx.clip(); ctx.drawImage(src,0,0,src.width,src.height); ctx.restore();
-  addWatermark(ctx,W,H);
-}
-
-// CHALK MISTAKE — misspelled word + typewriter delete
-const BAD=['SUCESS','REVENU','PROFFIT','STATEGY','CUSTMER'];
-const GOOD=['SUCCESS','REVENUE','PROFIT','STRATEGY','CUSTOMER'];
-async function doChalkMistake(ctx,W,H,src){
-  const idx=randInt(0,BAD.length-1);
-  const bad=BAD[idx],good=GOOD[idx];
-  const tx=rand(W*.15,W*.65),ty=rand(H*.3,H*.72),fs=22+Math.random()*14;
-  setStatus('🟫 Oops — misspelled word!');
-  ctx.save(); ctx.font=`bold ${fs}px Caveat,cursive`; ctx.fillStyle='rgba(255,255,255,.88)';
+async function mistakeChalk(ctx,W,H,src){
+  const BAD=['SUCESS','REVENU','PROFFIT'],GOOD=['SUCCESS','REVENUE','PROFIT'];
+  const idx=randInt(0,2),bad=BAD[idx],good=GOOD[idx];
+  const tx=rand(W*.15,W*.6),ty=rand(H*.3,H*.7),fs=20+Math.random()*12;
+  setDS('🟫 Oops — wrong word!');
   for(let i=1;i<=bad.length;i++){
-    ctx.clearRect(tx-3,ty-fs-3,bad.length*fs*.65+6,fs+8);
-    // restore bg under text area
-    ctx.save(); ctx.beginPath(); ctx.rect(tx-3,ty-fs-3,bad.length*fs*.65+6,fs+8); ctx.clip(); ctx.drawImage(src,0,0,src.width,src.height); ctx.restore();
-    ctx.fillText(bad.slice(0,i),tx,ty);
-    await sleep(Math.round(90*speedFactor()));
+    ctx.save(); ctx.beginPath(); ctx.rect(tx-3,ty-fs-3,bad.length*fs*.6+6,fs+8); ctx.clip(); ctx.drawImage(src,0,0,src.width,src.height); ctx.restore();
+    ctx.save(); ctx.font=`bold ${fs}px Caveat,cursive`; ctx.fillStyle='rgba(255,255,255,.88)'; ctx.fillText(bad.slice(0,i),tx,ty); ctx.restore();
+    await sleep(Math.round(80*speedF()));
   }
-  ctx.restore();
-  await sleep(Math.round(400*speedFactor()));
-  setStatus('⌫ Deleting wrong letters…');
+  await sleep(Math.round(350*speedF()));
+  setDS('⌫ Deleting…');
   for(let i=bad.length;i>=0;i--){
-    ctx.save(); ctx.beginPath(); ctx.rect(tx-3,ty-fs-3,bad.length*fs*.65+6,fs+8); ctx.clip(); ctx.drawImage(src,0,0,src.width,src.height); ctx.restore();
+    ctx.save(); ctx.beginPath(); ctx.rect(tx-3,ty-fs-3,bad.length*fs*.6+6,fs+8); ctx.clip(); ctx.drawImage(src,0,0,src.width,src.height); ctx.restore();
     if(i>0){ ctx.save(); ctx.font=`bold ${fs}px Caveat,cursive`; ctx.fillStyle='rgba(255,255,255,.88)'; ctx.fillText(bad.slice(0,i)+'|',tx,ty); ctx.restore(); }
-    await sleep(Math.round(65*speedFactor()));
+    await sleep(Math.round(55*speedF()));
   }
-  setStatus('✅ Retyping correctly…');
+  setDS('✅ Retyping…');
   for(let i=1;i<=good.length;i++){
-    ctx.save(); ctx.beginPath(); ctx.rect(tx-3,ty-fs-3,good.length*fs*.65+6,fs+8); ctx.clip(); ctx.drawImage(src,0,0,src.width,src.height); ctx.restore();
+    ctx.save(); ctx.beginPath(); ctx.rect(tx-3,ty-fs-3,good.length*fs*.6+6,fs+8); ctx.clip(); ctx.drawImage(src,0,0,src.width,src.height); ctx.restore();
     ctx.save(); ctx.font=`bold ${fs}px Caveat,cursive`; ctx.fillStyle='rgba(255,255,255,.88)'; ctx.fillText(good.slice(0,i)+(i<good.length?'|':''),tx,ty); ctx.restore();
-    await sleep(Math.round(85*speedFactor()));
+    await sleep(Math.round(75*speedF()));
   }
-  // Final restore
-  ctx.save(); ctx.beginPath(); ctx.rect(tx-3,ty-fs-3,good.length*fs*.65+6,fs+8); ctx.clip(); ctx.drawImage(src,0,0,src.width,src.height); ctx.restore();
-  addWatermark(ctx,W,H);
+  ctx.save(); ctx.beginPath(); ctx.rect(tx-3,ty-fs-3,good.length*fs*.6+6,fs+8); ctx.clip(); ctx.drawImage(src,0,0,src.width,src.height); ctx.restore(); addWM(ctx,W,H);
 }
 
-// PIXEL MISTAKE — glitch + fix
-async function doPixelMistake(ctx,W,H,src){
-  const gx=rand(W*.1,W*.65),gy=rand(H*.1,H*.65),gw=rand(80,160),gh=rand(50,100);
-  setStatus('👾 Pixel corruption!');
-  for(let f=0;f<18;f++){
-    ctx.save(); ctx.fillStyle=`hsl(${Math.random()*360},100%,60%)`; ctx.globalAlpha=.75;
-    ctx.fillRect(gx+(Math.random()-.5)*18,gy+(Math.random()-.5)*14,gw,gh); ctx.restore();
-    await sleep(28);
+async function mistakeOil(ctx,W,H,src){
+  const sx=rand(W*.15,W*.6),sy=rand(H*.2,H*.7);
+  setDS('🖌️ Wrong stroke!');
+  ctx.save(); ctx.beginPath(); ctx.moveTo(sx,sy); ctx.bezierCurveTo(sx+rand(40,130),sy+rand(-40,40),sx+rand(80,180),sy+rand(-40,40),sx+rand(120,220),sy+rand(-25,25));
+  ctx.strokeStyle=`hsl(${Math.random()*360},70%,45%)`; ctx.lineWidth=14+Math.random()*10; ctx.lineCap='round'; ctx.stroke(); ctx.restore();
+  await sleep(Math.round(280*speedF()));
+  setDS('🔪 Scraping…');
+  for(let f=0;f<12;f++){
+    ctx.save(); ctx.beginPath(); ctx.rect(sx-8,sy-35,240,70); ctx.clip(); ctx.drawImage(src,0,0,src.width,src.height);
+    const kx=sx-8+(f/12)*248; ctx.fillStyle='rgba(210,210,210,.65)'; ctx.fillRect(kx,sy-30,4,60);
+    ctx.restore(); await sleep(35);
   }
-  setStatus('🔧 Fixing pixels…');
-  await sleep(200);
-  ctx.save(); ctx.drawImage(src,gx-10,gy-10,gw+20,gh+20,gx-10,gy-10,gw+20,gh+20); ctx.restore();
-  addWatermark(ctx,W,H);
+  ctx.save(); ctx.beginPath(); ctx.rect(sx-8,sy-35,250,70); ctx.clip(); ctx.drawImage(src,0,0,src.width,src.height); ctx.restore(); addWM(ctx,W,H);
 }
 
-// OIL MISTAKE — wrong thick stroke + palette knife scrape
-async function doOilMistake(ctx,W,H,src){
-  const sx=rand(W*.1,W*.65),sy=rand(H*.2,H*.7);
-  setStatus('🖌️ Wrong brushstroke!');
-  ctx.save(); ctx.beginPath(); ctx.moveTo(sx,sy);
-  ctx.bezierCurveTo(sx+rand(40,140),sy+rand(-45,45),sx+rand(90,190),sy+rand(-45,45),sx+rand(140,240),sy+rand(-28,28));
-  ctx.strokeStyle=`hsl(${Math.random()*360},70%,45%)`; ctx.lineWidth=16+Math.random()*12; ctx.lineCap='round'; ctx.stroke(); ctx.restore();
-  await sleep(Math.round(320*speedFactor()));
-  setStatus('🔪 Scraping with palette knife…');
-  for(let f=0;f<14;f++){
-    ctx.save(); ctx.beginPath(); ctx.rect(sx-10,sy-38,260,76); ctx.clip();
-    ctx.drawImage(src,0,0,src.width,src.height);
-    const kx=sx-10+(f/14)*270;
-    ctx.fillStyle='rgba(215,215,215,.68)'; ctx.fillRect(kx,sy-32,4,64);
-    ctx.restore(); await sleep(38);
-  }
-  ctx.save(); ctx.beginPath(); ctx.rect(sx-10,sy-38,270,76); ctx.clip(); ctx.drawImage(src,0,0,src.width,src.height); ctx.restore();
-  addWatermark(ctx,W,H);
-}
-
-// ══════════════════════════════════════
-//  PENCIL STYLE — edge strokes, then fill
-// ══════════════════════════════════════
-async function drawPencilStyle(cv,ctx,src,srcData,onDone){
+// ═══════════════════════════════════
+//  PENCIL — real path-following strokes
+// ═══════════════════════════════════
+async function strokePencil(cv,ctx,src,sd,onDone){
   const W=cv.width,H=cv.height;
-  const totalMs=Math.max(8000,speedFactor()*22000);
+  const totalMs=Math.max(8000,speedF()*20000);
   scheduleMistakes(totalMs);
-  ctx.fillStyle='#faf8f3'; ctx.fillRect(0,0,W,H);
-
-  // Extract edge strokes
-  setStatus('✏️ Finding edges…');
-  const edges=detectEdges(srcData,W,H);
-  const strokes=extractStrokes(edges,W,H,Math.round(1200/speedFactor()));
   const startMs=performance.now();
   let mistakeActive=false;
 
-  // PHASE 1: Draw edge strokes one by one
-  setStatus('✏️ Sketching outlines…');
-  const phase1count=Math.floor(strokes.length*.55);
-  for(let i=0;i<phase1count;i++){
-    const elapsed=performance.now()-startMs;
-    if(!mistakeActive&&checkAndTriggerMistake(elapsed,ctx,W,H,src,'pencil')){
-      mistakeActive=true; await doPencilMistake(ctx,W,H,src); mistakeActive=false;
-      setStatus('✏️ Sketching outlines…');
-    }
-    const s=strokes[i];
-    const [r,g,b]=getPixel(srcData.data,s.x,s.y,W);
-    const dark=Math.max(0,(r*.299+g*.587+b*.114)-60);
-    ctx.save(); ctx.beginPath();
-    const len=s.len*(0.7+Math.random()*.6);
-    ctx.moveTo(s.x-Math.cos(s.angle)*len/2,s.y-Math.sin(s.angle)*len/2);
-    ctx.lineTo(s.x+Math.cos(s.angle)*len/2,s.y+Math.sin(s.angle)*len/2);
-    ctx.strokeStyle=`rgba(${dark*.3|0},${dark*.3|0},${dark*.3|0},${s.strength*.9})`;
-    ctx.lineWidth=.5+s.strength*2; ctx.lineCap='round'; ctx.stroke(); ctx.restore();
+  // White paper background
+  ctx.fillStyle='#faf8f3'; ctx.fillRect(0,0,W,H);
 
-    // Pencil cursor
-    if(i%12===0) drawPencilCursor(ctx,s.x,s.y);
-    addWatermark(ctx,W,H);
-    if(i%6===0) await sleep(Math.round(speedFactor()*8));
-  }
+  // Extract edge paths
+  setDS('✏️ Finding contours…');
+  await sleep(100);
+  const edges=sobelEdges(sd,W,H);
+  const paths=buildPaths(edges,W,H,0.18);
 
-  // PHASE 2: Cross-hatch shading — draw short hatch lines over dark regions
-  setStatus('✏️ Adding shading…');
-  const phase2count=Math.floor(strokes.length*.35);
-  for(let i=phase1count;i<phase1count+phase2count;i++){
+  const totalPaths=paths.length;
+  const msPerPath=totalMs*0.7/Math.max(1,totalPaths);
+
+  setDS('✏️ Sketching outlines…');
+
+  // PHASE 1: Draw paths one by one — this is the real stroke-by-stroke
+  for(let pi=0;pi<totalPaths;pi++){
     const elapsed=performance.now()-startMs;
-    if(!mistakeActive&&checkAndTriggerMistake(elapsed,ctx,W,H,src,'pencil')){
-      mistakeActive=true; await doPencilMistake(ctx,W,H,src); mistakeActive=false;
-      setStatus('✏️ Adding shading…');
-    }
-    const s=strokes[i];
-    const [r,g,b]=getPixel(srcData.data,s.x,s.y,W);
+    if(!mistakeActive&&checkMistake(elapsed)){ mistakeActive=true; await mistakePencil(ctx,W,H,src); mistakeActive=false; setDS('✏️ Sketching…'); }
+
+    const path=paths[pi];
+    const prog=pi/totalPaths;
+    if(prog<.35) setDS('✏️ Main outlines…');
+    else if(prog<.65) setDS('✏️ Detail lines…');
+    else setDS('✏️ Fine details…');
+
+    // Sample color from source at first point
+    const [r,g,b]=getpx(sd.data,path[0][0],path[0][1],W);
     const brightness=(r*.299+g*.587+b*.114)/255;
-    if(brightness>0.75) continue; // skip bright areas
-    ctx.save(); ctx.beginPath();
-    const hlen=4+Math.random()*10;
-    const ha=s.angle+Math.PI/4+(Math.random()-.5)*.4;
-    ctx.moveTo(s.x,s.y); ctx.lineTo(s.x+Math.cos(ha)*hlen,s.y+Math.sin(ha)*hlen);
-    ctx.strokeStyle=`rgba(40,40,40,${(1-brightness)*.5})`; ctx.lineWidth=.5+Math.random(); ctx.lineCap='round'; ctx.stroke(); ctx.restore();
-    if(i%15===0) drawPencilCursor(ctx,s.x,s.y);
-    addWatermark(ctx,W,H);
-    if(i%8===0) await sleep(Math.round(speedFactor()*6));
+    const darkness=Math.max(0,1-brightness-.1);
+
+    // Draw the path as a series of connected line segments
+    ctx.save();
+    ctx.beginPath();
+    ctx.moveTo(path[0][0],path[0][1]);
+    for(let i=1;i<path.length;i++){
+      // Slightly wobbly to look hand-drawn
+      const wx=path[i][0]+(Math.random()-.5)*.8;
+      const wy=path[i][1]+(Math.random()-.5)*.8;
+      ctx.lineTo(wx,wy);
+    }
+    // Pencil stroke style
+    ctx.strokeStyle=`rgba(${(r*.4)|0},${(g*.4)|0},${(b*.4)|0},${0.4+darkness*.55})`;
+    ctx.lineWidth=0.4+darkness*1.4;
+    ctx.lineCap='round'; ctx.lineJoin='round';
+    // Slight grain
+    ctx.setLineDash([]);
+    ctx.stroke();
+    ctx.restore();
+
+    // Moving pencil cursor at end of path
+    const last=path[path.length-1];
+    drawPencilCursor(ctx,last[0],last[1]);
+    addWM(ctx,W,H);
+
+    // Throttle speed
+    if(pi%4===0) await sleep(Math.round(msPerPath*4));
   }
 
-  // PHASE 3: Final detail — blend with original using increasing opacity
-  setStatus('✏️ Final details…');
-  const steps=20;
-  for(let step=0;step<steps;step++){
+  // PHASE 2: Soft color fill — progressive opacity blend
+  setDS('✏️ Adding color…');
+  const colorSteps=16;
+  for(let s=0;s<colorSteps;s++){
     const elapsed=performance.now()-startMs;
-    if(!mistakeActive&&checkAndTriggerMistake(elapsed,ctx,W,H,src,'pencil')){
-      mistakeActive=true; await doPencilMistake(ctx,W,H,src); mistakeActive=false;
-      setStatus('✏️ Final details…');
-    }
-    ctx.save(); ctx.globalAlpha=(step+1)/steps*.85; ctx.drawImage(src,0,0,W,H); ctx.restore();
-    addWatermark(ctx,W,H);
-    await sleep(Math.round(speedFactor()*20));
+    if(!mistakeActive&&checkMistake(elapsed)){ mistakeActive=true; await mistakePencil(ctx,W,H,src); mistakeActive=false; }
+    ctx.save(); ctx.globalAlpha=(s+1)/colorSteps*.7; ctx.drawImage(src,0,0,W,H); ctx.restore();
+    addWM(ctx,W,H);
+    await sleep(Math.round(speedF()*22));
   }
-  ctx.drawImage(src,0,0,W,H); addWatermark(ctx,W,H);
+
+  ctx.drawImage(src,0,0,W,H); addWM(ctx,W,H);
   document.getElementById('draw-status').style.display='none';
   onDone();
 }
 
 function drawPencilCursor(ctx,x,y){
   ctx.save(); ctx.translate(x,y); ctx.rotate(Math.PI/5);
-  ctx.fillStyle='#e85d26'; ctx.fillRect(-3,-17,6,21);
-  ctx.fillStyle='#f5a623'; ctx.beginPath(); ctx.moveTo(-3,4); ctx.lineTo(3,4); ctx.lineTo(0,12); ctx.fill();
-  ctx.fillStyle='#d0c8c0'; ctx.fillRect(-3,-17,6,7); ctx.restore();
+  ctx.fillStyle='#e85d26'; ctx.fillRect(-3,-16,6,20);
+  ctx.fillStyle='#f5a623'; ctx.beginPath(); ctx.moveTo(-3,4); ctx.lineTo(3,4); ctx.lineTo(0,11); ctx.fill();
+  ctx.fillStyle='#d0c8c0'; ctx.fillRect(-3,-16,6,7); ctx.restore();
 }
 
-// ══════════════════════════════════════
-//  WATERCOLOR STYLE — wet blooms expand
-// ══════════════════════════════════════
-async function drawWatercolorStyle(cv,ctx,src,srcData,onDone){
+// ═══════════════════════════════════
+//  WATERCOLOR — wet bloom paths
+// ═══════════════════════════════════
+async function strokeWatercolor(cv,ctx,src,sd,onDone){
   const W=cv.width,H=cv.height;
-  const totalMs=Math.max(9000,speedFactor()*26000);
+  const totalMs=Math.max(9000,speedF()*24000);
   scheduleMistakes(totalMs);
-  ctx.fillStyle='#fff'; ctx.fillRect(0,0,W,H);
   const startMs=performance.now();
   let mistakeActive=false;
+  ctx.fillStyle='#fff'; ctx.fillRect(0,0,W,H);
 
-  // Start 7 wet bloom centers at different times
-  const centers=[[.5,.5,0],[.25,.3,.08],[.75,.65,.12],[.15,.7,.2],[.85,.25,.16],[.45,.15,.24],[.6,.8,.28]];
-  const totalFrames=Math.round(280/speedFactor());
+  const edges=sobelEdges(sd,W,H);
+  const paths=buildPaths(edges,W,H,0.14);
+  const msPerPath=totalMs*0.65/Math.max(1,paths.length);
 
-  for(let f=0;f<totalFrames;f++){
-    const p=f/totalFrames, ep=1-Math.pow(1-p,2.5);
+  setDS('🎨 First wash…');
+
+  // Draw each path as a thick wet brushstroke
+  for(let pi=0;pi<paths.length;pi++){
     const elapsed=performance.now()-startMs;
-    if(!mistakeActive&&checkAndTriggerMistake(elapsed,ctx,W,H,src,'watercolor')){
-      mistakeActive=true; await doWatercolorMistake(ctx,W,H,src); mistakeActive=false;
-    }
-    setStatus(p<.25?'🎨 First wash…':p<.55?'🎨 Building color…':p<.8?'🎨 Deepening…':'🎨 Finishing…');
-    ctx.clearRect(0,0,W,H); ctx.fillStyle='#fff'; ctx.fillRect(0,0,W,H);
-    centers.forEach((c,ci)=>{
-      const delay=c[2], localP=Math.max(0,Math.min(1,(p-delay)/(1-delay)));
-      if(localP<=0) return;
-      const lep=1-Math.pow(1-localP,2);
-      const rx=lep*(0.55+ci*.06)*W*1.3+8, ry=lep*(0.55+ci*.06)*H*1.3+8;
-      if(rx<6||ry<6) return;
-      ctx.save(); ctx.beginPath(); ctx.ellipse(c[0]*W,c[1]*H,rx,ry,ci*.4,0,Math.PI*2);
-      ctx.globalAlpha=Math.min(lep*1.2,.95); ctx.drawImage(src,0,0,W,H);
-      // Wet edge softening
-      const grad=ctx.createRadialGradient(c[0]*W,c[1]*H,rx*.8,c[0]*W,c[1]*H,rx);
-      grad.addColorStop(0,'rgba(255,255,255,0)'); grad.addColorStop(1,'rgba(255,255,255,.3)');
-      ctx.fillStyle=grad; ctx.fill(); ctx.restore();
-    });
+    if(!mistakeActive&&checkMistake(elapsed)){ mistakeActive=true; await doMistake(ctx,W,H,src,'watercolor'); mistakeActive=false; setDS('🎨 Painting…'); }
+
+    const path=paths[pi];
+    const prog=pi/paths.length;
+    setDS(prog<.3?'🎨 First wash…':prog<.6?'🎨 Layering color…':'🎨 Final details…');
+
+    const [r,g,b]=getpx(sd.data,path[0][0],path[0][1],W);
+
+    ctx.save();
+    ctx.beginPath(); ctx.moveTo(path[0][0],path[0][1]);
+    for(let i=1;i<path.length;i++) ctx.lineTo(path[i][0]+(Math.random()-.5)*1.5,path[i][1]+(Math.random()-.5)*1.5);
+    ctx.strokeStyle=`rgba(${r},${g},${b},${0.25+Math.random()*.25})`;
+    ctx.lineWidth=2+Math.random()*6;
+    ctx.lineCap='round'; ctx.lineJoin='round'; ctx.stroke();
+    ctx.restore();
+
     // Brush cursor
-    if(f%4===0){ const bx=W*(.3+Math.sin(f*.07)*.38),by=H*(.3+Math.cos(f*.055)*.33); drawBrushCursor(ctx,bx,by); }
-    addWatermark(ctx,W,H);
-    await sleep(Math.round(speedFactor()*55));
+    if(pi%5===0){ const last=path[path.length-1]; drawBrushCursor(ctx,last[0],last[1]); }
+    addWM(ctx,W,H);
+    if(pi%4===0) await sleep(Math.round(msPerPath*4));
   }
-  ctx.drawImage(src,0,0,W,H); addWatermark(ctx,W,H);
+
+  // Blend final
+  setDS('🎨 Final glazing…');
+  for(let s=0;s<12;s++){
+    ctx.save(); ctx.globalAlpha=(s+1)/12*.85; ctx.drawImage(src,0,0,W,H); ctx.restore(); addWM(ctx,W,H); await sleep(Math.round(speedF()*25));
+  }
+  ctx.drawImage(src,0,0,W,H); addWM(ctx,W,H);
   document.getElementById('draw-status').style.display='none'; onDone();
 }
 
 function drawBrushCursor(ctx,x,y){
   ctx.save(); ctx.translate(x,y); ctx.rotate(-Math.PI/5);
-  ctx.fillStyle='#8B4513'; ctx.fillRect(-3,-28,6,25);
-  ctx.fillStyle='#C0C0C0'; ctx.fillRect(-4,-4,8,5);
-  ctx.fillStyle='#4a148c'; ctx.beginPath(); ctx.moveTo(-4,1); ctx.lineTo(4,1); ctx.lineTo(2,13); ctx.lineTo(-2,13); ctx.closePath(); ctx.fill();
-  ctx.restore();
+  ctx.fillStyle='#8B4513'; ctx.fillRect(-3,-26,6,23); ctx.fillStyle='#C0C0C0'; ctx.fillRect(-4,-4,8,5);
+  ctx.fillStyle='#4a148c'; ctx.beginPath(); ctx.moveTo(-4,1); ctx.lineTo(4,1); ctx.lineTo(2,12); ctx.lineTo(-2,12); ctx.closePath(); ctx.fill(); ctx.restore();
 }
 
-// ══════════════════════════════════════
-//  CHALK STYLE — dusty horizontal strips
-// ══════════════════════════════════════
-async function drawChalkStyle(cv,ctx,src,srcData,onDone){
+// ═══════════════════════════════════
+//  CHALK — edge paths with chalk texture
+// ═══════════════════════════════════
+async function strokeChalk(cv,ctx,src,sd,onDone){
   const W=cv.width,H=cv.height;
-  const totalMs=Math.max(7000,speedFactor()*20000);
+  const totalMs=Math.max(7000,speedF()*18000);
   scheduleMistakes(totalMs);
+  const startMs=performance.now();
+  let mistakeActive=false;
   ctx.fillStyle='#141414'; ctx.fillRect(0,0,W,H);
+
+  const edges=sobelEdges(sd,W,H);
+  const paths=buildPaths(edges,W,H,0.16);
+  const msPerPath=totalMs*0.65/Math.max(1,paths.length);
+
+  for(let pi=0;pi<paths.length;pi++){
+    const elapsed=performance.now()-startMs;
+    if(!mistakeActive&&checkMistake(elapsed)){ mistakeActive=true; await mistakeChalk(ctx,W,H,src); mistakeActive=false; setDS('🟫 Drawing…'); }
+    const path=paths[pi]; const prog=pi/paths.length;
+    setDS(prog<.4?'🟫 Rough outline…':prog<.7?'🟫 Adding detail…':'🟫 Highlights…');
+    const [r,g,b]=getpx(sd.data,path[0][0],path[0][1],W);
+    // Brighten for chalk-on-dark
+    const br=Math.min(255,r+60),bg2=Math.min(255,g+60),bb=Math.min(255,b+60);
+    ctx.save(); ctx.beginPath(); ctx.moveTo(path[0][0],path[0][1]);
+    for(let i=1;i<path.length;i++){
+      ctx.lineTo(path[i][0]+(Math.random()-.5)*1.2,path[i][1]+(Math.random()-.5)*1.2);
+    }
+    ctx.strokeStyle=`rgba(${br},${bg2},${bb},${0.6+Math.random()*.3})`; ctx.lineWidth=0.8+Math.random()*1.8; ctx.lineCap='round'; ctx.stroke(); ctx.restore();
+    // Chalk dust
+    if(path.length>0){ const last=path[path.length-1]; ctx.save(); ctx.globalAlpha=.35; for(let d=0;d<5;d++){ ctx.beginPath(); ctx.arc(last[0]+rand(-12,12),last[1]+rand(-8,8),rand(.5,2.5),0,Math.PI*2); ctx.fillStyle=`rgba(255,255,255,${Math.random()*.5})`; ctx.fill(); } ctx.restore(); drawChalkCursor(ctx,last[0],last[1]); }
+    addWM(ctx,W,H); if(pi%4===0) await sleep(Math.round(msPerPath*4));
+  }
+  setDS('🟫 Final chalk…');
+  for(let s=0;s<10;s++){ ctx.save(); ctx.globalAlpha=(s+1)/10*.8; ctx.drawImage(src,0,0,W,H); ctx.restore(); addWM(ctx,W,H); await sleep(Math.round(speedF()*22)); }
+  ctx.drawImage(src,0,0,W,H); addWM(ctx,W,H); document.getElementById('draw-status').style.display='none'; onDone();
+}
+
+function drawChalkCursor(ctx,x,y){ ctx.save(); ctx.translate(x,y); ctx.rotate(Math.PI/6); ctx.fillStyle='#f0f0f0'; ctx.fillRect(-3,-16,7,16); ctx.restore(); }
+
+// ═══════════════════════════════════
+//  OIL PAINT — thick path strokes
+// ═══════════════════════════════════
+async function strokeOil(cv,ctx,src,sd,onDone){
+  const W=cv.width,H=cv.height;
+  const totalMs=Math.max(10000,speedF()*26000);
+  scheduleMistakes(totalMs);
   const startMs=performance.now();
   let mistakeActive=false;
-  const strips=Math.round(50/speedFactor()), sh=Math.ceil(H/strips);
-
-  for(let s=0;s<strips;s++){
-    const elapsed=performance.now()-startMs;
-    if(!mistakeActive&&checkAndTriggerMistake(elapsed,ctx,W,H,src,'chalk')){
-      mistakeActive=true; await doChalkMistake(ctx,W,H,src); mistakeActive=false;
-    }
-    setStatus(s<strips*.3?'🟫 Rough outline…':s<strips*.65?'🟫 Filling in…':'🟫 Adding highlights…');
-    const y0=s*sh, y1=Math.min(y0+sh,H);
-    // Draw chalky pixels across strip
-    for(let x=0;x<W;x+=2){
-      const [r,g,b,a]=getPixel(srcData.data,x,y0+sh/2,W);
-      if(a<10) continue;
-      const dust=(Math.random()-.5)*28;
-      ctx.fillStyle=`rgba(${Math.min(255,r+dust)|0},${Math.min(255,g+dust)|0},${Math.min(255,b+dust)|0},${(a/255)*.88})`;
-      ctx.fillRect(x,y0,2,sh);
-    }
-    // Chalk dust at leading edge
-    ctx.save(); ctx.globalAlpha=.42;
-    for(let d=0;d<14;d++){ ctx.beginPath(); ctx.arc(rand(0,W),y1+rand(-8,8),rand(1,3.5),0,Math.PI*2); ctx.fillStyle=`rgba(255,255,255,${Math.random()*.55})`; ctx.fill(); }
-    ctx.restore();
-    drawChalkCursor(ctx,rand(W*.15,W*.85),y0);
-    addWatermark(ctx,W,H);
-    await sleep(Math.round(speedFactor()*30));
-  }
-  ctx.drawImage(src,0,0,W,H); addWatermark(ctx,W,H);
-  document.getElementById('draw-status').style.display='none'; onDone();
-}
-
-function drawChalkCursor(ctx,x,y){
-  ctx.save(); ctx.translate(x,y); ctx.rotate(Math.PI/6);
-  ctx.fillStyle='#f0f0f0'; ctx.fillRect(-4,-18,8,18);
-  ctx.fillStyle='rgba(255,255,255,.25)'; for(let i=0;i<3;i++) ctx.fillRect(-4+i*3,-20+Math.random()*3,2,3);
-  ctx.restore();
-}
-
-// ══════════════════════════════════════
-//  OIL STYLE — thick impasto brush strokes
-// ══════════════════════════════════════
-async function drawOilStyle(cv,ctx,src,srcData,onDone){
-  const W=cv.width,H=cv.height;
-  const totalMs=Math.max(10000,speedFactor()*28000);
-  scheduleMistakes(totalMs);
   ctx.fillStyle='#f8f4ec'; ctx.fillRect(0,0,W,H);
-  const startMs=performance.now();
-  let mistakeActive=false;
-  const strokeH=Math.max(3,Math.ceil(H/Math.round(130/speedFactor())));
-  const totalS=Math.ceil(H/strokeH);
 
-  for(let si=0;si<totalS;si++){
+  const edges=sobelEdges(sd,W,H);
+  const paths=buildPaths(edges,W,H,0.15);
+  const msPerPath=totalMs*0.65/Math.max(1,paths.length);
+
+  for(let pi=0;pi<paths.length;pi++){
     const elapsed=performance.now()-startMs;
-    if(!mistakeActive&&checkAndTriggerMistake(elapsed,ctx,W,H,src,'oil')){
-      mistakeActive=true; await doOilMistake(ctx,W,H,src); mistakeActive=false;
-    }
-    setStatus(si<totalS*.25?'🖌️ Underpainting…':si<totalS*.55?'🖌️ Mid tones…':si<totalS*.8?'🖌️ Highlights…':'🖌️ Glazing…');
-    const y=si*strokeH;
-    const wa=2+Math.random()*5;
-    ctx.save(); ctx.beginPath(); ctx.moveTo(0,y+Math.sin(0)*wa);
-    for(let x=0;x<=W;x+=8) ctx.lineTo(x,y+Math.sin(x*.04)*wa+(Math.random()-.5)*2);
-    for(let x=W;x>=0;x-=8) ctx.lineTo(x,y+strokeH+Math.sin(x*.04)*wa+(Math.random()-.5)*2);
-    ctx.closePath(); ctx.clip(); ctx.drawImage(src,0,0,W,H); ctx.restore();
-    ctx.save(); ctx.globalAlpha=.1; ctx.fillStyle='rgba(255,255,255,.8)'; ctx.fillRect(0,y,W,2); ctx.restore();
-    if(si%4===0) drawBrushCursor(ctx,W-rand(18,55),y);
-    addWatermark(ctx,W,H);
-    await sleep(Math.round(speedFactor()*20));
+    if(!mistakeActive&&checkMistake(elapsed)){ mistakeActive=true; await mistakeOil(ctx,W,H,src); mistakeActive=false; setDS('🖌️ Painting…'); }
+    const path=paths[pi]; const prog=pi/paths.length;
+    setDS(prog<.3?'🖌️ Underpainting…':prog<.6?'🖌️ Building layers…':'🖌️ Final glazing…');
+    const [r,g,b]=getpx(sd.data,path[0][0],path[0][1],W);
+    ctx.save(); ctx.beginPath(); ctx.moveTo(path[0][0],path[0][1]);
+    for(let i=1;i<path.length;i++) ctx.lineTo(path[i][0]+(Math.random()-.5)*1.5,path[i][1]+(Math.random()-.5)*1.5);
+    ctx.strokeStyle=`rgba(${r},${g},${b},0.75)`; ctx.lineWidth=1.5+Math.random()*4; ctx.lineCap='round'; ctx.lineJoin='round'; ctx.stroke(); ctx.restore();
+    // Impasto highlight
+    ctx.save(); ctx.globalAlpha=.15; ctx.beginPath(); ctx.moveTo(path[0][0],path[0][1]);
+    for(let i=1;i<path.length;i++) ctx.lineTo(path[i][0],path[i][1]-1);
+    ctx.strokeStyle='rgba(255,255,255,.8)'; ctx.lineWidth=1; ctx.stroke(); ctx.restore();
+    if(pi%4===0){ const last=path[path.length-1]; drawBrushCursor(ctx,last[0],last[1]); }
+    addWM(ctx,W,H); if(pi%4===0) await sleep(Math.round(msPerPath*4));
   }
-  ctx.drawImage(src,0,0,W,H); addWatermark(ctx,W,H);
-  document.getElementById('draw-status').style.display='none'; onDone();
+  for(let s=0;s<12;s++){ ctx.save(); ctx.globalAlpha=(s+1)/12*.88; ctx.drawImage(src,0,0,W,H); ctx.restore(); addWM(ctx,W,H); await sleep(Math.round(speedF()*22)); }
+  ctx.drawImage(src,0,0,W,H); addWM(ctx,W,H); document.getElementById('draw-status').style.display='none'; onDone();
 }
 
-// ══════════════════════════════════════
-//  CARTOON STYLE — ink blocks + pen cursor
-// ══════════════════════════════════════
-async function drawCartoonStyle(cv,ctx,src,srcData,onDone){
+// ═══════════════════════════════════
+//  CARTOON — bold ink paths
+// ═══════════════════════════════════
+async function strokeCartoon(cv,ctx,src,sd,onDone){
   const W=cv.width,H=cv.height;
-  const totalMs=Math.max(6000,speedFactor()*18000);
+  const totalMs=Math.max(6000,speedF()*16000);
   scheduleMistakes(totalMs);
-  ctx.fillStyle='#fff'; ctx.fillRect(0,0,W,H);
   const startMs=performance.now();
   let mistakeActive=false;
-  const COLS=8,ROWS=6,bW=Math.ceil(W/COLS),bH=Math.ceil(H/ROWS);
-  const blocks=[]; for(let r=0;r<ROWS;r++) for(let c=0;c<COLS;c++) blocks.push([c,r]);
-  blocks.sort(()=>Math.random()-.5);
+  ctx.fillStyle='#fff'; ctx.fillRect(0,0,W,H);
 
-  for(let bi=0;bi<blocks.length;bi++){
+  const edges=sobelEdges(sd,W,H);
+  const paths=buildPaths(edges,W,H,0.2);
+  const msPerPath=totalMs*0.65/Math.max(1,paths.length);
+
+  for(let pi=0;pi<paths.length;pi++){
     const elapsed=performance.now()-startMs;
-    if(!mistakeActive&&checkAndTriggerMistake(elapsed,ctx,W,H,src,'cartoon')){
-      mistakeActive=true; await doPencilMistake(ctx,W,H,src); mistakeActive=false;
-    }
-    setStatus(bi<blocks.length*.4?'🎭 Inking…':bi<blocks.length*.75?'🎭 Coloring…':'🎭 Finishing…');
-    const [c,r]=blocks[bi],x0=c*bW,y0=r*bH;
-    ctx.save(); ctx.beginPath(); ctx.rect(x0,y0,bW+1,bH+1); ctx.clip(); ctx.drawImage(src,0,0,W,H);
-    ctx.globalAlpha=.35; ctx.strokeStyle='#111'; ctx.lineWidth=1.2; ctx.strokeRect(x0,y0,bW,bH); ctx.restore();
-    if(bi%2===0){ ctx.save(); ctx.translate(x0+bW,y0+bH); ctx.rotate(Math.PI/5); ctx.fillStyle='#111'; ctx.fillRect(-2,-18,4,16); ctx.beginPath(); ctx.moveTo(-2,-2); ctx.lineTo(2,-2); ctx.lineTo(0,7); ctx.fill(); ctx.restore(); }
-    addWatermark(ctx,W,H);
-    await sleep(Math.round(speedFactor()*70));
+    if(!mistakeActive&&checkMistake(elapsed)){ mistakeActive=true; await mistakePencil(ctx,W,H,src); mistakeActive=false; setDS('🎭 Inking…'); }
+    const path=paths[pi]; const prog=pi/paths.length;
+    setDS(prog<.5?'🎭 Inking outlines…':'🎭 Adding color fill…');
+    ctx.save(); ctx.beginPath(); ctx.moveTo(path[0][0],path[0][1]);
+    for(let i=1;i<path.length;i++) ctx.lineTo(path[i][0],path[i][1]);
+    ctx.strokeStyle='rgba(15,10,20,0.85)'; ctx.lineWidth=1+Math.random()*1.5; ctx.lineCap='round'; ctx.lineJoin='round'; ctx.stroke(); ctx.restore();
+    if(pi%4===0){ const last=path[path.length-1]; ctx.save(); ctx.translate(last[0],last[1]); ctx.rotate(Math.PI/5); ctx.fillStyle='#111'; ctx.fillRect(-2,-15,4,13); ctx.beginPath(); ctx.moveTo(-2,-2); ctx.lineTo(2,-2); ctx.lineTo(0,7); ctx.fill(); ctx.restore(); }
+    addWM(ctx,W,H); if(pi%4===0) await sleep(Math.round(msPerPath*4));
   }
-  ctx.drawImage(src,0,0,W,H); addWatermark(ctx,W,H);
-  document.getElementById('draw-status').style.display='none'; onDone();
+  for(let s=0;s<14;s++){ ctx.save(); ctx.globalAlpha=(s+1)/14*.9; ctx.drawImage(src,0,0,W,H); ctx.restore(); addWM(ctx,W,H); await sleep(Math.round(speedF()*18)); }
+  ctx.drawImage(src,0,0,W,H); addWM(ctx,W,H); document.getElementById('draw-status').style.display='none'; onDone();
 }
 
-// ══════════════════════════════════════
-//  PIXEL STYLE — spiral from center
-// ══════════════════════════════════════
-async function drawPixelStyle(cv,ctx,src,srcData,onDone){
+// ═══════════════════════════════════
+//  PIXEL — spiral block reveal
+// ═══════════════════════════════════
+async function strokePixel(cv,ctx,src,sd,onDone){
   const W=cv.width,H=cv.height,B=14;
   const cols=Math.ceil(W/B),rows=Math.ceil(H/B),total=cols*rows;
-  const totalMs=Math.max(5000,speedFactor()*16000);
+  const totalMs=Math.max(5000,speedF()*14000);
   scheduleMistakes(totalMs);
-  ctx.fillStyle='#0d0d1a'; ctx.fillRect(0,0,W,H);
   const startMs=performance.now();
   let mistakeActive=false;
+  ctx.fillStyle='#0d0d1a'; ctx.fillRect(0,0,W,H);
 
-  // Spiral order from center
-  const cx=cols>>1,cy=rows>>1;
-  const order=[[cx,cy]]; const seen=new Set([`${cx},${cy}`]);
-  const D=[[0,-1],[1,0],[0,1],[-1,0]];
-  let x=cx,y=cy,di=0,sd=0,sc=0,st=1;
-  while(order.length<total){
-    const [dx,dy]=D[di%4]; x+=dx; y+=dy; sd++;
-    if(x>=0&&x<cols&&y>=0&&y<rows&&!seen.has(`${x},${y}`)){ order.push([x,y]); seen.add(`${x},${y}`); }
-    if(sd===st){ di++; sc++; if(sc%2===0) st++; sd=0; }
-  }
+  // Spiral order
+  const cx=cols>>1,cy=rows>>1,order=[[cx,cy]],seen=new Set([`${cx},${cy}`]);
+  const D=[[0,-1],[1,0],[0,1],[-1,0]]; let x=cx,y=cy,di=0,sd2=0,sc=0,st=1;
+  while(order.length<total){ const[dx,dy]=D[di%4]; x+=dx; y+=dy; sd2++; if(x>=0&&x<cols&&y>=0&&y<rows&&!seen.has(`${x},${y}`)){ order.push([x,y]); seen.add(`${x},${y}`); } if(sd2===st){di++;sc++;if(sc%2===0)st++;sd2=0;} }
 
   const bpf=Math.max(1,Math.ceil(total/(totalMs/16)));
   let revealed=0;
-
   async function frame(){
     const elapsed=performance.now()-startMs;
-    if(!mistakeActive&&checkAndTriggerMistake(elapsed,ctx,W,H,src,'pixel')){
-      mistakeActive=true; await doPixelMistake(ctx,W,H,src); mistakeActive=false;
-    }
-    const p=revealed/total;
-    setStatus(p<.3?'👾 Loading…':p<.6?'👾 Rendering…':p<.9?'👾 Finalizing…':'👾 Almost done…');
+    if(!mistakeActive&&checkMistake(elapsed)){ mistakeActive=true; const gx=rand(W*.1,W*.6),gy=rand(H*.1,H*.6),gw=rand(70,140),gh=rand(45,90); setDS('👾 Pixel corruption!'); for(let f=0;f<16;f++){ctx.save();ctx.fillStyle=`hsl(${Math.random()*360},100%,60%)`;ctx.globalAlpha=.72;ctx.fillRect(gx+(Math.random()-.5)*15,gy+(Math.random()-.5)*12,gw,gh);ctx.restore();await sleep(26);}setDS('🔧 Fixing…');await sleep(180);ctx.save();ctx.drawImage(src,gx-8,gy-8,gw+16,gh+16,gx-8,gy-8,gw+16,gh+16);ctx.restore();addWM(ctx,W,H);mistakeActive=false; }
+    const p=revealed/total; setDS(p<.3?'👾 Loading…':p<.6?'👾 Rendering…':p<.9?'👾 Finalizing…':'👾 Almost done…');
     const n=Math.min(bpf,total-revealed);
-    for(let i=0;i<n;i++){
-      const [col,row]=order[revealed+i];
-      ctx.drawImage(src,col*B,row*B,B,B,col*B,row*B,B,B);
-    }
-    revealed+=n; addWatermark(ctx,W,H);
-    if(revealed<total){ await sleep(Math.round(speedFactor()*4)); revealRAF=requestAnimationFrame(frame); }
-    else { ctx.drawImage(src,0,0,W,H); addWatermark(ctx,W,H); document.getElementById('draw-status').style.display='none'; onDone(); }
+    for(let i=0;i<n;i++){ const[col,row]=order[revealed+i]; ctx.drawImage(src,col*B,row*B,B,B,col*B,row*B,B,B); }
+    revealed+=n; addWM(ctx,W,H);
+    if(revealed<total){ await sleep(Math.round(speedF()*4)); rafId=requestAnimationFrame(frame); }
+    else { ctx.drawImage(src,0,0,W,H); addWM(ctx,W,H); document.getElementById('draw-status').style.display='none'; onDone(); }
   }
   frame();
 }
 
-// ══════════════════════════════════════
-//  STORY TYPEWRITER
-// ══════════════════════════════════════
-function startStory(prompt){
-  const lines=getStory(prompt),el=document.getElementById('story-text');
-  let li=0,ci=0; el.innerHTML='<span class="blink"></span>';
-  if(storyTimer) clearInterval(storyTimer);
-  storyTimer=setInterval(()=>{ const t=lines.slice(0,li+1).join('  '); if(ci<t.length){ci++;el.innerHTML=t.slice(0,ci)+'<span class="blink"></span>';} else if(li<lines.length-1) li++; },30);
-}
-function stopStory(txt){ if(storyTimer){clearInterval(storyTimer);storyTimer=null;} if(txt) document.getElementById('story-text').innerHTML=txt; }
-
-// ══════════════════════════════════════
-//  FAKE PROGRESS
-// ══════════════════════════════════════
+// ═══════════════════════════════════
+//  PROGRESS BAR
+// ═══════════════════════════════════
 function startFakeProgress(isPaid){
-  let p=0; const el=document.getElementById('prog'); el.style.width='0%';
-  if(progTimer) clearInterval(progTimer);
-  progTimer=setInterval(()=>{ const inc=isPaid?(p<60?.9:p<85?.4:.08):(p<50?.6:p<80?.28:p<93?.1:.02); p=Math.min(p+inc,95); el.style.width=p+'%';
-    if(isPaid){ if(Math.abs(p-5)<.9) document.getElementById('status').textContent='⚡ Contacting dedicated server…'; else if(Math.abs(p-40)<.9) document.getElementById('status').textContent='AI composing…'; else if(Math.abs(p-75)<.9) document.getElementById('status').textContent='Rendering…'; }
-    else { if(Math.abs(p-5)<.9) document.getElementById('status').textContent='Contacting free AI server…'; else if(Math.abs(p-30)<.9) document.getElementById('status').textContent='AI imagining the scene…'; else if(Math.abs(p-60)<.9) document.getElementById('status').textContent='Building the image…'; }
+  let p=0; const el=document.getElementById('prog'); el.style.width='0%'; if(progTimer) clearInterval(progTimer);
+  progTimer=setInterval(()=>{ const inc=isPaid?(p<60?.85:p<85?.38:.07):(p<50?.55:p<80?.26:p<93?.09:.02); p=Math.min(p+inc,95); el.style.width=p+'%';
+    if(isPaid){ if(Math.abs(p-5)<.85) document.getElementById('status').textContent='⚡ Contacting server…'; else if(Math.abs(p-40)<.85) document.getElementById('status').textContent='AI composing scene…'; else if(Math.abs(p-75)<.85) document.getElementById('status').textContent='Rendering…'; }
+    else { if(Math.abs(p-5)<.85) document.getElementById('status').textContent='Contacting free server…'; else if(Math.abs(p-30)<.85) document.getElementById('status').textContent='AI imagining the scene…'; else if(Math.abs(p-60)<.85) document.getElementById('status').textContent='Building…'; }
   },isPaid?55:85);
 }
 function stopFakeProgress(t){ if(progTimer){clearInterval(progTimer);progTimer=null;} document.getElementById('prog').style.width=t+'%'; }
 
-// ══════════════════════════════════════
+// ═══════════════════════════════════
 //  DOWNLOAD
-// ══════════════════════════════════════
+// ═══════════════════════════════════
 async function downloadCurrent(){
-  const btn=document.getElementById('dl-btn'); btn.innerHTML='⏳ Preparing…'; btn.disabled=true;
-  try{ const cv=document.getElementById('reveal-canvas'); if(cv&&cv.width>0){ const l=document.createElement('a'); l.download='doodleai_'+currentPrompt.replace(/[^a-z0-9]/gi,'_').slice(0,28)+'.png'; l.href=cv.toDataURL('image/png'); l.click(); } else if(currentImgUrl) window.open(currentImgUrl,'_blank'); }
-  catch(e){ if(currentImgUrl) window.open(currentImgUrl,'_blank'); }
-  setTimeout(()=>{ btn.innerHTML='<svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg> Download PNG'; btn.disabled=false; },2000);
+  const btn=document.getElementById('dl-btn'); btn.innerHTML='⏳…'; btn.disabled=true;
+  try{ const cv=document.getElementById('draw-canvas'); if(cv&&cv.width>0){ const l=document.createElement('a'); l.download='doodleai_'+currentPrompt.replace(/[^a-z0-9]/gi,'_').slice(0,26)+'.png'; l.href=cv.toDataURL('image/png'); l.click(); } else if(currentImgUrl) window.open(currentImgUrl,'_blank'); }catch(e){ if(currentImgUrl) window.open(currentImgUrl,'_blank'); }
+  setTimeout(()=>{ btn.innerHTML='<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg> Download PNG'; btn.disabled=false; },1800);
 }
 async function downloadAllSlides(){
-  const btn=document.getElementById('zip-btn'); btn.textContent='⏳ Saving…'; btn.disabled=true;
+  const btn=document.getElementById('zip-btn'); btn.textContent='⏳…'; btn.disabled=true;
   const slides=presSlides.filter(s=>s.canvas);
-  for(let i=0;i<slides.length;i++){
-    const l=document.createElement('a'); l.download=`doodleai_slide${i+1}_${(slides[i].prompt||'slide').replace(/[^a-z0-9]/gi,'_').slice(0,18)}.png`;
-    l.href=slides[i].canvas.toDataURL('image/png'); l.click(); await sleep(400);
-  }
-  setTimeout(()=>{ btn.textContent='📦 Download All Slides'; btn.disabled=false; },2500);
+  for(let i=0;i<slides.length;i++){ const l=document.createElement('a'); l.download=`doodleai_slide${i+1}_${(slides[i].prompt||'slide').replace(/[^a-z0-9]/gi,'_').slice(0,16)}.png`; l.href=slides[i].canvas.toDataURL('image/png'); l.click(); await sleep(380); }
+  setTimeout(()=>{ btn.textContent='📦 Download All'; btn.disabled=false; },2000);
 }
 
-// ══════════════════════════════════════
+// ═══════════════════════════════════
 //  RESET
-// ══════════════════════════════════════
+// ═══════════════════════════════════
 function resetAll(){
-  if(storyTimer) clearInterval(storyTimer); if(progTimer) clearInterval(progTimer); if(revealRAF) cancelAnimationFrame(revealRAF);
+  if(storyTimer) clearInterval(storyTimer); if(progTimer) clearInterval(progTimer); if(rafId) cancelAnimationFrame(rafId);
   isPresPlaying=false; presSlides=[]; presIndex=0;
   document.getElementById('result-section').style.display='none';
-  document.getElementById('examples').style.display='flex';
   document.getElementById('prompt-input').value=''; document.getElementById('prompt-input').focus();
   document.getElementById('create-btn').disabled=false;
   document.getElementById('result-img').src='';
-  const cv=document.getElementById('reveal-canvas'); cv.style.display='none'; cv.getContext('2d').clearRect(0,0,cv.width,cv.height);
-  document.getElementById('wm').style.display='none'; document.getElementById('caption-overlay').style.display='none'; document.getElementById('draw-status').style.display='none';
+  const cv=document.getElementById('draw-canvas'); cv.style.display='none'; cv.getContext('2d').clearRect(0,0,cv.width,cv.height);
+  document.getElementById('wm').style.display='none'; document.getElementById('caption-ov').style.display='none'; document.getElementById('draw-status').style.display='none';
   document.getElementById('story-text').innerHTML='<span class="blink"></span>';
-  document.getElementById('status').textContent='Contacting AI drawing studio…';
-  document.getElementById('prog').style.width='0%'; document.getElementById('error-box').style.display='none';
-  document.getElementById('sketch-loader').style.display='flex';
+  document.getElementById('status').textContent='Contacting AI drawing studio…'; document.getElementById('prog').style.width='0%';
+  document.getElementById('error-box').style.display='none'; document.getElementById('sketch-loader').style.display='flex';
   document.getElementById('dl-btn').disabled=true; document.getElementById('dl-btn').style.opacity='.4';
   document.getElementById('zip-btn').style.display='none'; document.getElementById('slide-counter').style.display='none';
   document.getElementById('pres-thumbs').style.display='none'; document.getElementById('pres-thumbs').innerHTML='';
   currentImgUrl=null; currentPrompt='';
 }
 
-// ══════════════════════════════════════
+// ═══════════════════════════════════
 //  INIT
-// ══════════════════════════════════════
+// ═══════════════════════════════════
 updateCreditBadge(); checkStripeReturn(); setMode('single');
 </script>
 </body>
