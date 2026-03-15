@@ -590,7 +590,15 @@ async function generateAndDraw(prompt,isPaid,isPresMode){
       const bytes=Uint8Array.from(atob(data.image),c=>c.charCodeAt(0));
       const blob=new Blob([bytes],{type:'image/png'}); const url=URL.createObjectURL(blob);
       await loadAndAnimate(url); currentImgUrl=url; credits--; saveCredits(); updateCreditBadge(); success=true;
-    }catch(e){ lastErr=e.message; }
+    }catch(e){
+      lastErr=e.message;
+      document.getElementById('status').textContent='⚡ Switching to backup server…';
+      const urls=buildFreeUrls(prompt);
+      for(let i=0;i<urls.length;i++){
+        try{ await loadAndAnimate(urls[i]); currentImgUrl=urls[i]; credits--; saveCredits(); updateCreditBadge(); success=true; break; }
+        catch(e2){ lastErr=e2.message; if(i<urls.length-1) await sleep(1800); }
+      }
+    }
   } else {
     const urls=buildFreeUrls(prompt);
     for(let i=0;i<urls.length;i++){
