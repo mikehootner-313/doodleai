@@ -170,6 +170,24 @@ nav{display:flex;align-items:center;justify-content:space-between;padding:18px 0
 .footer{text-align:center;margin-top:46px;font-size:.73rem;color:#ccc;letter-spacing:.05em;}
 .footer a{color:#ccc;text-decoration:none;margin:0 5px;}
 .footer a:hover{color:var(--blue);}
+/* AUDIO */
+.narration-wrap{max-width:780px;margin:0 auto 12px;background:#fff;border:1.5px solid var(--border);border-radius:14px;padding:10px 14px;}
+.narration-label{font-size:.74rem;color:var(--tx2);font-weight:600;text-transform:uppercase;letter-spacing:.05em;margin-bottom:5px;display:flex;align-items:center;gap:7px;}
+.narration-toggle{display:flex;align-items:center;gap:7px;cursor:pointer;user-select:none;}
+.narration-toggle input[type=checkbox]{accent-color:var(--pro);width:14px;height:14px;}
+.narration-input{width:100%;padding:.52rem .85rem;border:1.5px solid var(--border);border-radius:8px;font-family:'DM Sans',sans-serif;font-size:.85rem;outline:none;resize:vertical;min-height:54px;}
+.narration-input:focus{border-color:var(--pro);}
+.voice-row{display:flex;gap:8px;margin-top:6px;flex-wrap:wrap;align-items:center;}
+.voice-sel{padding:.35rem .7rem;border:1.5px solid var(--border);border-radius:8px;font-family:'DM Sans',sans-serif;font-size:.8rem;outline:none;background:#fff;}
+.voice-sel:focus{border-color:var(--pro);}
+.rate-wrap{display:flex;align-items:center;gap:6px;font-size:.78rem;color:var(--tx2);}
+.rate-wrap input[type=range]{width:80px;accent-color:var(--pro);}
+/* GIF */
+.btn-gif{display:none;align-items:center;gap:.4rem;padding:.65rem 1.3rem;background:var(--green);color:#fff;border:none;border-radius:40px;font-family:'Syne',sans-serif;font-size:.84rem;font-weight:700;cursor:pointer;box-shadow:0 3px 14px rgba(39,174,96,.3);}
+.btn-gif:hover{background:#219a52;}
+.btn-gif:disabled{background:#ccc;cursor:not-allowed;opacity:.5;}
+.gif-progress{display:none;margin-top:8px;background:#f0faf4;border:1.5px solid #a8e6c1;border-radius:10px;padding:8px 14px;font-size:.8rem;color:#27ae60;text-align:center;}
+.rec-dot{display:inline-block;width:8px;height:8px;background:#e74c3c;border-radius:50%;margin-right:5px;animation:blink .8s step-end infinite;}
 </style>
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4097502239225512" crossorigin="anonymous"></script>
 </head>
@@ -205,6 +223,31 @@ nav{display:flex;align-items:center;justify-content:space-between;padding:18px 0
       <input type="text" id="prompt-input" class="search-input" placeholder="Describe what to draw… or pick a category below ↓" maxlength="200" autocomplete="off"/>
       <button class="create-btn" id="create-btn">✏️ Create</button>
     </div>
+    <!-- IMAGE UPLOAD -->
+    <div style="max-width:780px;margin:0 auto 12px;display:flex;align-items:center;gap:10px;flex-wrap:wrap;">
+      <div id="upload-drop" style="flex:1;min-width:200px;border:2px dashed var(--border);border-radius:14px;padding:10px 16px;text-align:center;cursor:pointer;background:#fff;transition:border-color .2s;font-size:.82rem;color:var(--tx2);" onclick="document.getElementById('upload-input').click()" ondragover="event.preventDefault();this.style.borderColor='var(--blue)'" ondragleave="this.style.borderColor=''" ondrop="handleDrop(event)">
+        📁 <strong>Upload an image</strong> to doodle it — drag & drop or click
+      </div>
+      <input type="file" id="upload-input" accept="image/*" style="display:none" onchange="handleUpload(this)"/>
+      <div id="upload-preview" style="display:none;align-items:center;gap:8px;background:#f0faf4;border:1.5px solid #a8e6c1;border-radius:12px;padding:7px 12px;font-size:.8rem;color:#27ae60;font-weight:600;">
+        <img id="upload-thumb" style="width:38px;height:38px;object-fit:cover;border-radius:6px;"/>
+        <span id="upload-name"></span>
+        <button onclick="clearUpload()" style="background:none;border:none;color:#e74c3c;cursor:pointer;font-size:.85rem;padding:2px 5px;">✕</button>
+      </div>
+    </div>
+    <!-- SINGLE NARRATION -->
+    <div class="narration-wrap" id="single-narration-wrap">
+      <div class="narration-label">
+        <label class="narration-toggle"><input type="checkbox" id="single-narration-on"/> 🎙️ Read aloud while drawing</label>
+      </div>
+      <div id="single-narration-fields" style="display:none;margin-top:7px;">
+        <textarea class="narration-input" id="single-narration-text" placeholder="Type what you want the voice to say while it draws…" rows="2"></textarea>
+        <div class="voice-row">
+          <select class="voice-sel" id="voice-select"></select>
+          <div class="rate-wrap">🐢 <input type="range" id="voice-rate" min="0.5" max="2" step="0.1" value="1"/> ⚡ <span id="rate-label" style="font-size:.75rem;color:var(--pro);min-width:28px;">1x</span></div>
+        </div>
+      </div>
+    </div>
 
     <!-- CATEGORY BROWSER -->
     <div class="cat-section">
@@ -231,8 +274,8 @@ nav{display:flex;align-items:center;justify-content:space-between;padding:18px 0
       </div>
     </div>
     <div class="slides-list" id="slides-list">
-      <div class="slide-row"><span class="slide-num">1</span><div class="slide-inputs"><input class="slide-input" placeholder="Slide 1: What to draw?" maxlength="200"/><input class="slide-caption" placeholder="Caption (optional)"/></div><button class="slide-del" onclick="removeSlide(this)">✕</button></div>
-      <div class="slide-row"><span class="slide-num">2</span><div class="slide-inputs"><input class="slide-input" placeholder="Slide 2: What to draw?" maxlength="200"/><input class="slide-caption" placeholder="Caption (optional)"/></div><button class="slide-del" onclick="removeSlide(this)">✕</button></div>
+      <div class="slide-row"><span class="slide-num">1</span><div class="slide-inputs"><input class="slide-input" placeholder="Slide 1: What to draw?" maxlength="200"/><input class="slide-caption" placeholder="Caption (optional)"/><textarea class="slide-narration" placeholder="🎙️ Narration script for slide 1 (optional)" rows="2" style="width:100%;padding:.42rem .7rem;border:1.5px solid var(--border);border-radius:8px;font-family:'DM Sans',sans-serif;font-size:.8rem;outline:none;resize:vertical;margin-top:4px;"></textarea></div><button class="slide-del" onclick="removeSlide(this)">✕</button></div>
+      <div class="slide-row"><span class="slide-num">2</span><div class="slide-inputs"><input class="slide-input" placeholder="Slide 2: What to draw?" maxlength="200"/><input class="slide-caption" placeholder="Caption (optional)"/><textarea class="slide-narration" placeholder="🎙️ Narration script for slide 2 (optional)" rows="2" style="width:100%;padding:.42rem .7rem;border:1.5px solid var(--border);border-radius:8px;font-family:'DM Sans',sans-serif;font-size:.8rem;outline:none;resize:vertical;margin-top:4px;"></textarea></div><button class="slide-del" onclick="removeSlide(this)">✕</button></div>
     </div>
     <button class="pres-add-btn" onclick="addSlide()">+ Add another slide</button>
     <button class="pres-go-btn" onclick="startPresentation()">🎬 Generate &amp; Play Presentation →</button>
@@ -295,12 +338,14 @@ nav{display:flex;align-items:center;justify-content:space-between;padding:18px 0
       <div style="display:flex;gap:9px;flex-wrap:wrap;">
         <button class="btn-new" id="new-btn">↩ New doodle</button>
         <button class="btn-zip" id="zip-btn">📦 Download All</button>
+        <button class="btn-gif" id="gif-btn">🎬 Download GIF</button>
         <button class="btn-dl" id="dl-btn" disabled>
           <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
           Download PNG
         </button>
       </div>
     </div>
+    <div class="gif-progress" id="gif-progress"></div>
   </div>
 
   <div class="footer">DoodleAI.com &nbsp;·&nbsp;<a href="/about.html">About</a><a href="/accessibility.html">Accessibility</a><a href="/contact.html">Contact</a></div>
@@ -329,6 +374,7 @@ nav{display:flex;align-items:center;justify-content:space-between;padding:18px 0
   </div>
 </div>
 
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gif.js/0.2.0/gif.js"></script>
 <script>
 // ═══════════════════════════════════
 //  CONFIG
@@ -423,7 +469,91 @@ let storyTimer=null, progTimer=null, rafId=null;
 let appMode='single', drawSpeed=3;
 let presSlides=[], presIndex=0, isPresPlaying=false;
 
+// GIF & AUDIO STATE
+let gifFrames=[], gifRecording=false, gifInterval=null;
+let speechSynth=window.speechSynthesis, currentUtterance=null;
+let voiceList=[];
+
 function speedF(){ return {1:.15,2:.4,3:1,4:2.2,5:4}[drawSpeed]||1; }
+
+// ═══════════════════════════════════
+//  VOICE SETUP
+// ═══════════════════════════════════
+function loadVoices(){
+  voiceList=speechSynth.getVoices().filter(v=>v.lang.startsWith('en'));
+  const sel=document.getElementById('voice-select'); sel.innerHTML='';
+  voiceList.forEach((v,i)=>{ const o=document.createElement('option'); o.value=i; o.textContent=v.name+' ('+v.lang+')'; sel.appendChild(o); });
+  if(!voiceList.length){ const o=document.createElement('option'); o.textContent='Default voice'; sel.appendChild(o); }
+}
+speechSynth.onvoiceschanged=loadVoices;
+loadVoices();
+document.getElementById('voice-rate').oninput=function(){ document.getElementById('rate-label').textContent=parseFloat(this.value).toFixed(1)+'x'; };
+document.getElementById('single-narration-on').onchange=function(){ document.getElementById('single-narration-fields').style.display=this.checked?'block':'none'; };
+
+function speakText(text, onEnd){
+  if(!text||!text.trim()){ if(onEnd) onEnd(); return; }
+  speechSynth.cancel();
+  const utt=new SpeechSynthesisUtterance(text);
+  const rate=parseFloat(document.getElementById('voice-rate').value)||1;
+  utt.rate=rate; utt.pitch=1; utt.volume=1;
+  const vi=parseInt(document.getElementById('voice-select').value)||0;
+  if(voiceList[vi]) utt.voice=voiceList[vi];
+  utt.onend=()=>{ if(onEnd) onEnd(); };
+  utt.onerror=()=>{ if(onEnd) onEnd(); };
+  currentUtterance=utt;
+  speechSynth.speak(utt);
+}
+function stopSpeech(){ speechSynth.cancel(); currentUtterance=null; }
+
+// ═══════════════════════════════════
+//  GIF RECORDING
+// ═══════════════════════════════════
+function startGifRecording(){
+  gifFrames=[]; gifRecording=true;
+  const cv=document.getElementById('draw-canvas');
+  const fps=Math.max(4,Math.round(10/speedF()));
+  gifInterval=setInterval(()=>{
+    if(!gifRecording||!cv.width) return;
+    const tmp=document.createElement('canvas'); tmp.width=Math.min(cv.width,640); tmp.height=Math.round(tmp.width*cv.height/cv.width);
+    tmp.getContext('2d').drawImage(cv,0,0,tmp.width,tmp.height);
+    gifFrames.push({data:tmp.getContext('2d').getImageData(0,0,tmp.width,tmp.height),w:tmp.width,h:tmp.height,delay:Math.round(1000/fps)});
+  },Math.round(1000/fps));
+}
+function stopGifRecording(){ gifRecording=false; if(gifInterval){clearInterval(gifInterval);gifInterval=null;} }
+
+async function buildAndDownloadGif(filename){
+  stopGifRecording();
+  if(!gifFrames.length){ alert('No frames recorded!'); return; }
+  const btn=document.getElementById('gif-btn');
+  const prog=document.getElementById('gif-progress');
+  btn.disabled=true; btn.textContent='⏳ Building GIF…';
+  prog.style.display='block';
+
+  try{
+    const gif=new GIF({workers:2,quality:10,width:gifFrames[0].w,height:gifFrames[0].h,workerScript:'https://cdnjs.cloudflare.com/ajax/libs/gif.js/0.2.0/gif.worker.js'});
+    const total=gifFrames.length;
+    // Sample frames if too many
+    const maxFrames=120;
+    const step=Math.max(1,Math.floor(total/maxFrames));
+    gifFrames.filter((_,i)=>i%step===0).forEach((f,i)=>{
+      const tmp=document.createElement('canvas'); tmp.width=f.w; tmp.height=f.h;
+      tmp.getContext('2d').putImageData(f.data,0,0);
+      gif.addFrame(tmp,{delay:f.delay*step,copy:true});
+      if(i%10===0){ prog.innerHTML=`<span class="rec-dot"></span>Encoding frames… ${Math.round(i/Math.ceil(total/step)*100)}%`; }
+    });
+    gif.on('progress',p=>{ prog.innerHTML=`<span class="rec-dot"></span>Compressing GIF… ${Math.round(p*100)}%`; });
+    gif.on('finished',blob=>{
+      const url=URL.createObjectURL(blob);
+      const a=document.createElement('a'); a.href=url; a.download=(filename||'doodleai')+'.gif'; a.click();
+      prog.innerHTML='✅ GIF downloaded!'; setTimeout(()=>{prog.style.display='none';},3000);
+      btn.disabled=false; btn.textContent='🎬 Download GIF'; btn.style.display='inline-flex';
+    });
+    gif.render();
+  }catch(e){
+    prog.innerHTML='❌ GIF failed: '+e.message; btn.disabled=false; btn.textContent='🎬 Download GIF';
+  }
+}
+document.getElementById('gif-btn').addEventListener('click',()=>{ buildAndDownloadGif(currentPrompt.replace(/[^a-z0-9]/gi,'_').slice(0,26)); });
 
 // ═══════════════════════════════════
 //  MODE / SPEED
@@ -482,11 +612,11 @@ function addSlide(){
   if(list.children.length>=max){ alert(`Max ${max} slides.`); return; }
   const n=list.children.length+1;
   const row=document.createElement('div'); row.className='slide-row';
-  row.innerHTML=`<span class="slide-num">${n}</span><div class="slide-inputs"><input class="slide-input" placeholder="Slide ${n}: What to draw?" maxlength="200"/><input class="slide-caption" placeholder="Caption (optional)"/></div><button class="slide-del" onclick="removeSlide(this)">✕</button>`;
+  row.innerHTML=`<span class="slide-num">${n}</span><div class="slide-inputs"><input class="slide-input" placeholder="Slide ${n}: What to draw?" maxlength="200"/><input class="slide-caption" placeholder="Caption (optional)"/><textarea class="slide-narration" placeholder="🎙️ Narration script for slide ${n} (optional)" rows="2" style="width:100%;padding:.42rem .7rem;border:1.5px solid var(--border);border-radius:8px;font-family:'DM Sans',sans-serif;font-size:.8rem;outline:none;resize:vertical;margin-top:4px;"></textarea></div><button class="slide-del" onclick="removeSlide(this)">✕</button>`;
   list.appendChild(row);
 }
 function removeSlide(btn){ const list=document.getElementById('slides-list'); if(list.children.length<=1) return; btn.closest('.slide-row').remove(); [...list.children].forEach((r,i)=>r.querySelector('.slide-num').textContent=i+1); }
-function getSlideData(){ return [...document.querySelectorAll('.slide-row')].map(r=>({prompt:r.querySelector('.slide-input').value.trim(),caption:r.querySelector('.slide-caption').value.trim()})).filter(s=>s.prompt); }
+function getSlideData(){ return [...document.querySelectorAll('.slide-row')].map(r=>({prompt:r.querySelector('.slide-input').value.trim(),caption:r.querySelector('.slide-caption').value.trim(),narration:r.querySelector('.slide-narration')?.value.trim()||''})).filter(s=>s.prompt); }
 async function startPresentation(){
   const slides=getSlideData(); if(!slides.length){ alert('Add at least one slide prompt!'); return; }
   presSlides=slides.map(s=>({...s,canvas:null})); presIndex=0; isPresPlaying=true;
@@ -505,7 +635,7 @@ async function runNextPresSlide(){
   currentPrompt=slide.prompt; document.getElementById('label-prompt').textContent=`"${slide.prompt}"`;
   const co=document.getElementById('caption-ov'); if(slide.caption){co.textContent=slide.caption;co.style.display='block';}else co.style.display='none';
   document.querySelectorAll('.thumb').forEach((t,i)=>t.classList.toggle('at',i===presIndex));
-  await generateAndDraw(slide.prompt,credits>0,true);
+  await generateAndDraw(slide.prompt,credits>0,true,slide.narration||'');
 }
 function jumpToSlide(i){
   if(!presSlides[i]||!presSlides[i].canvas) return;
@@ -550,6 +680,48 @@ function buildFreeUrls(prompt){
 // ═══════════════════════════════════
 async function createDoodle(){
   const input=document.getElementById('prompt-input'),prompt=input.value.trim();
+  const narrationText = document.getElementById('single-narration-on').checked ? document.getElementById('single-narration-text').value.trim() : '';
+  
+  // If image uploaded, skip AI generation and animate directly
+  if(uploadedImageUrl){
+    if(!prompt){ input.value='My uploaded image'; }
+    isPresPlaying=false; presSlides=[];
+    document.getElementById('slide-counter').style.display='none';
+    document.getElementById('pres-thumbs').style.display='none';
+    document.getElementById('pres-thumbs').innerHTML='';
+    document.getElementById('zip-btn').style.display='none';
+    document.getElementById('caption-ov').style.display='none';
+    currentPrompt=prompt||'uploaded image';
+    document.getElementById('result-section').style.display='block';
+    document.getElementById('label-prompt').textContent=`"${currentPrompt}"`;
+    document.getElementById('sketch-loader').style.display='none';
+    document.getElementById('gif-btn').style.display='none';
+    document.getElementById('gif-progress').style.display='none';
+    document.getElementById('error-box').style.display='none';
+    document.getElementById('wm').style.display='none';
+    document.getElementById('draw-status').style.display='none';
+    document.getElementById('dl-btn').disabled=true; document.getElementById('dl-btn').style.opacity='.4';
+    stopSpeech(); stopGifRecording(); gifFrames=[];
+    document.getElementById('status').textContent='Drawing your uploaded image…';
+    startStory(currentPrompt);
+    const img = new Image();
+    img.onload = () => {
+      document.getElementById('sketch-loader').style.display='none';
+      startGifRecording();
+      if(narrationText) speakText(narrationText, null);
+      startStrokeDrawing(img, ()=>{
+        stopGifRecording();
+        document.getElementById('gif-btn').style.display='inline-flex';
+        document.getElementById('dl-btn').disabled=false; document.getElementById('dl-btn').style.opacity='1';
+        stopStory('Your uploaded image is drawn! ✨');
+        document.getElementById('status').textContent='Done! Download as PNG or GIF.';
+      });
+    };
+    img.src = uploadedImageUrl;
+    currentImgUrl = uploadedImageUrl;
+    return;
+  }
+
   if(!prompt){ input.style.borderColor='#e85d26'; input.focus(); setTimeout(()=>input.style.borderColor='',1200); return; }
   isPresPlaying=false; presSlides=[];
   document.getElementById('slide-counter').style.display='none';
@@ -560,10 +732,10 @@ async function createDoodle(){
   currentPrompt=prompt;
   document.getElementById('result-section').style.display='block';
   document.getElementById('label-prompt').textContent=`"${prompt}"`;
-  await generateAndDraw(prompt,credits>0,false);
+  await generateAndDraw(prompt,credits>0,false,narrationText);
 }
 
-async function generateAndDraw(prompt,isPaid,isPresMode){
+async function generateAndDraw(prompt,isPaid,isPresMode,narrationText){
   document.getElementById('sketch-loader').style.display='flex';
   document.getElementById('draw-canvas').style.display='none';
   document.getElementById('result-img').src='';
@@ -571,7 +743,10 @@ async function generateAndDraw(prompt,isPaid,isPresMode){
   document.getElementById('wm').style.display='none';
   document.getElementById('draw-status').style.display='none';
   document.getElementById('dl-btn').disabled=true; document.getElementById('dl-btn').style.opacity='.4';
+  document.getElementById('gif-btn').style.display='none';
+  document.getElementById('gif-progress').style.display='none';
   document.getElementById('create-btn').disabled=true;
+  stopSpeech(); stopGifRecording(); gifFrames=[];
   const badge=document.getElementById('mode-badge'); badge.className='mode-badge '+(isPaid?'paid-badge':'free-badge'); badge.textContent=isPaid?'⚡ Credits':'Free';
   document.getElementById('prog').className='prog-fill'+(isPaid?' paid':'');
   document.querySelectorAll('.ll').forEach(l=>l.className='ll'+(isPaid?' pl':''));
@@ -589,13 +764,13 @@ async function generateAndDraw(prompt,isPaid,isPresMode){
       const data=await res.json(); if(!data.image) throw new Error('No image');
       const bytes=Uint8Array.from(atob(data.image),c=>c.charCodeAt(0));
       const blob=new Blob([bytes],{type:'image/png'}); const url=URL.createObjectURL(blob);
-      await loadAndAnimate(url); currentImgUrl=url; credits--; saveCredits(); updateCreditBadge(); success=true;
+      await loadAndAnimate(url, narrationText); currentImgUrl=url; credits--; saveCredits(); updateCreditBadge(); success=true;
     }catch(e){
       lastErr=e.message;
       document.getElementById('status').textContent='⚡ Switching to backup server…';
       const urls=buildFreeUrls(prompt);
       for(let i=0;i<urls.length;i++){
-        try{ await loadAndAnimate(urls[i]); currentImgUrl=urls[i]; credits--; saveCredits(); updateCreditBadge(); success=true; break; }
+        try{ await loadAndAnimate(urls[i], narrationText); currentImgUrl=urls[i]; credits--; saveCredits(); updateCreditBadge(); success=true; break; }
         catch(e2){ lastErr=e2.message; if(i<urls.length-1) await sleep(1800); }
       }
     }
@@ -604,7 +779,7 @@ async function generateAndDraw(prompt,isPaid,isPresMode){
     for(let i=0;i<urls.length;i++){
       document.getElementById('status').textContent=i===0?'Contacting free AI server…':`Trying backup ${i+1}…`;
       document.getElementById('loading-msg').textContent=i===0?'Sketching your idea…':`Retrying… (${i+1}/${urls.length})`;
-      try{ await loadAndAnimate(urls[i]); currentImgUrl=urls[i]; if(isPaid){credits--;saveCredits();updateCreditBadge();} success=true; break; }
+      try{ await loadAndAnimate(urls[i], narrationText); currentImgUrl=urls[i]; if(isPaid){credits--;saveCredits();updateCreditBadge();} success=true; break; }
       catch(e){ lastErr=e.message; if(i<urls.length-1) await sleep(1800); }
     }
   }
@@ -629,11 +804,31 @@ async function generateAndDraw(prompt,isPaid,isPresMode){
 // ═══════════════════════════════════
 //  LOAD IMAGE
 // ═══════════════════════════════════
-function loadAndAnimate(url){
+function loadAndAnimate(url, narrationText){
   return new Promise((resolve,reject)=>{
     const img=document.getElementById('result-img');
     const to=setTimeout(()=>reject(new Error('Timeout')),65000);
-    img.onload=()=>{ clearTimeout(to); document.getElementById('sketch-loader').style.display='none'; startStrokeDrawing(img,resolve); };
+    img.onload=()=>{
+      clearTimeout(to);
+      document.getElementById('sketch-loader').style.display='none';
+      // Start GIF recording
+      startGifRecording();
+      // Start narration
+      if(narrationText && narrationText.trim()) speakText(narrationText, null);
+      else {
+        // Auto narrate single mode if checkbox on
+        const singleOn=document.getElementById('single-narration-on');
+        if(singleOn && singleOn.checked){
+          const txt=document.getElementById('single-narration-text').value.trim();
+          if(txt) speakText(txt, null);
+        }
+      }
+      startStrokeDrawing(img,()=>{
+        stopGifRecording();
+        document.getElementById('gif-btn').style.display='inline-flex';
+        resolve();
+      });
+    };
     img.onerror=()=>{ clearTimeout(to); reject(new Error('Image failed')); };
     img.crossOrigin='anonymous'; img.src=url;
   });
@@ -1110,6 +1305,8 @@ async function downloadAllSlides(){
 // ═══════════════════════════════════
 function resetAll(){
   if(storyTimer) clearInterval(storyTimer); if(progTimer) clearInterval(progTimer); if(rafId) cancelAnimationFrame(rafId);
+  stopSpeech(); stopGifRecording(); gifFrames=[];
+  clearUpload();
   isPresPlaying=false; presSlides=[]; presIndex=0;
   document.getElementById('result-section').style.display='none';
   document.getElementById('prompt-input').value=''; document.getElementById('prompt-input').focus();
@@ -1121,7 +1318,8 @@ function resetAll(){
   document.getElementById('status').textContent='Contacting AI drawing studio…'; document.getElementById('prog').style.width='0%';
   document.getElementById('error-box').style.display='none'; document.getElementById('sketch-loader').style.display='flex';
   document.getElementById('dl-btn').disabled=true; document.getElementById('dl-btn').style.opacity='.4';
-  document.getElementById('zip-btn').style.display='none'; document.getElementById('slide-counter').style.display='none';
+  document.getElementById('zip-btn').style.display='none'; document.getElementById('gif-btn').style.display='none'; document.getElementById('gif-progress').style.display='none';
+  document.getElementById('slide-counter').style.display='none';
   document.getElementById('pres-thumbs').style.display='none'; document.getElementById('pres-thumbs').innerHTML='';
   currentImgUrl=null; currentPrompt='';
 }
@@ -1129,6 +1327,42 @@ function resetAll(){
 // ═══════════════════════════════════
 //  INIT
 // ═══════════════════════════════════
+// ═══════════════════════════════════
+//  IMAGE UPLOAD
+// ═══════════════════════════════════
+let uploadedImageUrl = null;
+
+function handleUpload(input){
+  const file = input.files[0];
+  if(!file) return;
+  processImageFile(file);
+}
+function handleDrop(e){
+  e.preventDefault();
+  document.getElementById('upload-drop').style.borderColor='';
+  const file = e.dataTransfer.files[0];
+  if(file && file.type.startsWith('image/')) processImageFile(file);
+}
+function processImageFile(file){
+  const url = URL.createObjectURL(file);
+  uploadedImageUrl = url;
+  const thumb = document.getElementById('upload-thumb');
+  thumb.src = url;
+  document.getElementById('upload-name').textContent = file.name.length>22 ? file.name.slice(0,20)+'…' : file.name;
+  document.getElementById('upload-preview').style.display='flex';
+  document.getElementById('upload-drop').style.display='none';
+  // Auto-fill prompt if empty
+  if(!document.getElementById('prompt-input').value){
+    document.getElementById('prompt-input').value = file.name.replace(/\.[^.]+$/,'').replace(/[-_]/g,' ');
+  }
+}
+function clearUpload(){
+  uploadedImageUrl = null;
+  document.getElementById('upload-input').value='';
+  document.getElementById('upload-preview').style.display='none';
+  document.getElementById('upload-drop').style.display='block';
+}
+
 updateCreditBadge(); checkStripeReturn(); setMode('single');
 </script>
 </body>
