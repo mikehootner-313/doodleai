@@ -502,7 +502,37 @@ nav{display:flex;align-items:center;justify-content:space-between;padding:18px 0
   </div>
 </div>
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/gif.js/0.2.0/gif.js"></script>
+<script>
+// ═══════════════════════════════════
+//  PURE JS GIF ENCODER (no worker needed)
+// ═══════════════════════════════════
+class GIFEncoder{constructor(w,h){this.w=w;this.h=h;this.frames=[];this.delay=100;}addFrame(ctx,delay){const id=ctx.getImageData(0,0,this.w,this.h);this.frames.push({data:id.data,delay:delay||this.delay});}
+encode(){const out=[];const writeStr=s=>{for(let i=0;i<s.length;i++)out.push(s.charCodeAt(i));};const writeByte=b=>out.push(b&0xff);const writeShort=s=>{out.push(s&0xff);out.push((s>>8)&0xff);};
+// Header
+writeStr('GIF89a');writeShort(this.w);writeShort(this.h);writeByte(0xf7);writeByte(0);writeByte(0);
+// Global color table (256 colors)
+const palette=[];for(let i=0;i<256;i++){palette.push(i,i,i);}for(const b of palette)writeByte(b);
+// Netscape loop extension
+writeByte(0x21);writeByte(0xff);writeByte(11);writeStr('NETSCAPE2.0');writeByte(3);writeByte(1);writeShort(0);writeByte(0);
+for(const frame of this.frames){
+// Graphic control extension
+writeByte(0x21);writeByte(0xf9);writeByte(4);writeByte(0);writeShort(Math.round(frame.delay/10));writeByte(0);writeByte(0);
+// Image descriptor
+writeByte(0x2c);writeShort(0);writeShort(0);writeShort(this.w);writeShort(this.h);writeByte(0);
+// Image data — quantize to grayscale palette
+const pixels=new Uint8Array(this.w*this.h);const d=frame.data;
+for(let i=0;i<this.w*this.h;i++){const r=d[i*4],g=d[i*4+1],b=d[i*4+2];pixels[i]=Math.round(r*.299+g*.587+b*.114);}
+// LZW compress
+const lzw=this._lzw(pixels,8);writeByte(8);
+for(let i=0;i<lzw.length;i+=255){const chunk=lzw.slice(i,i+255);writeByte(chunk.length);for(const b of chunk)writeByte(b);}
+writeByte(0);}
+writeByte(0x3b);
+return new Uint8Array(out);}
+_lzw(pixels,minCodeSize){const clear=1<<minCodeSize,eoi=clear+1;let codeSize=minCodeSize+1,nextCode=eoi+1;const table=new Map();const out=[];let buf=0,bufBits=0;const emit=code=>{buf|=code<<bufBits;bufBits+=codeSize;while(bufBits>=8){out.push(buf&0xff);buf>>=8;bufBits-=8;}};
+emit(clear);let prefix=pixels[0];
+for(let i=1;i<pixels.length;i++){const k=pixels[i],key=(prefix<<8)|k;if(table.has(key)){prefix=table.get(key);}else{emit(prefix);if(nextCode<4096){table.set(key,nextCode++);if(nextCode>(1<<codeSize)&&codeSize<12)codeSize++;}else{emit(clear);table.clear();codeSize=minCodeSize+1;nextCode=eoi+1;}prefix=k;}}
+emit(prefix);emit(eoi);if(bufBits>0)out.push(buf&0xff);return out;}}
+</script>
 <script>
 // ═══════════════════════════════════
 //  CONFIG
@@ -658,25 +688,32 @@ async function buildAndDownloadGif(filename){
   prog.style.display='block';
 
   try{
-    const gif=new GIF({workers:2,quality:10,width:gifFrames[0].w,height:gifFrames[0].h,workerScript:'https://cdnjs.cloudflare.com/ajax/libs/gif.js/0.2.0/gif.worker.js'});
     const total=gifFrames.length;
-    // Sample frames if too many
-    const maxFrames=120;
+    const maxFrames=80;
     const step=Math.max(1,Math.floor(total/maxFrames));
-    gifFrames.filter((_,i)=>i%step===0).forEach((f,i)=>{
-      const tmp=document.createElement('canvas'); tmp.width=f.w; tmp.height=f.h;
-      tmp.getContext('2d').putImageData(f.data,0,0);
-      gif.addFrame(tmp,{delay:f.delay*step,copy:true});
-      if(i%10===0){ prog.innerHTML=`<span class="rec-dot"></span>Encoding frames… ${Math.round(i/Math.ceil(total/step)*100)}%`; }
-    });
-    gif.on('progress',p=>{ prog.innerHTML=`<span class="rec-dot"></span>Compressing GIF… ${Math.round(p*100)}%`; });
-    gif.on('finished',blob=>{
-      const url=URL.createObjectURL(blob);
-      const a=document.createElement('a'); a.href=url; a.download=(filename||'doodleai')+'.gif'; a.click();
-      prog.innerHTML='✅ GIF downloaded!'; setTimeout(()=>{prog.style.display='none';},3000);
-      btn.disabled=false; btn.textContent='🎬 Download GIF'; btn.style.display='inline-flex';
-    });
-    gif.render();
+    const sampled=gifFrames.filter((_,i)=>i%step===0);
+    const W=sampled[0].w, H=sampled[0].h;
+    const encoder=new GIFEncoder(W,H);
+
+    for(let i=0;i<sampled.length;i++){
+      const f=sampled[i];
+      const tmp=document.createElement('canvas'); tmp.width=W; tmp.height=H;
+      const ctx=tmp.getContext('2d'); ctx.putImageData(f.data,0,0);
+      encoder.addFrame(ctx, f.delay*step);
+      if(i%8===0){
+        prog.innerHTML=`<span class="rec-dot"></span>Encoding frames… ${Math.round(i/sampled.length*100)}%`;
+        await new Promise(r=>setTimeout(r,0));
+      }
+    }
+
+    prog.innerHTML=`<span class="rec-dot"></span>Finalizing GIF…`;
+    await new Promise(r=>setTimeout(r,50));
+    const bytes=encoder.encode();
+    const blob=new Blob([bytes],{type:'image/gif'});
+    const url=URL.createObjectURL(blob);
+    const a=document.createElement('a'); a.href=url; a.download=(filename||'watchitdraw')+'.gif'; a.click();
+    prog.innerHTML='✅ GIF downloaded!'; setTimeout(()=>{prog.style.display='none';},3000);
+    btn.disabled=false; btn.textContent='🎬 Download GIF'; btn.style.display='inline-flex';
   }catch(e){
     prog.innerHTML='❌ GIF failed: '+e.message; btn.disabled=false; btn.textContent='🎬 Download GIF';
   }
