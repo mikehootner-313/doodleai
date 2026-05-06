@@ -1,107 +1,379 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>About — DoodleAI</title>
-<link href="https://fonts.googleapis.com/css2?family=Caveat:wght@400;600;700&family=Syne:wght@400;600;700;800&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
-<style>
-:root{--ink:#0f0e17;--paper:#fffcf5;--paper2:#f5f0e8;--line:rgba(0,0,0,0.055);--border:#e8e2d8;--tx2:#6b6560;--orange:#e85d26;--blue:#3a7bd5;--pro:#7c3aed;--pro2:#a855f7;}
-*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
-body{background:var(--paper);color:var(--ink);font-family:'DM Sans',sans-serif;min-height:100vh;}
-body::before{content:'';position:fixed;inset:0;background-image:repeating-linear-gradient(0deg,transparent,transparent 31px,var(--line) 32px);pointer-events:none;z-index:0;}
-body::after{content:'';position:fixed;left:76px;top:0;bottom:0;width:1.5px;background:rgba(220,70,70,0.12);pointer-events:none;z-index:0;}
-.page{position:relative;z-index:1;max-width:780px;margin:0 auto;padding:0 24px 80px;}
-/* NAV */
-nav{display:flex;align-items:center;justify-content:space-between;padding:24px 0 32px;flex-wrap:wrap;gap:12px;}
-.logo{font-family:'Syne',sans-serif;font-size:1.8rem;font-weight:800;letter-spacing:-.03em;text-decoration:none;color:var(--ink);}
-.logo .d1{color:#3a7bd5}.logo .d2{color:#e85d26}.logo .d3{color:#27ae60}.logo .d4{color:#e85d26}.logo .d5{color:#7c3aed}.logo .d6{color:#3a7bd5}
-.logo .ai{color:var(--ink);font-weight:400;font-size:.82em;}
-.nav-links{display:flex;gap:6px;flex-wrap:wrap;}
-.nav-link{padding:.4rem 1rem;border:1.5px solid var(--border);border-radius:20px;font-family:'Syne',sans-serif;font-size:.82rem;font-weight:600;color:var(--tx2);text-decoration:none;transition:all .2s;background:#fff;}
-.nav-link:hover{border-color:var(--blue);color:var(--blue);background:#eef4ff;}
-.nav-link.active{border-color:var(--orange);color:var(--orange);background:#fff8f5;}
-/* HERO */
-.hero{text-align:center;padding:40px 0 50px;}
-.hero-icon{font-size:4rem;margin-bottom:16px;display:block;animation:float 3s ease-in-out infinite;}
-@keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-10px)}}
-.hero h1{font-family:'Syne',sans-serif;font-size:clamp(2rem,5vw,3rem);font-weight:800;margin-bottom:12px;line-height:1.1;}
-.hero h1 span{color:var(--orange);}
-.hero p{font-size:1.1rem;color:var(--tx2);max-width:540px;margin:0 auto;line-height:1.7;}
-/* CARDS */
-.cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:16px;margin:40px 0;}
-.card{background:#fff;border:2px solid var(--border);border-radius:20px;padding:24px 20px;text-align:center;transition:all .2s;}
-.card:hover{transform:translateY(-3px);box-shadow:0 10px 30px rgba(0,0,0,.08);border-color:var(--blue);}
-.card-icon{font-size:2.2rem;margin-bottom:12px;display:block;}
-.card h3{font-family:'Syne',sans-serif;font-size:1rem;font-weight:700;margin-bottom:8px;}
-.card p{font-size:.85rem;color:var(--tx2);line-height:1.6;}
-/* SECTION */
-.section{background:#fff;border:2px solid var(--border);border-radius:20px;padding:32px;margin-bottom:20px;}
-.section h2{font-family:'Syne',sans-serif;font-size:1.4rem;font-weight:800;margin-bottom:16px;display:flex;align-items:center;gap:10px;}
-.section p{font-size:.95rem;color:var(--tx2);line-height:1.8;margin-bottom:12px;}
-.section p:last-child{margin-bottom:0;}
-/* CTA */
-.cta{text-align:center;padding:40px 0 0;}
-.cta-btn{display:inline-flex;align-items:center;gap:.5rem;padding:.9rem 2rem;background:var(--orange);color:#fff;border:none;border-radius:40px;font-family:'Syne',sans-serif;font-size:1rem;font-weight:700;text-decoration:none;transition:all .2s;box-shadow:0 4px 16px rgba(232,93,38,.35);}
-.cta-btn:hover{filter:brightness(1.08);transform:scale(1.04);}
-.footer{text-align:center;margin-top:50px;font-size:.75rem;color:#ccc;letter-spacing:.05em;}
-</style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>About WatchItDraw – AI Drawing Animation for Kids & Families</title>
+  <meta name="description" content="Learn about WatchItDraw, the AI-powered stroke-by-stroke drawing animation app built for kids, classrooms, and creative families. Meet the creator and discover the story behind the tool.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;900&family=Fraunces:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --ink: #1a1a2e;
+      --cream: #fdf6ec;
+      --orange: #ff6b35;
+      --teal: #00b4a6;
+      --yellow: #ffd166;
+      --purple: #845ec2;
+      --pink: #ff9baa;
+      --card-bg: #ffffff;
+    }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: 'Nunito', sans-serif;
+      background: var(--cream);
+      color: var(--ink);
+      line-height: 1.7;
+    }
+
+    /* NAV */
+    nav {
+      background: var(--ink);
+      padding: 0 2rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 60px;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+    nav .logo {
+      font-family: 'Fraunces', serif;
+      font-weight: 700;
+      color: var(--yellow);
+      font-size: 1.3rem;
+      text-decoration: none;
+    }
+    nav ul {
+      list-style: none;
+      display: flex;
+      gap: 1.5rem;
+    }
+    nav ul a {
+      color: #ccc;
+      text-decoration: none;
+      font-size: 0.9rem;
+      font-weight: 600;
+      transition: color 0.2s;
+    }
+    nav ul a:hover { color: var(--yellow); }
+
+    /* HERO */
+    .hero {
+      background: var(--ink);
+      color: white;
+      padding: 5rem 2rem 4rem;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+    .hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(ellipse at 30% 50%, rgba(132,94,194,0.3), transparent 60%),
+                  radial-gradient(ellipse at 70% 40%, rgba(0,180,166,0.2), transparent 60%);
+    }
+    .hero-tag {
+      display: inline-block;
+      background: var(--orange);
+      color: white;
+      font-size: 0.75rem;
+      font-weight: 900;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      padding: 0.3rem 0.9rem;
+      border-radius: 20px;
+      margin-bottom: 1.2rem;
+    }
+    .hero h1 {
+      font-family: 'Fraunces', serif;
+      font-size: clamp(2.2rem, 5vw, 3.5rem);
+      line-height: 1.15;
+      position: relative;
+    }
+    .hero h1 em {
+      font-style: italic;
+      color: var(--yellow);
+    }
+    .hero p {
+      max-width: 580px;
+      margin: 1.5rem auto 0;
+      color: #ccc;
+      font-size: 1.05rem;
+      position: relative;
+    }
+
+    /* SECTIONS */
+    .container {
+      max-width: 860px;
+      margin: 0 auto;
+      padding: 0 1.5rem;
+    }
+    section {
+      padding: 4rem 0;
+    }
+    section + section {
+      border-top: 2px dashed #e8e0d4;
+    }
+
+    h2 {
+      font-family: 'Fraunces', serif;
+      font-size: 1.9rem;
+      margin-bottom: 1.2rem;
+      color: var(--ink);
+    }
+    h2 .accent { color: var(--teal); }
+
+    p { margin-bottom: 1rem; font-size: 1.05rem; }
+    p:last-child { margin-bottom: 0; }
+
+    /* STORY CARD */
+    .story-card {
+      background: var(--ink);
+      color: white;
+      border-radius: 16px;
+      padding: 2.5rem;
+      position: relative;
+      overflow: hidden;
+    }
+    .story-card::before {
+      content: '"';
+      font-family: 'Fraunces', serif;
+      font-size: 12rem;
+      color: rgba(255,209,102,0.1);
+      position: absolute;
+      top: -2rem;
+      left: 1rem;
+      line-height: 1;
+    }
+    .story-card p {
+      font-size: 1.1rem;
+      color: #ddd;
+      position: relative;
+    }
+    .story-card p strong { color: var(--yellow); }
+
+    /* VALUES GRID */
+    .values-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 1.2rem;
+      margin-top: 2rem;
+    }
+    .value-card {
+      background: white;
+      border-radius: 12px;
+      padding: 1.5rem;
+      border-left: 4px solid var(--teal);
+      box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+    }
+    .value-card:nth-child(2) { border-color: var(--orange); }
+    .value-card:nth-child(3) { border-color: var(--purple); }
+    .value-card:nth-child(4) { border-color: var(--pink); }
+    .value-card .icon { font-size: 1.8rem; margin-bottom: 0.6rem; }
+    .value-card h3 { font-size: 1rem; font-weight: 900; margin-bottom: 0.4rem; }
+    .value-card p { font-size: 0.93rem; color: #555; margin: 0; }
+
+    /* TECH SECTION */
+    .tech-list {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+      margin-top: 1.5rem;
+    }
+    .tech-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 1rem;
+      background: white;
+      border-radius: 10px;
+      padding: 1.2rem 1.5rem;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+    }
+    .tech-item .dot {
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+      background: var(--orange);
+      flex-shrink: 0;
+      margin-top: 0.45rem;
+    }
+    .tech-item:nth-child(2) .dot { background: var(--teal); }
+    .tech-item:nth-child(3) .dot { background: var(--purple); }
+    .tech-item:nth-child(4) .dot { background: var(--yellow); }
+    .tech-item h4 { font-weight: 900; font-size: 1rem; margin-bottom: 0.2rem; }
+    .tech-item p { font-size: 0.93rem; color: #555; margin: 0; }
+
+    /* CTA */
+    .cta-bar {
+      background: var(--orange);
+      text-align: center;
+      padding: 3rem 2rem;
+    }
+    .cta-bar h2 {
+      color: white;
+      font-size: 1.8rem;
+      margin-bottom: 1rem;
+    }
+    .btn {
+      display: inline-block;
+      background: var(--ink);
+      color: white;
+      padding: 0.85rem 2rem;
+      border-radius: 30px;
+      text-decoration: none;
+      font-weight: 900;
+      font-size: 1rem;
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+    .btn:hover { transform: translateY(-2px); box-shadow: 0 8px 20px rgba(0,0,0,0.2); }
+
+    footer {
+      background: var(--ink);
+      color: #888;
+      text-align: center;
+      padding: 2rem;
+      font-size: 0.85rem;
+    }
+    footer a { color: #aaa; text-decoration: none; }
+    footer a:hover { color: var(--yellow); }
+    footer .footer-links { display: flex; justify-content: center; gap: 1.5rem; flex-wrap: wrap; margin-top: 0.5rem; }
+
+    @media (max-width: 600px) {
+      nav ul { gap: 0.8rem; }
+      nav ul a { font-size: 0.8rem; }
+    }
+  </style>
 </head>
 <body>
-<div class="page">
-  <nav>
-    <a href="/" class="logo"><span class="d1">D</span><span class="d2">o</span><span class="d3">o</span><span class="d4">d</span><span class="d5">l</span><span class="d6">e</span><span class="ai">AI</span></a>
-    <div class="nav-links">
-      <a href="/" class="nav-link">🎨 Create</a>
-      <a href="/about.html" class="nav-link active">About</a>
-      <a href="/accessibility.html" class="nav-link">Accessibility</a>
-      <a href="/contact.html" class="nav-link">Contact</a>
-    </div>
-  </nav>
 
-  <div class="hero">
-    <span class="hero-icon">✏️</span>
-    <h1>Art for <span>everyone.</span><br>Ideas brought to life.</h1>
-    <p>DoodleAI was built with one simple belief — creativity shouldn't have any barriers. Whether you're 8 or 80, a student or a CEO, everyone deserves to see their ideas drawn to life.</p>
-  </div>
+<nav>
+  <a class="logo" href="/">WatchItDraw</a>
+  <ul>
+    <li><a href="/">Draw</a></li>
+    <li><a href="/how-it-works.html">How It Works</a></li>
+    <li><a href="/drawing-ideas.html">Drawing Ideas</a></li>
+    <li><a href="/parents-guide.html">For Parents</a></li>
+    <li><a href="/about.html">About</a></li>
+  </ul>
+</nav>
 
-  <div class="cards">
-    <div class="card">
-      <span class="card-icon">🧒</span>
-      <h3>Kids &amp; Teens</h3>
-      <p>Turn homework into art. Bring stories to life. Make learning fun with illustrations that appear stroke by stroke.</p>
-    </div>
-    <div class="card">
-      <span class="card-icon">🎓</span>
-      <h3>Students</h3>
-      <p>Visualize essays, science concepts, history events, and more. Perfect for school projects and presentations.</p>
-    </div>
-    <div class="card">
-      <span class="card-icon">💼</span>
-      <h3>Professionals</h3>
-      <p>Create stunning visual presentations, marketing materials, charts, and diagrams that draw themselves live in front of your audience.</p>
-    </div>
-  </div>
-
-  <div class="section">
-    <h2>🎨 Why we built DoodleAI</h2>
-    <p>DoodleAI started with a simple question: what if you could describe anything in words and watch it draw itself in front of your eyes — stroke by stroke, just like a real artist?</p>
-    <p>We wanted something magical. Not just a static image that appears — but an experience. Like watching a street artist sketch a portrait, or a teacher draw on a whiteboard, or Bob Ross painting a happy little tree. That moment of watching something come to life from nothing is something special.</p>
-    <p>So we built it. For kids who want to see their imagination on screen. For students who need visuals that stick. For professionals who want presentations that captivate. For anyone who has ever had an idea and wanted to see it drawn.</p>
-  </div>
-
-  <div class="section">
-    <h2>✨ What makes it different</h2>
-    <p>Most AI art tools show you a finished image. DoodleAI shows you the journey. Every stroke. Every correction. Even the happy little mistakes and the eraser that fixes them — just like a real artist working in front of you.</p>
-    <p>You choose the style — pencil sketch, watercolor, oil paint, chalk, cartoon, or pixel art. You set the speed. You watch it unfold. Then you download it, share it, or build it into a full presentation with multiple slides that each draw themselves live.</p>
-    <p>It's not just a tool. It's a show.</p>
-  </div>
-
-  <div class="cta">
-    <a href="/" class="cta-btn">✏️ Start Creating →</a>
-  </div>
-
-  <div class="footer">DoodleAI.com &nbsp;·&nbsp; AI-powered art from words</div>
+<div class="hero">
+  <span class="hero-tag">Our Story</span>
+  <h1>Built for the joy of<br><em>watching something appear</em></h1>
+  <p>WatchItDraw started with a simple idea: what if a child could watch a drawing come to life, stroke by stroke, in real time?</p>
 </div>
+
+<div class="container">
+
+  <section>
+    <h2>The <span class="accent">Origin</span> of WatchItDraw</h2>
+    <div class="story-card">
+      <p>There's a moment every kid has — staring at a blank page, not sure where to start. WatchItDraw was built to break that paralysis. <strong>When you can watch a drawing emerge line by line,</strong> it demystifies the process, sparks curiosity, and gives young artists the confidence to try it themselves.</p>
+      <p style="margin-top:1rem;">The app was created by an educator and technologist who spent decades watching how kids learn — and what actually captures their attention long enough to teach them something. The answer was always motion, surprise, and play.</p>
+    </div>
+  </section>
+
+  <section>
+    <h2>What <span class="accent">WatchItDraw</span> Does</h2>
+    <p>WatchItDraw is a free-to-use, browser-based AI drawing animation tool. Type a subject — a dinosaur, a rainbow fish, a rocket ship — and watch as the drawing builds itself in real time, stroke by stroke, on a digital canvas.</p>
+    <p>The app is designed with children in mind, but adults find it just as mesmerizing. It's used in homes, classrooms, art therapy sessions, and as a creative warm-up tool for young artists who need a visual starting point before putting pencil to paper.</p>
+    <p>Every drawing is unique. The AI interprets your prompt freshly each time, so no two animations are ever the same — even for the same subject. That unpredictability is part of the magic.</p>
+  </section>
+
+  <section>
+    <h2>Our <span class="accent">Values</span></h2>
+    <div class="values-grid">
+      <div class="value-card">
+        <div class="icon">🎨</div>
+        <h3>Creativity First</h3>
+        <p>Every feature is designed to inspire drawing and imaginative play, not to replace it.</p>
+      </div>
+      <div class="value-card">
+        <div class="icon">👶</div>
+        <h3>Kid-Safe by Design</h3>
+        <p>Age-appropriate prompts, no social features, no accounts required for basic use.</p>
+      </div>
+      <div class="value-card">
+        <div class="icon">🏫</div>
+        <h3>Classroom Ready</h3>
+        <p>Teachers use WatchItDraw as a visual hook for art, science, and storytelling lessons.</p>
+      </div>
+      <div class="value-card">
+        <div class="icon">🌍</div>
+        <h3>Accessible</h3>
+        <p>Runs in any modern browser — no downloads, no installs, no special hardware needed.</p>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <h2>The <span class="accent">Technology</span> Behind It</h2>
+    <p>WatchItDraw combines several technologies to produce its signature stroke-by-stroke effect:</p>
+    <div class="tech-list">
+      <div class="tech-item">
+        <div class="dot"></div>
+        <div>
+          <h4>Sobel Edge Detection</h4>
+          <p>A computer vision algorithm that identifies the outlines and structural edges in an AI-generated image, breaking it into the individual strokes you see drawn on screen.</p>
+        </div>
+      </div>
+      <div class="tech-item">
+        <div class="dot"></div>
+        <div>
+          <h4>AI Image Generation</h4>
+          <p>Your text prompt is interpreted by an AI model that creates a brand-new illustration — never pulled from a database of existing images.</p>
+        </div>
+      </div>
+      <div class="tech-item">
+        <div class="dot"></div>
+        <div>
+          <h4>Real-Time Canvas Rendering</h4>
+          <p>Strokes are drawn progressively on an HTML5 canvas, giving you the live "watching it appear" experience that makes the app feel magical.</p>
+        </div>
+      </div>
+      <div class="tech-item">
+        <div class="dot"></div>
+        <div>
+          <h4>GIF Export</h4>
+          <p>Capture the full drawing animation as a shareable GIF — great for class projects, greeting cards, or posting on the fridge.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <h2>Who <span class="accent">Uses</span> WatchItDraw?</h2>
+    <p>Our users span a wide range of ages and contexts:</p>
+    <p><strong>Children ages 4–12</strong> are the heart of our audience. The app works especially well as a bedtime wind-down activity, a rainy-day creative outlet, or a homework break reward.</p>
+    <p><strong>Parents and caregivers</strong> appreciate that WatchItDraw is genuinely educational — it builds visual literacy, vocabulary (what is that animal called?), and drawing confidence.</p>
+    <p><strong>Teachers and art educators</strong> use it as a classroom demonstration tool — projecting a drawing animation to introduce a lesson topic, or letting students generate and then recreate drawings by hand.</p>
+    <p><strong>Older kids and teens</strong> use the image upload feature to animate reference photos, or use WatchItDraw as a starting point for their own artwork.</p>
+  </section>
+
+</div>
+
+<div class="cta-bar">
+  <h2>Ready to watch something amazing appear?</h2>
+  <a class="btn" href="/">Try WatchItDraw — It's Free</a>
+</div>
+
+<footer>
+  <div>© 2025 WatchItDraw. All rights reserved.</div>
+  <div class="footer-links">
+    <a href="/">Home</a>
+    <a href="/how-it-works.html">How It Works</a>
+    <a href="/drawing-ideas.html">Drawing Ideas</a>
+    <a href="/parents-guide.html">For Parents</a>
+    <a href="/about.html">About</a>
+    <a href="/privacy-policy.html">Privacy Policy</a>
+    <a href="/terms.html">Terms of Use</a>
+    <a href="mailto:hello@watchitdraw.com">Contact</a>
+  </div>
+</footer>
+
 </body>
 </html>
