@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Privacy Policy | WatchItDraw</title>
+  <meta name="description" content="WatchItDraw's privacy policy explains how we collect, use, and protect your data. We are committed to transparency, especially regarding children's privacy.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;900&family=Fraunces:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+  <style>
+    :root{--ink:#1a1a2e;--cream:#fdf6ec;--orange:#ff6b35;--teal:#00b4a6;--yellow:#ffd166}
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+    body{font-family:'Nunito',sans-serif;background:var(--cream);color:var(--ink);line-height:1.8}
+    nav{background:var(--ink);padding:0 2rem;display:flex;align-items:center;justify-content:space-between;height:60px;position:sticky;top:0;z-index:100}
+    nav .logo{font-family:'Fraunces',serif;font-weight:700;color:var(--yellow);font-size:1.3rem;text-decoration:none}
+    nav ul{list-style:none;display:flex;gap:1.5rem}
+    nav ul a{color:#ccc;text-decoration:none;font-size:.9rem;font-weight:600;transition:color .2s}
+    nav ul a:hover{color:var(--yellow)}
+    .page-header{background:var(--ink);color:white;padding:4rem 2rem 3rem;text-align:center}
+    .page-header h1{font-family:'Fraunces',serif;font-size:2.5rem}
+    .page-header p{color:#aaa;margin-top:.5rem;font-size:.95rem}
+    .container{max-width:760px;margin:0 auto;padding:3rem 1.5rem 5rem}
+    h2{font-family:'Fraunces',serif;font-size:1.5rem;color:var(--ink);margin:2.5rem 0 .8rem;border-left:4px solid var(--teal);padding-left:.8rem}
+    h3{font-size:1.05rem;font-weight:900;margin:1.5rem 0 .5rem}
+    p{margin-bottom:.9rem;font-size:1rem;color:#333}
+    ul{padding-left:1.5rem;margin-bottom:1rem}
+    ul li{margin-bottom:.4rem;font-size:1rem;color:#333}
+    a{color:var(--teal)}
+    a:hover{color:var(--orange)}
+    .last-updated{background:white;border-radius:10px;padding:1rem 1.5rem;margin-bottom:2rem;font-size:.9rem;color:#666;border:2px solid #e8e0d4}
+    .highlight-box{background:#fff8e6;border:2px solid var(--yellow);border-radius:10px;padding:1.2rem 1.5rem;margin:1.5rem 0}
+    .highlight-box p{color:#444;font-size:.97rem;margin:0}
+    footer{background:var(--ink);color:#888;text-align:center;padding:2rem;font-size:.85rem}
+    footer a{color:#aaa;text-decoration:none}
+    footer a:hover{color:var(--yellow)}
+    footer .footer-links{display:flex;justify-content:center;gap:1.5rem;flex-wrap:wrap;margin-top:.5rem}
+    @media(max-width:600px){nav ul{gap:.8rem}nav ul a{font-size:.8rem}}
+  </style>
+</head>
+<body>
+<nav>
+  <a class="logo" href="/">WatchItDraw</a>
+  <ul>
+    <li><a href="/">Draw</a></li>
+    <li><a href="/how-it-works.html">How It Works</a></li>
+    <li><a href="/drawing-ideas.html">Drawing Ideas</a></li>
+    <li><a href="/parents-guide.html">For Parents</a></li>
+    <li><a href="/about.html">About</a></li>
+  </ul>
+</nav>
+<div class="page-header">
+  <h1>Privacy Policy</h1>
+  <p>How WatchItDraw collects, uses, and protects your information</p>
+</div>
+<div class="container">
+  <div class="last-updated"><strong>Last updated:</strong> January 1, 2025 &nbsp;|&nbsp; <strong>Effective date:</strong> January 1, 2025<br>Questions about this policy? Contact us at <a href="mailto:watchitdraw@gmail.com">watchitdraw@gmail.com</a></div>
+  <div class="highlight-box"><p><strong>Short version:</strong> WatchItDraw is designed with children's privacy as a priority. Basic use requires no account and collects no personal information. We do not sell your data. We do not knowingly collect personal information from children under 13 without parental consent.</p></div>
+  <h2>1. Who We Are</h2>
+  <p>WatchItDraw ("we," "our," or "us") operates the website watchitdraw.com and provides an AI-powered stroke-by-stroke drawing animation service. This Privacy Policy explains how we handle information in connection with your use of our service.</p>
+  <h2>2. Information We Collect</h2>
+  <h3>Information You Provide</h3>
+  <ul>
+    <li><strong>Text prompts:</strong> The drawing subjects you type into WatchItDraw are processed to generate your animation. Prompts are not stored long-term and are not associated with your identity for users without accounts.</li>
+    <li><strong>Account information (optional):</strong> If you choose to create an account, we collect an email address and a password (stored in encrypted form). No other personal information is required.</li>
+    <li><strong>Payment information:</strong> Credit card and payment data for credit purchases is processed entirely by Stripe, our payment provider. WatchItDraw does not store or have access to your payment card details.</li>
+    <li><strong>Uploaded images:</strong> If you use the image upload feature, your image is processed to extract edge data for animation. Uploaded images are not stored on our servers after your session ends.</li>
+  </ul>
+  <h3>Information Collected Automatically</h3>
+  <ul>
+    <li><strong>Usage data:</strong> Standard web server logs including IP address, browser type, pages visited, and time of visit. This data is used for security monitoring and aggregate analytics only.</li>
+    <li><strong>Cookies:</strong> We use functional cookies to maintain session state and, if you consent, analytics cookies to understand how the site is used. We also display Google AdSense advertisements, which may use cookies to serve relevant ads.</li>
+  </ul>
+  <h2>3. How We Use Your Information</h2>
+  <ul>
+    <li>To generate and display drawing animations in response to your prompts</li>
+    <li>To maintain your account and track drawing credits</li>
+    <li>To process payments through Stripe</li>
+    <li>To improve the quality and performance of the service</li>
+    <li>To communicate with you about your account (account holders only)</li>
+    <li>To comply with legal obligations</li>
+  </ul>
+  <p>We do not use your data for advertising targeting, sell your data to third parties, or use your prompts or uploaded images for AI model training.</p>
+  <h2>4. Children's Privacy (COPPA)</h2>
+  <p>WatchItDraw is intended to be used by children under parental or educator supervision. We take children's privacy seriously and comply with the Children's Online Privacy Protection Act (COPPA).</p>
+  <ul>
+    <li>We do not knowingly collect personal information from children under 13 without verifiable parental consent.</li>
+    <li>Basic drawing use requires no account and collects no personal information.</li>
+    <li>Account creation requires users to confirm they are 13 or older, or that a parent or guardian is creating the account.</li>
+    <li>If you believe a child under 13 has provided us with personal information without parental consent, please contact us at <a href="mailto:watchitdraw@gmail.com">watchitdraw@gmail.com</a> and we will promptly delete it.</li>
+  </ul>
+  <h2>5. Data Sharing</h2>
+  <p>We share information only in the following limited circumstances:</p>
+  <ul>
+    <li><strong>Service providers:</strong> We work with third-party providers (Netlify for hosting, Stripe for payments, AI model providers for image generation) who process data only as needed to provide the service.</li>
+    <li><strong>Legal requirements:</strong> We may disclose information if required by law, court order, or to protect the safety of our users or the public.</li>
+    <li><strong>Business transfer:</strong> In the event of a merger or acquisition, user data may be transferred, and users will be notified.</li>
+  </ul>
+  <p>We do not sell, rent, or trade your personal information to any third party for their marketing purposes.</p>
+  <h2>6. Data Retention</h2>
+  <p>Text prompts entered without an account are not stored beyond the immediate session. Account information is retained while your account is active and deleted within 30 days of account deletion. Server logs are retained for up to 90 days for security purposes.</p>
+  <h2>7. Cookies and Advertising</h2>
+  <p>WatchItDraw displays advertisements served by Google AdSense (publisher ID: ca-pub-4097502239225512). Google AdSense uses cookies to serve ads based on prior visits to our site or other sites. You can opt out of personalized advertising by visiting <a href="https://www.google.com/settings/ads" target="_blank" rel="noopener">Google's Ad Settings</a>.</p>
+  <h2>8. Your Rights</h2>
+  <ul>
+    <li><strong>Access:</strong> Request a copy of the information we hold about you.</li>
+    <li><strong>Correction:</strong> Request correction of inaccurate information.</li>
+    <li><strong>Deletion:</strong> Request deletion of your account and associated data.</li>
+    <li><strong>Portability:</strong> Request your data in a portable format.</li>
+    <li><strong>Objection:</strong> Object to certain types of data processing.</li>
+  </ul>
+  <p>To exercise any of these rights, contact us at <a href="mailto:watchitdraw@gmail.com">watchitdraw@gmail.com</a>.</p>
+  <h2>9. Security</h2>
+  <p>We use industry-standard security measures including HTTPS encryption for all data in transit, encrypted password storage, and access controls on our systems. However, no internet transmission is 100% secure, and we cannot guarantee the absolute security of your information.</p>
+  <h2>10. Changes to This Policy</h2>
+  <p>We may update this Privacy Policy from time to time. We will notify account holders of material changes by email and post the updated policy with a new "Last updated" date. Continued use of WatchItDraw after changes take effect constitutes acceptance of the updated policy.</p>
+  <h2>11. Contact Us</h2>
+  <p>If you have questions, concerns, or requests related to this Privacy Policy or your personal information, please contact us at:</p>
+  <p><strong>WatchItDraw</strong><br>Email: <a href="mailto:watchitdraw@gmail.com">watchitdraw@gmail.com</a></p>
+</div>
+<footer>
+  <div>© 2025 WatchItDraw. All rights reserved.</div>
+  <div class="footer-links">
+    <a href="/">Home</a>
+    <a href="/how-it-works.html">How It Works</a>
+    <a href="/drawing-ideas.html">Drawing Ideas</a>
+    <a href="/parents-guide.html">For Parents</a>
+    <a href="/about.html">About</a>
+    <a href="/privacy-policy.html">Privacy Policy</a>
+    <a href="/terms.html">Terms of Use</a>
+    <a href="mailto:watchitdraw@gmail.com">Contact</a>
+  </div>
+</footer>
+</body>
+</html>
