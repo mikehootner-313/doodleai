@@ -329,7 +329,7 @@ nav{display:flex;align-items:center;justify-content:space-between;padding:18px 0
         </div>
         <img id="result-img" crossorigin="anonymous" style="display:none;position:absolute;opacity:0;"/>
         <canvas id="draw-canvas" style="display:none;width:100%;max-height:680px;"></canvas>
-        <div class="wm" id="wm">DoodleAI.com</div>
+        <div class="wm" id="wm">WatchItDraw.com</div>
         <div class="caption-ov" id="caption-ov"></div>
         <div class="draw-status" id="draw-status" aria-live="polite"></div>
         <div id="error-box"></div>
@@ -1071,7 +1071,7 @@ function startStrokeDrawing(img, onDone){
 const sleep=ms=>new Promise(r=>setTimeout(r,ms));
 const rand=(a,b)=>a+Math.random()*(b-a);
 const randInt=(a,b)=>Math.floor(rand(a,b+1));
-function addWM(ctx,W,H){ ctx.save(); ctx.font='bold 12px DM Sans,Arial,sans-serif'; ctx.fillStyle='rgba(255,255,255,.72)'; ctx.shadowColor='rgba(0,0,0,.55)'; ctx.shadowBlur=4; ctx.textAlign='right'; ctx.fillText('DoodleAI.com',W-12,H-10); ctx.restore(); }
+function addWM(ctx,W,H){ ctx.save(); ctx.font='bold 12px DM Sans,Arial,sans-serif'; ctx.fillStyle='rgba(255,255,255,.72)'; ctx.shadowColor='rgba(0,0,0,.55)'; ctx.shadowBlur=4; ctx.textAlign='right'; ctx.fillText('WatchItDraw.com',W-12,H-10); ctx.restore(); }
 function setDS(msg){ document.getElementById('draw-status').textContent=msg; }
 function getpx(d,x,y,W){ x=Math.max(0,Math.min(W-1,x|0)); y=Math.max(0,Math.min((d.length/4/W|0)-1,y|0)); const i=(y*W+x)*4; return [d[i],d[i+1],d[i+2],d[i+3]]; }
 
