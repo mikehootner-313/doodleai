@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Drawing Tips & Ideas Blog | WatchItDraw</title>
+  <meta name="description" content="Drawing tutorials, ideas, and tips for kids, parents, and beginners. Learn how to draw step by step, find creative prompts, and discover the benefits of drawing for children.">
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: Georgia, 'Times New Roman', serif;
+      background: #fffdf7;
+      color: #2c2c2c;
+      line-height: 1.8;
+    }
+    header {
+      background: #ff6b35;
+      padding: 16px 24px;
+      text-align: center;
+    }
+    header a {
+      color: white;
+      text-decoration: none;
+      font-size: 1.5rem;
+      font-weight: bold;
+      letter-spacing: 1px;
+      font-family: Arial, sans-serif;
+    }
+    nav {
+      background: #fff3ec;
+      border-bottom: 1px solid #ffd5bc;
+      padding: 12px 24px;
+      text-align: center;
+    }
+    nav a {
+      font-family: Arial, sans-serif;
+      font-size: 0.9rem;
+      color: #bf360c;
+      text-decoration: none;
+      margin: 0 14px;
+      font-weight: 600;
+    }
+    nav a:hover { text-decoration: underline; }
+    nav a.active { color: #ff6b35; border-bottom: 2px solid #ff6b35; padding-bottom: 2px; }
+    .hero {
+      background: linear-gradient(135deg, #fff8f0, #ffe0cc);
+      padding: 60px 24px 48px;
+      text-align: center;
+      border-bottom: 3px solid #ff6b35;
+    }
+    .hero h1 {
+      font-size: 2.4rem;
+      color: #bf360c;
+      margin-bottom: 14px;
+      font-family: Arial, sans-serif;
+      font-weight: 900;
+    }
+    .hero p {
+      font-size: 1.1rem;
+      color: #6d4c41;
+      max-width: 580px;
+      margin: 0 auto;
+    }
+    .container {
+      max-width: 860px;
+      margin: 0 auto;
+      padding: 48px 24px 80px;
+    }
+    .section-label {
+      font-family: Arial, sans-serif;
+      font-size: 0.8rem;
+      font-weight: 700;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: #ff6b35;
+      margin-bottom: 20px;
+    }
+    .articles-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+      gap: 28px;
+      margin-bottom: 64px;
+    }
+    .article-card {
+      background: white;
+      border-radius: 16px;
+      overflow: hidden;
+      box-shadow: 0 3px 14px rgba(0,0,0,0.08);
+      transition: transform 0.2s, box-shadow 0.2s;
+      text-decoration: none;
+      color: inherit;
+      display: flex;
+      flex-direction: column;
+    }
+    .article-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 8px 24px rgba(0,0,0,0.12);
+    }
+    .card-top {
+      height: 120px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 3.5rem;
+      background: var(--bg);
+    }
+    .card-body {
+      padding: 20px 22px 24px;
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+    }
+    .card-tag {
+      font-family: Arial, sans-serif;
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 8px;
+    }
+    .card-body h2 {
+      font-family: Arial, sans-serif;
+      font-size: 1.05rem;
+      font-weight: 800;
+      color: #1a1a1a;
+      margin-bottom: 10px;
+      line-height: 1.35;
+    }
+    .card-body p {
+      font-size: 0.92rem;
+      color: #666;
+      line-height: 1.6;
+      flex: 1;
+      margin-bottom: 16px;
+    }
+    .card-link {
+      font-family: Arial, sans-serif;
+      font-size: 0.85rem;
+      font-weight: 700;
+      color: var(--accent);
+      text-decoration: none;
+    }
+    .card-link::after { content: " →"; }
+    .divider {
+      border: none;
+      border-top: 2px solid #ffe0cc;
+      margin: 48px 0;
+    }
+    .cta-strip {
+      background: linear-gradient(135deg, #ff6b35, #e64a19);
+      border-radius: 16px;
+      padding: 36px 32px;
+      text-align: center;
+      color: white;
+    }
+    .cta-strip h2 {
+      font-family: Arial, sans-serif;
+      font-size: 1.7rem;
+      margin-bottom: 12px;
+      font-weight: 900;
+    }
+    .cta-strip p {
+      color: rgba(255,255,255,0.88);
+      margin-bottom: 24px;
+      font-size: 1rem;
+    }
+    .cta-btn {
+      display: inline-block;
+      background: white;
+      color: #e64a19;
+      font-family: Arial, sans-serif;
+      font-weight: bold;
+      font-size: 1rem;
+      padding: 13px 32px;
+      border-radius: 50px;
+      text-decoration: none;
+    }
+    footer {
+      background: #2c2c2c;
+      color: #aaa;
+      text-align: center;
+      padding: 24px;
+      font-family: Arial, sans-serif;
+      font-size: 0.85rem;
+    }
+    footer a { color: #ff6b35; text-decoration: none; margin: 0 8px; }
+  </style>
+</head>
+<body>
+
+<header>
+  <a href="/">🎨 WatchItDraw</a>
+</header>
+
+<nav>
+  <a href="/">Draw</a>
+  <a href="/how-it-works">How It Works</a>
+  <a href="/drawing-ideas">Drawing Ideas</a>
+  <a href="/parents-guide">For Parents</a>
+  <a href="/blog" class="active">Blog</a>
+  <a href="/about">About</a>
+</nav>
+
+<div class="hero">
+  <h1>✏️ Drawing Tips & Ideas</h1>
+  <p>Tutorials, prompts, and guides for young artists, parents, and anyone who wants to draw more — or just watch drawings come to life.</p>
+</div>
+
+<div class="container">
+
+  <div class="section-label">Latest Articles</div>
+
+  <div class="articles-grid">
+
+    <a href="/blog/how-to-draw-a-dog" class="article-card" style="--accent: #ff6b35; --bg: #fff3ec;">
+      <div class="card-top">🐶</div>
+      <div class="card-body">
+        <div class="card-tag">Tutorial</div>
+        <h2>How to Draw a Dog Step by Step</h2>
+        <p>A beginner-friendly 8-step guide for kids and adults. No experience needed — just a pencil and this walkthrough.</p>
+        <span class="card-link">Read the tutorial</span>
+      </div>
+    </a>
+
+    <a href="/blog/50-drawing-ideas-for-kids" class="article-card" style="--accent: #2e7d32; --bg: #f1f8e9;">
+      <div class="card-top">🎨</div>
+      <div class="card-body">
+        <div class="card-tag">Inspiration</div>
+        <h2>50 Easy Drawing Ideas for Kids</h2>
+        <p>Stuck on what to draw? Here are 50 fun prompts organized by category — animals, food, fantasy, nature, and more.</p>
+        <span class="card-link">Browse the ideas</span>
+      </div>
+    </a>
+
+    <a href="/blog/why-drawing-is-good-for-kids" class="article-card" style="--accent: #1565c0; --bg: #e3f2fd;">
+      <div class="card-top">🧠</div>
+      <div class="card-body">
+        <div class="card-tag">For Parents</div>
+        <h2>Why Drawing Is Good for Kids: 8 Real Benefits</h2>
+        <p>Drawing builds fine motor skills, emotional intelligence, creative confidence, and more. Here's what the research says.</p>
+        <span class="card-link">Read the guide</span>
+      </div>
+    </a>
+
+  </div>
+
+  <hr class="divider">
+
+  <div class="cta-strip">
+    <h2>Watch Any Drawing Come to Life</h2>
+    <p>Type any idea and watch it draw itself — stroke by stroke — right in your browser. Free to try, no account needed.</p>
+    <a href="/" class="cta-btn">Try WatchItDraw Free →</a>
+  </div>
+
+</div>
+
+<footer>
+  <a href="/">Home</a>
+  <a href="/how-it-works">How It Works</a>
+  <a href="/drawing-ideas">Drawing Ideas</a>
+  <a href="/parents-guide">For Parents</a>
+  <a href="/blog">Blog</a>
+  <a href="/about">About</a>
+  <a href="/privacy-policy">Privacy Policy</a>
+  <a href="/terms">Terms</a>
+</footer>
+
+</body>
+</html>
